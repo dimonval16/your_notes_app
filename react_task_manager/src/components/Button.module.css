@@ -1,0 +1,53 @@
+/* for sidebar button */
+.wrapper {
+    font-size: 18px;
+    font-weight: lighter;
+    color: white;
+    padding: 10px 20px 15px 20px;
+    width: fit-content;
+    border: 1px solid white;
+    border-radius: 30px;
+    cursor: pointer;
+}
+
+.wrapper>span:first-child {
+    position: relative;
+    top: 5px;
+}
+
+.wrapper>span:nth-child(2) {
+    margin-left: 15px;
+}
+
+.wrapper:hover {
+    border: 1px solid #FF3767;
+    background-color: #FF3767;
+}
+
+/* for main_content button */
+.wrapper_content {
+    font-size: 18px;
+    color: #2D487F;
+    padding: 10px 20px 15px 20px;
+    width: fit-content;
+    border: 1px solid #2D487F;
+    border-radius: 30px;
+    cursor: pointer;
+    margin-bottom: 30px;
+}
+
+.wrapper_content>span:first-child {
+    position: relative;
+    top: 5px;
+}
+
+.wrapper_content>span:nth-child(2) {
+    margin-left: 15px;
+}
+
+.wrapper_content:hover {
+    border: 1px solid #FF3767;
+    background-color: #FF3767;
+    color: white;
+    font-weight: lighter;
+}

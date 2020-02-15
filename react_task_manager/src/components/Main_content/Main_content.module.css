@@ -1,0 +1,31 @@
+.wrapper {
+    background-color: #F3F3F5;
+    box-shadow: 0 -1px 2px rgba(0, 0, 0, 0.15);
+}
+
+.mainBlock {
+    width: 85%;
+    margin: auto;
+    margin-top: 50px;
+    min-width: 400px;
+}
+
+.itemBlock {
+    background-color: white;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    border: 1px solid #D2D2D2;
+    border-radius: 10px;
+}
+
+.itemBlock>div:first-child {
+    color: #2D487F;
+    margin-left: 20px;
+    cursor: pointer;
+}
+
+.itemText {
+    font-size: 18px;
+    margin-left: 30px;
+}

@@ -1,0 +1,14 @@
+.wrapper {
+    background-color: #2D487F;
+    grid-row: 1/4;
+    grid-column: 1/2;
+    min-width: max-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.button {
+    height: 150px;
+}
