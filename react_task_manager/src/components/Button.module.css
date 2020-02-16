@@ -19,6 +19,10 @@
     margin-left: 15px;
 }
 
+.button_sidebar {
+    margin-bottom: 80px;
+}
+
 .wrapper:hover {
     border: 1px solid #FF3767;
     background-color: #FF3767;

@@ -2,25 +2,24 @@ import React from 'react';
 
 import ButtonStyle from './Button.module.css';
 
+const ButtonElement = (props) => {
+    return (
+        <div className={props.className}>
+            <span className="material-icons">
+                add
+            </span>
+            <span>
+                {props.name}
+            </span>
+        </div>
+    );
+}
+
 const Button = (props) => {
     return( props.id ?
-        <div className={ButtonStyle.wrapper_content}>
-            <span className="material-icons">
-                add
-            </span>
-            <span>
-                {props.name}
-            </span>
-        </div>
+            <ButtonElement className={ButtonStyle.wrapper_content} name={props.name}/>
         :
-        <div className={ButtonStyle.wrapper}>
-            <span className="material-icons">
-                add
-            </span>
-            <span>
-                {props.name}
-            </span>
-        </div>
+            <ButtonElement className={`${ButtonStyle.wrapper} ${ButtonStyle.button_sidebar}`} name={props.name}/>
     );
 }
 

@@ -10,9 +10,7 @@ const Sidebar = (props) => {
         <div className={Sidebar_style.wrapper}>
             <Account user="Dmytro Volynskyi"/>
             <Category />
-            <div className={Sidebar_style.button}>
-                <Button name="Категория" />
-            </div>
+            <Button name="Категория"/>
         </div>
     );
 }
