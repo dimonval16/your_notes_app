@@ -29,4 +29,41 @@
 .itemText {
     font-size: 18px;
     margin-left: 30px;
+    flex-grow: 1;
+}
+
+.delete {
+    color: #2D487F;
+    margin-right: 20px;
+    opacity: 0;
+    cursor: pointer;
+}
+.itemBlock:hover .delete {
+    opacity: 1;
+    transition: .3s;
+}
+
+.edit {
+    color: #2D487F;
+    margin-right: 10px;
+    opacity: 0;
+    cursor: pointer;
+}
+.itemBlock:hover .edit {
+    opacity: 1;
+    transition: .3s;
+}
+
+.completed>div:first-child {
+    opacity: .6;
+}
+.completed>div:nth-child(2) {
+    opacity: .4;
+    text-decoration-line: line-through;
+}
+.completed:hover div:nth-child(3) {
+    opacity: .6;
+}
+.completed:hover div:nth-child(4) {
+    opacity: .6;
 }

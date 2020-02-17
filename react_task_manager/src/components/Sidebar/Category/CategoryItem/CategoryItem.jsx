@@ -10,6 +10,8 @@ const CategoryItem = (props) => {
             <span>
                 {props.name}
             </span>
+            <i className={`${'material-icons'} ${CategoryStyle.create}`}>create</i>
+            <i className={`${'material-icons'} ${CategoryStyle.delete}`}>delete</i>
         </div>
     );
 }
