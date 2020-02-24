@@ -3,13 +3,13 @@ import Sidebar_style from './Sidebar.module.css';
 
 import Account from './Account/Account';
 import Category from './Category/Category';
-import Button from '../Button';
+import Button from '../Button/Button';
 
 const Sidebar = (props) => {
     return(
         <div className={Sidebar_style.wrapper}>
-            <Account user="Dmytro Volynskyi"/>
-            <Category />
+            <Account user={props.user}/>
+            <Category categories={props.categories}/>
             <Button name="Категория"/>
         </div>
     );

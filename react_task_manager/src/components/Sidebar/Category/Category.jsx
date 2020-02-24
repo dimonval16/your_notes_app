@@ -5,13 +5,9 @@ import CategoryBlock from './Category.module.css'
 const Category = (props) => {
     return(
         <div className={CategoryBlock.category_block}>
-            <CategoryItem name="Понедельник" />
-            <CategoryItem name="Вторник"/>
-            <CategoryItem name="Среда"/>
-            <CategoryItem name="Четверг"/>
-            <CategoryItem name="Пятница"/>
-            <CategoryItem name="Суббота"/>
-            <CategoryItem name="Воскресенье"/>
+            {props.categories.map(el => 
+                <CategoryItem title={el.title} key={el.id}/>
+            )}
         </div>
     );
 }

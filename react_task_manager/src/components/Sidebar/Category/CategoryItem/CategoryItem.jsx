@@ -8,7 +8,7 @@ const CategoryItem = (props) => {
                 format_list_bulleted
             </span>
             <span className={CategoryStyle.text}>
-                {props.name}
+                {props.title}
             </span>
             <i className={`${'material-icons'} ${CategoryStyle.create}`}>create</i>
             <i className={`${'material-icons'} ${CategoryStyle.delete}`}>delete</i>

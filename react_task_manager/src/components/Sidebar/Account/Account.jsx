@@ -1,13 +1,13 @@
 import React from 'react';
-import Acc from './Account.module.css'
+import Acc from './Account.module.css';
 
 const Account = (props) => {
     
     return(
         <div className={Acc.wrapper}>
-            <div className="material-icons">account_circle</div>
+            <div className="material-icons">{props.user.photo}</div>
             <div>
-                {props.user}
+                {`${props.user.name} ${props.user.surname}`}
             </div>
         </div>
     );
