@@ -4,10 +4,10 @@ import CategoryStyle from '../Category.module.css'
 const CategoryItem = (props) => {
     return(
         <div className={CategoryStyle.wrapper}>
-            <span className={`material-icons`}>
+            <span className={`${'material-icons'} ${CategoryStyle.list}`}>
                 format_list_bulleted
             </span>
-            <span>
+            <span className={CategoryStyle.text}>
                 {props.name}
             </span>
             <i className={`${'material-icons'} ${CategoryStyle.create}`}>create</i>

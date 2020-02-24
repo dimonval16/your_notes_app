@@ -67,3 +67,9 @@
 .completed:hover div:nth-child(4) {
     opacity: .6;
 }
+
+.items {
+    max-height: 288px;
+    overflow-y: auto;
+}
+
