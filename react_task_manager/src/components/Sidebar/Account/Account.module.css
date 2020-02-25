@@ -1,7 +1,10 @@
 .wrapper {
+    align-self: center;
     text-align: center;
     color: white;
     line-height: 2;
+    margin-top: 20px;
+    margin-bottom: 40px;
 }
 
 .wrapper>div:first-child {

@@ -1,6 +1,8 @@
 .wrapper {
     background-color: #F3F3F5;
     box-shadow: 0 -1px 2px rgba(0, 0, 0, 0.15);
+    overflow-y: auto;
+    min-height: 260px;
 }
 
 .mainBlock {
@@ -68,8 +70,4 @@
     opacity: .6;
 }
 
-.items {
-    height: 48vh;
-    overflow-y: auto;
-}
 

@@ -1,3 +1,8 @@
+.category_block {
+    align-self: center;
+    overflow-y: auto;
+}
+
 .wrapper {
     color: white;
     margin-bottom: 30px;
@@ -15,7 +20,7 @@
 .text {
     font-size: 18px;
     font-weight: lighter;
-    cursor: pointer;
+    cursor: pointer; 
     flex-grow: 1;
 }
 
@@ -39,9 +44,4 @@
 .wrapper:hover .delete {
     opacity: .5;
     transition: .3s;
-}
-
-.category_block {
-    max-height: 378px;
-    overflow-y: auto;
 }

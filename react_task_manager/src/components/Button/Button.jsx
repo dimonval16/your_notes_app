@@ -6,7 +6,7 @@ import ButtonElement from './ButtonElement/ButtonElement'
 const Button = (props) => {
     return(
         <ButtonElement 
-            className={ props.id ? ButtonStyle.wrapper_content : `${ButtonStyle.wrapper} ${ButtonStyle.button_sidebar}`}
+            className={ props.id ? ButtonStyle.wrapper_content : ButtonStyle.wrapper }
             name={props.name}
         />
     );
