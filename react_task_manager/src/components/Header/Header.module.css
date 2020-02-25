@@ -1,4 +1,13 @@
 .wrapper {
     background-color: #F3F3F5;
     box-shadow: 0 2px 2px rgba(0, 0, 0, 0.15);
+    display: flex;
+    justify-content: space-between;
+}
+
+.arrows {
+    display: flex;
+    height: 50px;
+    justify-content: flex-end;
+    align-items: center;
 }
