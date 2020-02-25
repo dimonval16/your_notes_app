@@ -10,9 +10,9 @@ const App = (props) => {
   return (
     <div className="App">
       <Header />
-      <Sidebar user={props.user} categories={props.categories}/>
-      <Slogan sloganName={props.user.name}/>
-      <MainContent notes={props.notes}/>
+      <Sidebar user={props.state.user} categories={props.state.categories}/>
+      <Slogan sloganName={props.state.user.name}/>
+      <MainContent notes={props.state.notes}/>
     </div>
   );
 }
