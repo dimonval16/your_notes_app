@@ -69,7 +69,7 @@
 }
 
 .items {
-    max-height: 288px;
+    height: 48vh;
     overflow-y: auto;
 }
 
