@@ -2,9 +2,11 @@ import React from 'react';
 
 const NoteIcon = (props) => {
     return(
-        <div className={`material-icons ${props.style}`}>
-            {props.icon}
-        </div>
+        <button className={props.className} {...props}>
+            <i className='material-icons' onClick={props.onClick}>
+                {props.icon}
+            </i>
+        </button>
     );
 }
 

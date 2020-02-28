@@ -4,11 +4,10 @@ import ButtonStyle from './Button.module.css';
 import ButtonElement from './ButtonElement/ButtonElement'
 
 const Button = (props) => {
-    return(
-        <ButtonElement 
-            className={ props.id ? ButtonStyle.wrapper_content : ButtonStyle.wrapper }
-            name={props.name}
-        />
+    let _needWrapper = props.id ? ButtonStyle.wrapper_content : ButtonStyle.wrapper;
+
+    return (
+        <ButtonElement className={_needWrapper} name={props.name} onClick={props.onButtonClick}/>
     );
 }
 

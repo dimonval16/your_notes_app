@@ -2,7 +2,7 @@
     background-color: #F3F3F5;
     box-shadow: 0 -1px 2px rgba(0, 0, 0, 0.15);
     overflow-y: auto;
-    min-height: 150px;
+    min-height: 220px;
 }
 
 .mainBlock {
@@ -21,7 +21,7 @@
     border-radius: 10px;
 }
 
-.itemBlock>div:first-child {
+.checkbox {
     color: #2D487F;
     margin-left: 20px;
     cursor: pointer;
@@ -38,6 +38,9 @@
     margin-right: 20px;
     opacity: 0;
     cursor: pointer;
+    padding: 0;
+    background: none;
+    border: none;
 }
 .itemBlock:hover .delete {
     opacity: 1;
@@ -49,23 +52,26 @@
     margin-right: 10px;
     opacity: 0;
     cursor: pointer;
+    padding: 0;
+    background: none;
+    border: none;
 }
 .itemBlock:hover .edit {
     opacity: 1;
     transition: .3s;
 }
 
-.completed>div:first-child {
+.completed>.checkbox {
     opacity: .6;
 }
-.completed>div:nth-child(2) {
+.completed>.itemText {
     opacity: .4;
     text-decoration-line: line-through;
 }
-.completed:hover div:nth-child(3) {
+.completed:hover .edit {
     opacity: .6;
 }
-.completed:hover div:nth-child(4) {
+.completed:hover .delete {
     opacity: .6;
 }
 

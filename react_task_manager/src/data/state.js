@@ -3,32 +3,32 @@ const state = {
         {
             id: 1,
             title: 'Сходить в магаз',
-            completed: 'true'
+            completed: true
         },
         {
             id: 2,
             title: 'Похавать борщ',
-            completed: 'true'
+            completed: true
         },
         {
             id: 3,
             title: 'Посмотреть кинчик',
-            completed: 'false'
+            completed: false
         },
         {
             id: 4,
             title: 'Ковыряться в ушах',
-            completed: 'false'
+            completed: false
         },
         {
             id: 5,
             title: 'Посмотреть it-camasutra',
-            completed: 'true'
+            completed: true
         },
         {
             id: 6,
             title: 'Сделать проект',
-            completed: 'false'
+            completed: false
         }
     ],
     categories: [

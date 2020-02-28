@@ -3,14 +3,22 @@ import MainContentStyle from './Main_content.module.css';
 
 import Button from '../Button/Button';
 import Notes from './Notes/Notes';
-
+import AddNote from './AddNote/AddNote';
 
 const MainContent = (props) => {
-    return(
-        <div className={MainContentStyle.wrapper}>
-            <div className={MainContentStyle.mainBlock}>
-                <Button id="content" name="Добавить задачу" />
-                <Notes notes={props.notes}/>
+    let _wrapper = MainContentStyle.wrapper;
+    let _mainBlock = MainContentStyle.mainBlock;
+
+    return (
+        <div className={_wrapper}>
+            <div className={_mainBlock}>
+                <Button id="content" name="Добавить задачу" onButtonClick={props.onNotesButtonClick}/>
+                <AddNote addNoteFormRef={props.addNoteFormRef} onAdd={props.onAdd} hideAddForm={props.onSaveNote}/>
+                <Notes
+                    notes={props.notes}
+                    onChange={props.onChange}
+                    onDelete={props.onDelete}
+                />
             </div>
         </div>
     );

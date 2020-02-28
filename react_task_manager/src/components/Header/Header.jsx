@@ -1,32 +1,22 @@
 import React from 'react';
 import Header_style from './Header.module.css'
 
-const slideUp = () => {
-    const slogan = document.querySelector('.slogan');
-    slogan.style.position = 'absolute';
-    slogan.style.top = '-500px';
-
-    const appBlock = document.querySelector('.App');
-    appBlock.style.gridTemplateRows = '50px 1fr';
-
-}
-
-const slideDown = () => {
-    const slogan = document.querySelector('.slogan');
-    slogan.style.position = 'static';
-    slogan.style.top = '0';
-
-    const appBlock = document.querySelector('.App');
-    appBlock.style.gridTemplateRows = '50px 1fr 3fr';
-}
+import ArrowButton from './ArrowButton/ArrowButton'
 
 const Header = (props) => {
-    return(
-        <div className={Header_style.wrapper}>
+    let _wrapper = Header_style.wrapper;
+    let _arrows = Header_style.arrows;
+    let _arrowUp = 'material-icons arrowUp';
+    let _arrowDown = 'material-icons arrowDown';
+    let arrowUpIcon = 'keyboard_arrow_up';
+    let arrowDownIcon = 'keyboard_arrow_down';
+
+    return (
+        <div className={_wrapper}>
             <div></div>
-            <div className={Header_style.arrows}>
-                <i className={`material-icons arrowUp`} onClick={slideUp}>keyboard_arrow_up</i>
-                <i className={`material-icons arrowDown`} onClick={slideDown}>keyboard_arrow_down</i>
+            <div className={_arrows}>
+                <ArrowButton className={_arrowUp} icon={arrowUpIcon} onClick={props.slideUp} />
+                <ArrowButton className={_arrowDown} icon={arrowDownIcon} onClick={props.slideDown} />
             </div>
         </div>
     );
