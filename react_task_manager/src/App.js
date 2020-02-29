@@ -23,6 +23,7 @@ class App extends React.Component {
     // -- end --
 
     // bind this for methods
+    this.sortingNotes = this.sortingNotes.bind(this);
     this.nextId = this.nextId.bind(this);
     this.addNote = this.addNote.bind(this);
     this.hideAddForm = this.hideAddForm.bind(this);
@@ -34,10 +35,22 @@ class App extends React.Component {
     // -- end --
   }
 
-  nextId(oldNotes) {
+  sortingNotes(notes) {
+    let newId = 1;
+    let sortNotes = notes.map(note => {
+      note.id = newId;
+      newId++;
+
+      return note;
+    });
+
+    return sortNotes;
+  }
+
+  nextId(notes) {
     let _nextId = 1;
     
-    oldNotes.map(note => {
+    notes.map(note => {
       if (_nextId === note.id) {
         _nextId++;
       }
@@ -51,8 +64,6 @@ class App extends React.Component {
   addNote(title) { 
   
     let notes = this.state.notes;
-    
-    console.log(notes);
 
     let note = {
       id: this.nextId(notes),
@@ -62,8 +73,10 @@ class App extends React.Component {
     
     notes.unshift(note);
 
-    this.setState({ notes: notes });
-    
+    let sortNotes = this.sortingNotes(notes);
+
+    this.setState({ notes: sortNotes });
+
     console.log(notes);
   }
 
