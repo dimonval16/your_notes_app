@@ -65,6 +65,7 @@ const state = {
         id: 1,
         name: 'Dmytro',
         surname: 'Volynskyi',
+        email: 'brazzers.com',
         photo: 'account_circle'
     }
 }

@@ -10,8 +10,9 @@ const Notes = (props) => {
             completed={el.completed}
             key={el.id}
             id={el.id}
-            onChange={props.onChange}
+            onChange={props.onStatusChange}
             onDelete={props.onDelete}
+            onEdit = {props.onEdit}
         />
     );
 

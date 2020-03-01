@@ -13,7 +13,8 @@ class App extends React.Component {
     this.state = {
       notes: this.props.initialData.notes,
       categories: this.props.initialData.categories,
-      user: this.props.initialData.user
+      user: this.props.initialData.user,
+      opened: false
     };
 
     // -- create refs for components
@@ -23,6 +24,7 @@ class App extends React.Component {
     // -- end --
 
     // bind this for methods
+    this.editNote = this.editNote.bind(this);
     this.sortingNotes = this.sortingNotes.bind(this);
     this.nextId = this.nextId.bind(this);
     this.addNote = this.addNote.bind(this);
@@ -33,6 +35,18 @@ class App extends React.Component {
     this.slideUp = this.slideUp.bind(this);
     this.slideDown = this.slideDown.bind(this);
     // -- end --
+  }
+
+  editNote(id, title) {
+    let notes = this.state.notes.map(note => {
+      if(note.id === id) {
+        note.title = title;
+      }
+
+      return note;
+    });
+
+    this.setState({ notes: notes });
   }
 
   sortingNotes(notes) {
@@ -76,22 +90,32 @@ class App extends React.Component {
     let sortNotes = this.sortingNotes(notes);
 
     this.setState({ notes: sortNotes });
-
-    console.log(notes);
   }
 
   hideAddForm() {
-    let addForm = this.addNoteFormRef.current;
-    addForm.style.position = 'absolute';
-    addForm.style.width = '0';
-    addForm.style.visibility = 'hidden';
+    if (this.state.opened === true) {
+      let addForm = this.addNoteFormRef.current;
+
+      addForm.style.position = 'absolute';
+      addForm.style.width = '0';
+      addForm.style.visibility = 'hidden';
+
+      this.setState({ opened: false });
+    }
   }
 
   showAddForm() {
-    let addForm = this.addNoteFormRef.current;
-    addForm.style.position = 'static';
-    addForm.style.width = '100%';
-    addForm.style.visibility = 'visible';
+    if(this.state.opened === false) {
+      let addForm = this.addNoteFormRef.current;
+
+      addForm.style.position = 'static';
+      addForm.style.width = '100%';
+      addForm.style.visibility = 'visible';
+
+      this.setState({ opened: true });
+    } else {
+      this.hideAddForm();
+    }
   }
 
   noteDelete(id) {
@@ -153,12 +177,13 @@ class App extends React.Component {
         />
         <MainContent
           notes={this.state.notes}
-          onChange={this.noteStatusChange}
+          onStatusChange={this.noteStatusChange}
           onDelete={this.noteDelete}
           onNotesButtonClick={this.showAddForm}
           addNoteFormRef={this.addNoteFormRef}
           onAdd={this.addNote}
           onSaveNote = {this.hideAddForm}
+          onNoteEdit = {this.editNote}
         />
       </div>
     );

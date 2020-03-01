@@ -16,8 +16,9 @@ const MainContent = (props) => {
                 <AddNote addNoteFormRef={props.addNoteFormRef} onAdd={props.onAdd} hideAddForm={props.onSaveNote}/>
                 <Notes
                     notes={props.notes}
-                    onChange={props.onChange}
+                    onStatusChange={props.onStatusChange}
                     onDelete={props.onDelete}
+                    onEdit={props.onNoteEdit}
                 />
             </div>
         </div>

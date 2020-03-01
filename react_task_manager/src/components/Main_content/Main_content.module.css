@@ -1,3 +1,4 @@
+/* -- MainContent.jsx style start -- */
 .wrapper {
     background-color: #F3F3F5;
     box-shadow: 0 -1px 2px rgba(0, 0, 0, 0.15);
@@ -11,7 +12,9 @@
     margin-top: 50px;
     margin-bottom: 50px;
 }
+/* -- MainContent.jsx style end -- */
 
+/* -- Notes style in Note.jsx start -- */
 .itemBlock {
     background-color: white;
     height: 70px;
@@ -74,5 +77,39 @@
 .completed:hover .delete {
     opacity: .6;
 }
+/* -- Notes style in Note.jsx start -- */
 
+/* -- editing form in Note.jsx start -- */
+.editWrapper {
+    width: 100%;
+    height: 70px;
+    background-color: white;
+    border: 1px solid #D2D2D2;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.input {
+    font-family: 'Roboto', sans-serif;
+    flex-grow: 1;
+    margin-left: 20px;
+    padding-left: 5px;
+    font-size: 18px;
+    border: none;
+    height: 60%;
+    border-bottom: 1px solid #D2D2D2;
+}
+
+.save {
+    background: none;
+    border: none;
+    color: #2D487F;
+    padding: 0;
+    margin-right: 20px;
+    margin-left: 20px;
+    cursor: pointer;
+}
+/* -- editing form in Note.jsx end -- */
 
