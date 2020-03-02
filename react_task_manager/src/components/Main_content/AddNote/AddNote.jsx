@@ -7,11 +7,18 @@ class AddNote extends React.Component {
         super(props);
 
         this.state = {
-            title: ''
+            title: '',
         };
 
+        this.componentDidUpdate = this.componentDidUpdate.bind(this);
         this.activateField = this.activateField.bind(this);
         this.catchSubmit = this.catchSubmit.bind(this);
+    }
+
+    componentDidUpdate(prevProps, prevState) {
+        if (this.props.openedForm) {
+            this.refs.title.focus();
+        }
     }
 
     activateField(event) {
@@ -45,6 +52,7 @@ class AddNote extends React.Component {
                     value={this.state.title} 
                     placeholder='Добавить новую задачу...'
                     onChange={this.activateField}
+                    ref = 'title'
                 >    
                 </input>
                 <NoteIcon className={_saveIcon} icon='save' type='submit'/>

@@ -1,64 +1,80 @@
 const state = {
-    notes: [
+    categories: [
         {
             id: 1,
-            title: 'Сходить в магаз',
-            completed: true
+            title: 'Понедельник',
+            notes: [
+                {
+                    id: 1,
+                    title: 'Заметки для Понедельника',
+                    completed: false
+                }
+            ]
         },
-        {
+        {   
             id: 2,
-            title: 'Похавать борщ',
-            completed: true
+            title: 'Вторник',
+            notes: [
+                {
+                    id: 1,
+                    title: 'Заметки для Вторника',
+                    completed: false
+                }
+            ]
         },
         {
             id: 3,
-            title: 'Посмотреть кинчик',
-            completed: false
+            title: 'Среда',
+            notes: [
+                {
+                    id: 1,
+                    title: 'Заметки для Среды',
+                    completed: false
+                }
+            ]
         },
         {
             id: 4,
-            title: 'Ковыряться в ушах',
-            completed: false
+            title: 'Четверг',
+            notes: [
+                {
+                    id: 1,
+                    title: 'Заметки для Четверга',
+                    completed: false
+                }
+            ]
         },
         {
             id: 5,
-            title: 'Посмотреть it-camasutra',
-            completed: true
+            title: 'Пятница',
+            notes: [
+                {
+                    id: 1,
+                    title: 'Заметки для Пятницы',
+                    completed: false
+                }
+            ]
         },
         {
             id: 6,
-            title: 'Сделать проект',
-            completed: false
-        }
-    ],
-    categories: [
-        {
-            title: 'Понедельник',
-            id: 1
-        },
-        {
-            title: 'Вторник',
-            id: 2
-        },
-        {
-            title: 'Среда',
-            id: 3
-        },
-        {
-            title: 'Четверг',
-            id: 4
-        },
-        {
-            title: 'Пятница',
-            id: 5
-        },
-        {
             title: 'Суббота',
-            id: 6
+            notes: [
+                {
+                    id: 1,
+                    title: 'Заметки для Субботы',
+                    completed: false
+                }
+            ]
         },
-        {
+        {   id: 7,
             title: 'Воскресенье',
-            id: 7
+            notes: [
+                {
+                    id: 1,
+                    title: 'Заметки для Воскресенья',
+                    completed: false
+                }
+            ]
         }
     ],
     user: {

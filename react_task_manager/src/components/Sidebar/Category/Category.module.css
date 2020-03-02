@@ -22,6 +22,8 @@
     font-weight: lighter;
     cursor: pointer; 
     flex-grow: 1;
+    color: white;
+    text-decoration: none;
 }
 
 .create {

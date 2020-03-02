@@ -10,6 +10,7 @@ const Notes = (props) => {
             completed={el.completed}
             key={el.id}
             id={el.id}
+            categoryId={props.categoryId}
             onChange={props.onStatusChange}
             onDelete={props.onDelete}
             onEdit = {props.onEdit}

@@ -6,12 +6,13 @@ import Sidebar from './components/Sidebar/Sidebar';
 import Slogan from './components/Slogan/Slogan';
 import MainContent from './components/Main_content/MainContent';
 
+import { BrowserRouter } from 'react-router-dom';
+
 class App extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      notes: this.props.initialData.notes,
       categories: this.props.initialData.categories,
       user: this.props.initialData.user,
       opened: false
@@ -32,8 +33,8 @@ class App extends React.Component {
     this.showAddForm = this.showAddForm.bind(this);
     this.noteDelete = this.noteDelete.bind(this);
     this.noteStatusChange = this.noteStatusChange.bind(this);
-    this.slideUp = this.slideUp.bind(this);
-    this.slideDown = this.slideDown.bind(this);
+    this.slideSloganUp = this.slideSloganUp.bind(this);
+    this.slideSloganDown = this.slideSloganDown.bind(this);
     // -- end --
   }
 
@@ -118,30 +119,47 @@ class App extends React.Component {
     }
   }
 
-  noteDelete(id) {
-    let oldNotes = this.state.notes;
-    
-    let newNotes = oldNotes.filter(note => note.id !== id);
-    
-    this.setState({ notes: newNotes });
-  }
+  noteDelete(id, categoryId) {
+    let categories = this.state.categories;
 
-  noteStatusChange(id) {
-    let newNotes = this.state.notes;
+    categories.map(obj => {
+      if(obj.id === categoryId) {
+        
+        let notes = obj.notes.filter(note => note.id !== id);
 
-    newNotes.map(note => {
-      if (note.id === id) {
-        note.completed = !note.completed;
+        obj.notes = notes
       }
 
-      return note;
+      return obj;
+    });
+    
+    this.setState({ categories: categories });
+  }
+
+  noteStatusChange(id, categoryId) {
+    let categories = this.state.categories;
+
+    categories.map(obj => {
+      if (obj.id === categoryId) {
+
+        obj.notes.map(note => {
+          if (note.id === id) { 
+            note.completed = !note.completed; 
+          }
+
+          return note;
+        });
+
+      }
+
+      return obj;
     });
 
-    this.setState({ notes: newNotes });
+    this.setState({ categories: categories });
   }
 
   // -- for Header's buttons to show/hide Slogan
-  slideUp() {
+  slideSloganUp() {
     const sloganBlock = this.sloganRef.current;
     sloganBlock.style.position = 'absolute';
     sloganBlock.style.visibility = 'hidden';
@@ -150,7 +168,7 @@ class App extends React.Component {
     appBlock.style.gridTemplateRows = '50px 1fr';
   }
 
-  slideDown() {
+  slideSloganDown() {
     const sloganBlock = this.sloganRef.current;
     sloganBlock.style.position = 'static';
     sloganBlock.style.visibility = 'visible';
@@ -162,30 +180,33 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="App" ref={this.appRef}>
-        <Header
-          slideUp={this.slideUp}
-          slideDown={this.slideDown}
-        />
-        <Sidebar
-          user={this.state.user}
-          categories={this.state.categories}
-        />
-        <Slogan
-          sloganName={this.state.user.name}
-          sloganRef={this.sloganRef}
-        />
-        <MainContent
-          notes={this.state.notes}
-          onStatusChange={this.noteStatusChange}
-          onDelete={this.noteDelete}
-          onNotesButtonClick={this.showAddForm}
-          addNoteFormRef={this.addNoteFormRef}
-          onAdd={this.addNote}
-          onSaveNote = {this.hideAddForm}
-          onNoteEdit = {this.editNote}
-        />
-      </div>
+      <BrowserRouter>
+        <div className="App" ref={this.appRef}>
+          <Header
+            slideUp={this.slideSloganUp}
+            slideDown={this.slideSloganDown}
+          />
+          <Sidebar
+            user={this.state.user}
+            categories={this.state.categories}
+          />
+          <Slogan
+            sloganName={this.state.user.name}
+            sloganRef={this.sloganRef}
+          />
+          <MainContent
+            categories={this.state.categories}
+            onStatusChange={this.noteStatusChange}
+            onDelete={this.noteDelete}
+            onNotesButtonClick={this.showAddForm}
+            addNoteFormRef={this.addNoteFormRef}
+            onAdd={this.addNote}
+            onSaveNote={this.hideAddForm}
+            onNoteEdit={this.editNote}
+            openedForm={this.state.opened}
+          />
+        </div>
+      </BrowserRouter>
     );
   }
 }

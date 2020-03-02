@@ -23,6 +23,7 @@ class Note extends React.Component {
         // -- end --
 
         // -- bind this in methods --
+        this.componentDidUpdate = this.componentDidUpdate.bind(this);
         this.saveEdit = this.saveEdit.bind(this);
         this.renderNote = this.renderNote.bind(this);
         this.renderEditingForm = this.renderEditingForm.bind(this);
@@ -30,6 +31,13 @@ class Note extends React.Component {
         this.catch_checkbox_id = this.catch_checkbox_id.bind(this);
         this.catch_deleteIcon_id = this.catch_deleteIcon_id.bind(this);
         // -- end --
+    }
+
+    componentDidUpdate(prevProps, prevState) {
+        if (this.state.editing) {
+            this.refs.title.focus();
+            this.refs.title.select();
+        };
     }
 
     saveEdit(event) {
@@ -52,8 +60,16 @@ class Note extends React.Component {
                     onChange={this.catch_checkbox_id}
                 />
                 <div className={this._itemText}>{this.props.title}</div>
-                <NoteIcon className={this._edit} icon='create' onClick={() => this.setState({ editing: true }) }/>
-                <NoteIcon className={this._delete} icon='delete' onClick={this.catch_deleteIcon_id} />
+                <NoteIcon 
+                    className={this._edit} 
+                    icon='create' 
+                    onClick={() => this.setState({ editing: true }) }
+                />
+                <NoteIcon 
+                    className={this._delete} 
+                    icon='delete' 
+                    onClick={this.catch_deleteIcon_id} 
+                />
             </div>
         );
     }
@@ -80,11 +96,11 @@ class Note extends React.Component {
     }
 
     catch_checkbox_id() {
-        this.props.onChange(this.props.id);
+        this.props.onChange(this.props.id, this.props.categoryId);
     }
 
     catch_deleteIcon_id() {
-        this.props.onDelete(this.props.id);
+        this.props.onDelete(this.props.id, this.props.categoryId);
     }
 
     render() {
