@@ -45,10 +45,9 @@ class Note extends React.Component {
 
         let title = this.refs.title.value;
 
-        this.props.onEdit(this.props.id, title);
+        this.props.onEdit(this.props.id, title, this.props.categoryId);
 
         this.setState({ editing: false });
-
     }
 
     renderNote() {

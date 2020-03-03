@@ -1,10 +1,8 @@
 import React from 'react';
+import { Route } from 'react-router';
 import MainContentStyle from './Main_content.module.css';
 
-import Button from '../Button/Button';
 import Notes from './Notes/Notes';
-import AddNote from './AddNote/AddNote';
-import { Route } from 'react-router';
 
 class MainContent extends React.Component {
     constructor(props) {
@@ -25,10 +23,14 @@ class MainContent extends React.Component {
             let notes =
                 <Notes
                     notes={obj.notes}
-                    categoryId = {obj.id}
+                    categoryId={obj.id}
+                    addNoteFormRef={this.props.addNoteFormRef}
                     onStatusChange={this.props.onStatusChange}
                     onDelete={this.props.onDelete}
                     onEdit={this.props.onNoteEdit}
+                    onAdd={this.props.onAdd}
+                    onSaveNote={this.props.onSaveNote}
+                    onButtonClick={this.props.onNotesButtonClick}
                 />;
 
             let route =
@@ -39,7 +41,7 @@ class MainContent extends React.Component {
                 />;
 
             return route;
-        })
+        });
 
         return notes;
     }
@@ -50,17 +52,6 @@ class MainContent extends React.Component {
         return (
             <div className={this._wrapper}>
                 <div className={this._mainBlock}>
-                    <Button
-                        id="content"
-                        name="Добавить задачу"
-                        onButtonClick={this.props.onNotesButtonClick}
-                    />
-                    <AddNote
-                        addNoteFormRef={this.props.addNoteFormRef}
-                        onAdd={this.props.onAdd}
-                        hideAddForm={this.props.onSaveNote}
-                        openedForm={this.props.openedForm}
-                    />
                     {myNotes}
                 </div>
             </div>

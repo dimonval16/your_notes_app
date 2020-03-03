@@ -15,7 +15,6 @@ class App extends React.Component {
     this.state = {
       categories: this.props.initialData.categories,
       user: this.props.initialData.user,
-      opened: false
     };
 
     // -- create refs for components
@@ -38,16 +37,25 @@ class App extends React.Component {
     // -- end --
   }
 
-  editNote(id, title) {
-    let notes = this.state.notes.map(note => {
-      if(note.id === id) {
-        note.title = title;
+  editNote(id, title, categoryId) {
+    let categories = this.state.categories;
+
+    categories.map(obj => {
+      if (obj.id === categoryId) {
+        obj.notes.map(note => {
+
+          if (note.id === id) {
+            note.title = title;
+          }
+
+          return note;
+        });
       }
 
-      return note;
+      return obj;
     });
 
-    this.setState({ notes: notes });
+    this.setState({ categories: categories });
   }
 
   sortingNotes(notes) {
@@ -64,20 +72,20 @@ class App extends React.Component {
 
   nextId(notes) {
     let _nextId = 1;
-    
+
     notes.map(note => {
       if (_nextId === note.id) {
         _nextId++;
       }
-      
+
       return note.id;
     });
 
     return _nextId;
   }
 
-  addNote(title) { 
-  
+  addNote(title) {
+
     let notes = this.state.notes;
 
     let note = {
@@ -85,7 +93,7 @@ class App extends React.Component {
       title: title,
       completed: false
     }
-    
+
     notes.unshift(note);
 
     let sortNotes = this.sortingNotes(notes);
@@ -93,29 +101,25 @@ class App extends React.Component {
     this.setState({ notes: sortNotes });
   }
 
-  hideAddForm() {
-    if (this.state.opened === true) {
-      let addForm = this.addNoteFormRef.current;
+  hideAddForm(opened) {
+    let addForm = this.addNoteFormRef.current;
 
+    if (opened === true) {
       addForm.style.position = 'absolute';
       addForm.style.width = '0';
       addForm.style.visibility = 'hidden';
-
-      this.setState({ opened: false });
     }
   }
 
-  showAddForm() {
-    if(this.state.opened === false) {
-      let addForm = this.addNoteFormRef.current;
-
+  showAddForm(opened) {
+    let addForm = this.addNoteFormRef.current;
+    
+    if (opened === false) {
       addForm.style.position = 'static';
       addForm.style.width = '100%';
       addForm.style.visibility = 'visible';
-
-      this.setState({ opened: true });
     } else {
-      this.hideAddForm();
+      this.hideAddForm(opened);
     }
   }
 
@@ -123,16 +127,16 @@ class App extends React.Component {
     let categories = this.state.categories;
 
     categories.map(obj => {
-      if(obj.id === categoryId) {
-        
+      if (obj.id === categoryId) {
+
         let notes = obj.notes.filter(note => note.id !== id);
 
-        obj.notes = notes
+        obj.notes = notes;
       }
 
       return obj;
     });
-    
+
     this.setState({ categories: categories });
   }
 
@@ -143,8 +147,8 @@ class App extends React.Component {
       if (obj.id === categoryId) {
 
         obj.notes.map(note => {
-          if (note.id === id) { 
-            note.completed = !note.completed; 
+          if (note.id === id) {
+            note.completed = !note.completed;
           }
 
           return note;
@@ -196,14 +200,13 @@ class App extends React.Component {
           />
           <MainContent
             categories={this.state.categories}
+            addNoteFormRef={this.addNoteFormRef}
             onStatusChange={this.noteStatusChange}
             onDelete={this.noteDelete}
             onNotesButtonClick={this.showAddForm}
-            addNoteFormRef={this.addNoteFormRef}
             onAdd={this.addNote}
             onSaveNote={this.hideAddForm}
             onNoteEdit={this.editNote}
-            openedForm={this.state.opened}
           />
         </div>
       </BrowserRouter>
