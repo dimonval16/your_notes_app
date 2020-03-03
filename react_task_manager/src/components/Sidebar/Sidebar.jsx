@@ -9,7 +9,10 @@ const Sidebar = (props) => {
     return(
         <div className={Sidebar_style.wrapper}>
             <Account user={props.user}/>
-            <Category categories={props.categories}/>
+            <Category 
+                categories={props.categories}
+                onCategoryDelete={props.onCategoryDelete}
+            />
             <Button name="Категория"/>
         </div>
     );

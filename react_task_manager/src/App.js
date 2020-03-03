@@ -17,13 +17,17 @@ class App extends React.Component {
       user: this.props.initialData.user,
     };
 
-    // -- create refs for components
+    // -- create refs for components --
     this.sloganRef = React.createRef();
     this.appRef = React.createRef();
     this.addNoteFormRef = React.createRef();
     // -- end --
 
-    // bind this for methods
+    // -- bind this for Sidebar.Category methods --
+    this.deleteCategory = this.deleteCategory.bind(this);
+    // -- end --
+
+    // -- bind this for MainContent methods --
     this.editNote = this.editNote.bind(this);
     this.sortingNotes = this.sortingNotes.bind(this);
     this.nextId = this.nextId.bind(this);
@@ -37,6 +41,16 @@ class App extends React.Component {
     // -- end --
   }
 
+  // -- Sidebar.Category block methods --
+  deleteCategory(categoryId) {
+    let oldCategories = this.state.categories;
+    let newCategories = oldCategories.filter(category => category.id !== categoryId );
+
+    this.setState({ categories: newCategories });
+  }
+  // -- end --
+
+  // -- MainContent methods -- 
   editNote(id, title, categoryId) {
     let categories = this.state.categories;
 
@@ -84,21 +98,30 @@ class App extends React.Component {
     return _nextId;
   }
 
-  addNote(title) {
+  addNote(title, categoryId) {
+    let categories = this.state.categories;
 
-    let notes = this.state.notes;
+    categories.map(obj => {
+      if (obj.id === categoryId) {
+        let notes = obj.notes;
 
-    let note = {
-      id: this.nextId(notes),
-      title: title,
-      completed: false
-    }
+        let note = {
+          id: this.nextId(notes),
+          title: title,
+          completed: false
+        }
 
-    notes.unshift(note);
+        notes.unshift(note);
 
-    let sortNotes = this.sortingNotes(notes);
+        let sortNotes = this.sortingNotes(notes);
 
-    this.setState({ notes: sortNotes });
+        obj.notes = sortNotes;
+      }
+
+      return obj;
+    })
+
+    this.setState({ categories: categories });
   }
 
   hideAddForm(opened) {
@@ -113,7 +136,7 @@ class App extends React.Component {
 
   showAddForm(opened) {
     let addForm = this.addNoteFormRef.current;
-    
+
     if (opened === false) {
       addForm.style.position = 'static';
       addForm.style.width = '100%';
@@ -161,8 +184,9 @@ class App extends React.Component {
 
     this.setState({ categories: categories });
   }
+  // -- end --
 
-  // -- for Header's buttons to show/hide Slogan
+  // -- for Header's buttons to show/hide Slogan --
   slideSloganUp() {
     const sloganBlock = this.sloganRef.current;
     sloganBlock.style.position = 'absolute';
@@ -193,6 +217,7 @@ class App extends React.Component {
           <Sidebar
             user={this.state.user}
             categories={this.state.categories}
+            onCategoryDelete={this.deleteCategory}
           />
           <Slogan
             sloganName={this.state.user.name}

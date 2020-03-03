@@ -50,6 +50,26 @@ class Note extends React.Component {
         this.setState({ editing: false });
     }
 
+    catch_checkbox_id() {
+        this.props.onChange(this.props.id, this.props.categoryId);
+    }
+
+    catch_deleteIcon_id() {
+        this.props.onDelete(this.props.id, this.props.categoryId);
+    }
+
+    _needWrapper() {
+        let _needWrapper;
+
+        if (this.props.completed === true) {
+            _needWrapper = `${NoteStyle.itemBlock} ${NoteStyle.completed}`;
+        } else {
+            _needWrapper = `${NoteStyle.itemBlock}`;
+        }
+
+        return _needWrapper;
+    }
+
     renderNote() {
         return (
             <div className={this._needWrapper()}>
@@ -80,26 +100,6 @@ class Note extends React.Component {
                 <NoteIcon className={this._saveIcon} icon='save' type='submit' />
             </form>
         );
-    }
-
-    _needWrapper() {
-        let _needWrapper;
-
-        if (this.props.completed === true) {
-            _needWrapper = `${NoteStyle.itemBlock} ${NoteStyle.completed}`;
-        } else {
-            _needWrapper = `${NoteStyle.itemBlock}`;
-        }
-
-        return _needWrapper;
-    }
-
-    catch_checkbox_id() {
-        this.props.onChange(this.props.id, this.props.categoryId);
-    }
-
-    catch_deleteIcon_id() {
-        this.props.onDelete(this.props.id, this.props.categoryId);
     }
 
     render() {

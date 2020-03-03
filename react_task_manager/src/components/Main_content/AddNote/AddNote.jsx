@@ -23,19 +23,19 @@ class AddNote extends React.Component {
 
     activateField(event) {
         let newTitle = event.target.value;
-        
+
         this.setState({ title: newTitle })
     }
 
     catchSubmit(event) {
         event.preventDefault();
-        
+
         let title = this.state.title;
 
         if (title) {
-           this.props.onAdd(title); 
-           this.setState({ title: '' });
-           this.props.hideAddForm();
+            this.props.onAdd(title, this.props.categoryId);
+            this.setState({ title: '' });
+            this.props.hideAddForm();
         }
     }
 
@@ -44,18 +44,18 @@ class AddNote extends React.Component {
         let _input = AddNoteStyle.input;
         let _saveIcon = AddNoteStyle.save;
 
-        return(
+        return (
             <form className={_wrapper} ref={this.props.addNoteFormRef} onSubmit={this.catchSubmit}>
-                <input 
-                    className={_input} 
-                    type='text' 
-                    value={this.state.title} 
+                <input
+                    className={_input}
+                    type='text'
+                    value={this.state.title}
                     placeholder='Добавить новую задачу...'
                     onChange={this.activateField}
-                    ref = 'title'
-                >    
+                    ref='title'
+                >
                 </input>
-                <NoteIcon className={_saveIcon} icon='save' type='submit'/>
+                <NoteIcon className={_saveIcon} icon='save' type='submit' />
             </form>
         );
     }

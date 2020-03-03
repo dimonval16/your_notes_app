@@ -8,9 +8,7 @@ class MainContent extends React.Component {
     constructor(props) {
         super(props);
 
-        this.state = {
-
-        };
+        this.state = {};
 
         this._wrapper = MainContentStyle.wrapper;
         this._mainBlock = MainContentStyle.mainBlock;
@@ -47,12 +45,12 @@ class MainContent extends React.Component {
     }
 
     render() {
-        let myNotes = this.renderRouting();
+        let myRoutes = this.renderRouting();
 
         return (
             <div className={this._wrapper}>
                 <div className={this._mainBlock}>
-                    {myNotes}
+                    {myRoutes}
                 </div>
             </div>
         );

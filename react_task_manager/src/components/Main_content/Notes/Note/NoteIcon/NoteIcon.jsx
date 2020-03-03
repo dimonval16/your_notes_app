@@ -1,7 +1,7 @@
 import React from 'react';
 
 const NoteIcon = (props) => {
-    return(
+    return (
         <button className={props.className} {...props}>
             <i className='material-icons' onClick={props.onClick}>
                 {props.icon}
