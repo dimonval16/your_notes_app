@@ -22,7 +22,6 @@ class MainContent extends React.Component {
                 <Notes
                     notes={obj.notes}
                     categoryId={obj.id}
-                    addNoteFormRef={this.props.addNoteFormRef}
                     onStatusChange={this.props.onStatusChange}
                     onDelete={this.props.onDelete}
                     onEdit={this.props.onNoteEdit}

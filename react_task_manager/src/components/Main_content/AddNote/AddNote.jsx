@@ -10,9 +10,16 @@ class AddNote extends React.Component {
             title: '',
         };
 
-        this.componentDidUpdate = this.componentDidUpdate.bind(this);
+        // -- styles css --
+        this._wrapper = AddNoteStyle.wrapper;
+        this._input = AddNoteStyle.input;
+        this._saveIcon = AddNoteStyle.save;
+        // -- end --
+
+        // -- bind this for methods --
         this.activateField = this.activateField.bind(this);
         this.catchSubmit = this.catchSubmit.bind(this);
+        // -- end --
     }
 
     componentDidUpdate(prevProps, prevState) {
@@ -34,20 +41,18 @@ class AddNote extends React.Component {
 
         if (title) {
             this.props.onAdd(title, this.props.categoryId);
+
             this.setState({ title: '' });
+            
             this.props.hideAddForm();
         }
     }
 
     render() {
-        let _wrapper = AddNoteStyle.wrapper;
-        let _input = AddNoteStyle.input;
-        let _saveIcon = AddNoteStyle.save;
-
         return (
-            <form className={_wrapper} ref={this.props.addNoteFormRef} onSubmit={this.catchSubmit}>
+            <form className={this._wrapper} ref={this.props.addNoteFormRef} onSubmit={this.catchSubmit}>
                 <input
-                    className={_input}
+                    className={this._input}
                     type='text'
                     value={this.state.title}
                     placeholder='Добавить новую задачу...'
@@ -55,7 +60,7 @@ class AddNote extends React.Component {
                     ref='title'
                 >
                 </input>
-                <NoteIcon className={_saveIcon} icon='save' type='submit' />
+                <NoteIcon className={this._saveIcon} icon='save' type='submit' />
             </form>
         );
     }

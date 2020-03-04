@@ -7,7 +7,7 @@ const Account = (props) => {
     let userName = props.user.name;
     let userSurname = props.user.surname;
 
-    return(
+    return (
         <div className={_wrapper}>
             <div className="material-icons">{userPhoto}</div>
             <div>

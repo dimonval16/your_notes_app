@@ -23,7 +23,6 @@ class Note extends React.Component {
         // -- end --
 
         // -- bind this in methods --
-        this.componentDidUpdate = this.componentDidUpdate.bind(this);
         this.saveEdit = this.saveEdit.bind(this);
         this.renderNote = this.renderNote.bind(this);
         this.renderEditingForm = this.renderEditingForm.bind(this);

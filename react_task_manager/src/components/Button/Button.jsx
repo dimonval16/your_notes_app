@@ -7,7 +7,7 @@ const Button = (props) => {
     let _needWrapper = props.id ? ButtonStyle.wrapper_content : ButtonStyle.wrapper;
 
     return (
-        <ButtonElement className={_needWrapper} name={props.name} onClick={props.onButtonClick}/>
+        <ButtonElement className={_needWrapper} name={props.name} onClick={props.onButtonClick} />
     );
 }
 

@@ -12,6 +12,8 @@ class Notes extends React.Component {
             openedAddNote: false
         }
 
+        this.addNoteFormRef = React.createRef();
+
         this.catchSaveIcon = this.catchSaveIcon.bind(this);
         this.catchState = this.catchState.bind(this);
         this.getNotes = this.getNotes.bind(this);
@@ -19,7 +21,7 @@ class Notes extends React.Component {
 
     catchSaveIcon() {
         if (this.state.openedAddNote === true) {
-            this.props.onSaveNote(this.state.openedAddNote);
+            this.props.onSaveNote(this.state.openedAddNote, this.addNoteFormRef);
 
             this.setState({ openedAddNote: false });
         }
@@ -27,11 +29,11 @@ class Notes extends React.Component {
 
     catchState() {
         if (this.state.openedAddNote === false) {
-            this.props.onButtonClick(this.state.openedAddNote);
+            this.props.onButtonClick(this.state.openedAddNote, this.addNoteFormRef);
 
             this.setState({ openedAddNote: true });
         } else {
-            this.props.onButtonClick(this.state.openedAddNote);
+            this.props.onButtonClick(this.state.openedAddNote, this.addNoteFormRef);
 
             this.setState({ openedAddNote: false });
         }
@@ -66,7 +68,7 @@ class Notes extends React.Component {
                     onButtonClick={this.catchState}
                 />
                 <AddNote
-                    addNoteFormRef={this.props.addNoteFormRef}
+                    addNoteFormRef={this.addNoteFormRef}
                     onAdd={this.props.onAdd}
                     hideAddForm={this.catchSaveIcon}
                     openedForm={this.state.openedAddNote}

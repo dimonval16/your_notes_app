@@ -20,16 +20,16 @@ class App extends React.Component {
     // -- create refs for components --
     this.sloganRef = React.createRef();
     this.appRef = React.createRef();
-    this.addNoteFormRef = React.createRef();
     // -- end --
 
     // -- bind this for Sidebar.Category methods --
+    this.addCategory = this.addCategory.bind(this);
+    this.editCategory = this.editCategory.bind(this);
     this.deleteCategory = this.deleteCategory.bind(this);
     // -- end --
 
     // -- bind this for MainContent methods --
     this.editNote = this.editNote.bind(this);
-    this.sortingNotes = this.sortingNotes.bind(this);
     this.nextId = this.nextId.bind(this);
     this.addNote = this.addNote.bind(this);
     this.hideAddForm = this.hideAddForm.bind(this);
@@ -42,9 +42,43 @@ class App extends React.Component {
   }
 
   // -- Sidebar.Category block methods --
+  addCategory(title) {
+    let categories = this.state.categories;
+
+    let category = {
+      id: this.nextId(categories),
+      title: title,
+      notes: [
+        {
+          id: 1,
+          title: 'Новый чоткий раздел',
+          completed: false
+        }
+      ]
+    };
+
+    categories.unshift(category);
+
+    this.setState({ categories: categories });
+  }
+
+  editCategory(title, categoryId) {
+    let oldCategories = this.state.categories;
+
+    let newCategories = oldCategories.map(category => {
+      if (category.id === categoryId) {
+        category.title = title;
+      }
+
+      return category;
+    });
+
+    this.setState({ categories: newCategories });
+  }
+
   deleteCategory(categoryId) {
     let oldCategories = this.state.categories;
-    let newCategories = oldCategories.filter(category => category.id !== categoryId );
+    let newCategories = oldCategories.filter(category => category.id !== categoryId);
 
     this.setState({ categories: newCategories });
   }
@@ -72,27 +106,23 @@ class App extends React.Component {
     this.setState({ categories: categories });
   }
 
-  sortingNotes(notes) {
-    let newId = 1;
-    let sortNotes = notes.map(note => {
-      note.id = newId;
-      newId++;
-
-      return note;
-    });
-
-    return sortNotes;
-  }
-
   nextId(notes) {
     let _nextId = 1;
 
-    notes.map(note => {
-      if (_nextId === note.id) {
+    let idArray = notes.map(note => {
+      return note.id
+    });
+
+    let sortIdArray = idArray.sort((a,b) => {
+      return a - b;
+    });
+
+    sortIdArray.map(id => {
+      if (_nextId === id) {
         _nextId++;
       }
 
-      return note.id;
+      return id;
     });
 
     return _nextId;
@@ -112,10 +142,6 @@ class App extends React.Component {
         }
 
         notes.unshift(note);
-
-        let sortNotes = this.sortingNotes(notes);
-
-        obj.notes = sortNotes;
       }
 
       return obj;
@@ -124,8 +150,8 @@ class App extends React.Component {
     this.setState({ categories: categories });
   }
 
-  hideAddForm(opened) {
-    let addForm = this.addNoteFormRef.current;
+  hideAddForm(opened, ref) {
+    let addForm = ref.current;
 
     if (opened === true) {
       addForm.style.position = 'absolute';
@@ -134,15 +160,15 @@ class App extends React.Component {
     }
   }
 
-  showAddForm(opened) {
-    let addForm = this.addNoteFormRef.current;
+  showAddForm(opened, ref) {
+    let addForm = ref.current;
 
     if (opened === false) {
       addForm.style.position = 'static';
       addForm.style.width = '100%';
       addForm.style.visibility = 'visible';
     } else {
-      this.hideAddForm(opened);
+      this.hideAddForm(opened, ref);
     }
   }
 
@@ -218,6 +244,10 @@ class App extends React.Component {
             user={this.state.user}
             categories={this.state.categories}
             onCategoryDelete={this.deleteCategory}
+            onCategoryEdit={this.editCategory}
+            onCategoryAddButton={this.showAddForm}
+            onClickSave={this.hideAddForm}
+            onCategoryAdd={this.addCategory}
           />
           <Slogan
             sloganName={this.state.user.name}
@@ -225,7 +255,6 @@ class App extends React.Component {
           />
           <MainContent
             categories={this.state.categories}
-            addNoteFormRef={this.addNoteFormRef}
             onStatusChange={this.noteStatusChange}
             onDelete={this.noteDelete}
             onNotesButtonClick={this.showAddForm}
