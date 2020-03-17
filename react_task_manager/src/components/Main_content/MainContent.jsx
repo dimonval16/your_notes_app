@@ -1,59 +1,50 @@
 import React from 'react';
 import { Route } from 'react-router';
-import MainContentStyle from './Main_content.module.css';
 
+import MainContentStyle from './Main_content.module.css';
 import Notes from './Notes/Notes';
 
-class MainContent extends React.Component {
-    constructor(props) {
-        super(props);
+function renderRouting(state, props) {
+    const routes = state.map(obj => {
+        const notes =
+            <Notes
+                notes={obj.notes}
+                categoryId={obj.id}
+                onSaveNote={props.onSaveNote}
+                onButtonClick={props.onButtonClick}
+                onStatusChange={props.onStatusChange}
+                onDelete={props.onDelete}
+                onEdit={props.onEdit}
+                onAdd={props.onAdd}
+            />;
 
-        this.state = {};
+        const route =
+            <Route
+                path={'/' + obj.id}
+                render={() => notes}
+                key={obj.id}
+            />;
 
-        this._wrapper = MainContentStyle.wrapper;
-        this._mainBlock = MainContentStyle.mainBlock;
+        return route;
+    });
 
-        this.renderRouting = this.renderRouting.bind(this);
-    }
+    return routes;
+}
 
-    renderRouting() {
-        let notes = this.props.categories.map(obj => {
-            let notes =
-                <Notes
-                    notes={obj.notes}
-                    categoryId={obj.id}
-                    onStatusChange={this.props.onStatusChange}
-                    onDelete={this.props.onDelete}
-                    onEdit={this.props.onNoteEdit}
-                    onAdd={this.props.onAdd}
-                    onSaveNote={this.props.onSaveNote}
-                    onButtonClick={this.props.onNotesButtonClick}
-                />;
+function MainContent(props) {
+    const _wrapper = MainContentStyle.wrapper;
+    const _mainBlock = MainContentStyle.mainBlock;
 
-            let route =
-                <Route
-                    path={'/' + obj.id}
-                    render={() => notes}
-                    key={obj.id}
-                />;
+    const categories = props.categories;
+    const myRoutes = renderRouting(categories, props);
 
-            return route;
-        });
-
-        return notes;
-    }
-
-    render() {
-        let myRoutes = this.renderRouting();
-
-        return (
-            <div className={this._wrapper}>
-                <div className={this._mainBlock}>
-                    {myRoutes}
-                </div>
+    return (
+        <div className={_wrapper}>
+            <div className={_mainBlock}>
+                {myRoutes}
             </div>
-        );
-    }
+        </div>
+    );
 }
 
 export default MainContent;

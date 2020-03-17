@@ -4,10 +4,10 @@ import CategoryBlock from './Category.module.css'
 import AddCategory from './AddCategory/AddCategory';
 
 const Category = (props) => {
-    let _categoryBlock = CategoryBlock.category_block;
+    const _categoryBlock = CategoryBlock.category_block;
 
     const categoryItems = props.categories.map(el => {
-        let categoryItem =
+        const categoryItem =
             <CategoryItem
                 title={el.title}
                 key={el.id}
