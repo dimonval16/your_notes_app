@@ -5,7 +5,7 @@ import MainContentStyle from './Main_content.module.css';
 import Notes from './Notes/Notes';
 
 function renderRouting(state, props) {
-    const routes = state.map(obj => {
+    const routes = state.categories.map(obj => {
         const notes =
             <Notes
                 notes={obj.notes}
@@ -35,8 +35,7 @@ function MainContent(props) {
     const _wrapper = MainContentStyle.wrapper;
     const _mainBlock = MainContentStyle.mainBlock;
 
-    const categories = props.categories;
-    const myRoutes = renderRouting(categories, props);
+    const myRoutes = renderRouting(props.state, props);
 
     return (
         <div className={_wrapper}>

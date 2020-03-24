@@ -1,4 +1,4 @@
-import { ADD_NOTE, DELETE_NOTE, TOGGLE_NOTE, EDIT_NOTE, ADD_CATEGORY, DELETE_CATEGORY, EDIT_CATEGORY } from '../actions';
+import { ADD_NOTE, DELETE_NOTE, TOGGLE_NOTE, EDIT_NOTE, ADD_CATEGORY, DELETE_CATEGORY, EDIT_CATEGORY, TOGGLE_SLOGAN, TOGGLE_CAT_FIELD, TOGGLE_NOTE_FIELD } from '../actions';
 
 function nextId(state) {
     let _nextId = 1;
@@ -125,6 +125,19 @@ export default function reducer(state = [], action) {
 
         case EDIT_CATEGORY:
             _state.map(category => oneMoreReducer(category, action));
+            return state;
+
+        case TOGGLE_SLOGAN:
+            let sloganHidden = state.viewFields.sloganHidden;
+            state.viewFields.sloganHidden = !sloganHidden;
+            return state;
+
+        case TOGGLE_CAT_FIELD:
+            state.viewFields.catFieldHidden = !state.viewFields.catFieldHidden;
+            return state;
+
+        case TOGGLE_NOTE_FIELD:
+            state.viewFields.notesFieldHidden = !state.viewFields.notesFieldHidden;
             return state;
         
         default:

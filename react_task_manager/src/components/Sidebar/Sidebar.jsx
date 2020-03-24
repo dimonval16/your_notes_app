@@ -13,9 +13,7 @@ function Sidebar (props) {
             <div className={_wrapper}>
                 <Account user={props.state.user} />
                 <Category
-                    categories={props.state.categories}
-                    addCategoryFormRef={props.addCategoryFormRef}
-                    openedForm={props.openedForm}
+                    state={props.state}
                     onClickSave={props.onClickSave}
                     onCategoryDelete={props.onCategoryDelete}
                     onCategoryEdit={props.onCategoryEdit}

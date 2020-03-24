@@ -83,6 +83,11 @@ const state = {
         surname: 'Volynskyi',
         email: 'brazzers.com',
         photo: 'account_circle'
+    },
+    viewFields: {
+        sloganHidden: false,
+        notesFieldHidden: true,
+        catFieldHidden: true
     }
 }
 

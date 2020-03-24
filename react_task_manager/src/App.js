@@ -1,26 +1,31 @@
 import React from 'react';
-import { BrowserRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 import HeaderContainer from './containers/HeaderContainer';
 import SidebarContainer from './containers/SidebarContainer';
 import MainContentContainer from './containers/MainContentContainer';
-import Slogan from './components/Slogan/Slogan';
+import SloganContainer from './containers/SloganContainer';
 import './App.css';
 
-function App(props) {
-  const sloganRef = React.createRef();
-  const appRef = React.createRef();
+const AppComponent = (props) => {
+  const needWrapper = props.sloganHidden ? 'AppTwoRows' : 'AppThreeRows';
 
   return (
-    <BrowserRouter>
-      <div className="App" ref={appRef}>
-        <HeaderContainer sloganRef={sloganRef} appRef={appRef} />
-        <SidebarContainer store={props.store} />
-        <Slogan store={props.store} sloganRef={sloganRef} />
-        <MainContentContainer store={props.store} />
-      </div>
-    </BrowserRouter>
+    <div className={needWrapper} >
+      <HeaderContainer />
+      <SidebarContainer />
+      <SloganContainer />
+      <MainContentContainer />
+    </div>
   );
 }
+
+function mapStateToProps(state) {
+  return {
+    sloganHidden: state.viewFields.sloganHidden
+  };
+}
+
+const App = connect(mapStateToProps)(AppComponent);
 
 export default App;

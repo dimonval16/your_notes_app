@@ -1,8 +1,17 @@
-.wrapper {
+.wrapperVisible {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;  
+}
+
+.wrapperHidden {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;  
+    position: absolute;
+    visibility: hidden;
 }
 
 .slogan {

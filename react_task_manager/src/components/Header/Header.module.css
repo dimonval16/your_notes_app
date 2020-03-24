@@ -8,6 +8,12 @@
 .arrows {
     display: flex;
     height: 50px;
+    margin-right: 10px;
     justify-content: flex-end;
     align-items: center;
 }
+
+.arrow {
+    cursor: pointer;
+    color: #2D487F;
+  }

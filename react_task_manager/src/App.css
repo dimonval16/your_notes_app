@@ -5,7 +5,7 @@ body {
   margin: 0;
 }
 
-.App {
+.AppThreeRows {
   font-family: 'Roboto', sans-serif;
   display: grid;
   grid-template-columns: 1fr 3fr;
@@ -14,7 +14,13 @@ body {
   height: 100vh;
 }
 
-.arrowUp,.arrowDown {
-  cursor: pointer;
-  color: #2D487F;
+.AppTwoRows {
+  font-family: 'Roboto', sans-serif;
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  grid-template-rows: 50px 1fr;
+  min-height: 435px;
+  height: 100vh;
 }
+
+

@@ -1,52 +1,20 @@
-import React from 'react';
+import { connect } from 'react-redux';
 
 import Header from '../components/Header/Header';
+import { toggleSlogan } from '../actions'
 
-class HeaderContainer extends React.Component {
-    constructor(props) {
-        super(props);
-
-        this.sloganRef = this.props.sloganRef;
-        this.appRef = this.props.appRef;
-
-        this.catchSloganUp = this.catchSloganUp.bind(this);
-        this.catchSloganDown = this.catchSloganDown.bind(this);
-    }
-
-    slideSloganUp(sloganRef, appRef) {
-        const sloganBlock = sloganRef.current;
-        sloganBlock.style.position = 'absolute';
-        sloganBlock.style.visibility = 'hidden';
-
-        const appBlock = appRef.current;
-        appBlock.style.gridTemplateRows = '50px 1fr';
-    }
-
-    slideSloganDown(sloganRef, appRef) {
-        const sloganBlock = sloganRef.current;
-        sloganBlock.style.position = 'static';
-        sloganBlock.style.visibility = 'visible';
-
-        const appBlock = appRef.current;
-        appBlock.style.gridTemplateRows = '50px 1fr 3fr';
-    }
-
-    catchSloganUp() {
-        this.slideSloganUp(this.sloganRef, this.appRef);
-    }
-
-    catchSloganDown() {
-        this.slideSloganDown(this.sloganRef, this.appRef);
-    }
-
-    render() {
-        return (
-            <Header
-                slideUp={this.catchSloganUp}
-                slideDown={this.catchSloganDown}
-            />
-        );
-    }
+function mapStateToProps(state) {
+    return {
+        sloganHidden: state.viewFields.sloganHidden
+    };
 }
+
+function mapDispatchToProps(dispatch) {
+    return {
+        toggleSlogan: () => dispatch(toggleSlogan())
+    };
+}
+
+const HeaderContainer = connect(mapStateToProps, mapDispatchToProps)(Header);
 
 export default HeaderContainer;

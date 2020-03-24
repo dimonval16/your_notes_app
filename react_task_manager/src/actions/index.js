@@ -1,3 +1,7 @@
+export const TOGGLE_SLOGAN = 'TOGGLE_SLOGAN';
+export const TOGGLE_CAT_FIELD = 'TOGGLE_CAT_FIELD';
+export const TOGGLE_NOTE_FIELD = 'TOGGLE_NOTE_FIELD';
+
 export const ADD_NOTE = 'ADD_NOTE';
 export const DELETE_NOTE = 'DELETE_NOTE';
 export const TOGGLE_NOTE = 'TOGGLE_NOTE';
@@ -6,6 +10,24 @@ export const EDIT_NOTE = 'EDIT_NOTE';
 export const ADD_CATEGORY = 'ADD_CATEGORY';
 export const DELETE_CATEGORY = 'DELETE_CATEGORY';
 export const EDIT_CATEGORY = 'EDIT_CATEGORY';
+
+export function toggleNoteField() {
+    return {
+        type: TOGGLE_NOTE_FIELD
+    };
+}
+
+export function toggleCatField() {
+    return {
+        type: TOGGLE_CAT_FIELD
+    };
+}
+
+export function toggleSlogan() {
+    return {
+        type: TOGGLE_SLOGAN
+    };
+}
 
 export function addCategory(title) {
     return {

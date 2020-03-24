@@ -11,7 +11,8 @@ class AddNote extends React.Component {
         };
 
         // -- styles css --
-        this._wrapper = AddNoteStyle.wrapper;
+        this._wrapperHidden = AddNoteStyle.wrapperHidden;
+        this._wrapperVisible = AddNoteStyle.wrapperVisible;
         this._input = AddNoteStyle.input;
         this._saveIcon = AddNoteStyle.save;
         // -- end --
@@ -50,7 +51,7 @@ class AddNote extends React.Component {
 
     render() {
         return (
-            <form className={this._wrapper} ref={this.props.addNoteFormRef} onSubmit={this.catchSubmit}>
+            <form className={this._wrapperHidden} ref={this.props.addNoteFormRef} onSubmit={this.catchSubmit}>
                 <input
                     className={this._input}
                     type='text'

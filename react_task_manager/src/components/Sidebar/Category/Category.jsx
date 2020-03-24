@@ -6,7 +6,7 @@ import AddCategory from './AddCategory/AddCategory';
 const Category = (props) => {
     const _categoryBlock = CategoryBlock.category_block;
 
-    const categoryItems = props.categories.map(el => {
+    const categoryItems = props.state.categories.map(el => {
         const categoryItem =
             <CategoryItem
                 title={el.title}
@@ -22,8 +22,7 @@ const Category = (props) => {
     return (
         <div className={_categoryBlock}>
             <AddCategory
-                addCategoryFormRef={props.addCategoryFormRef}
-                openedForm={props.openedForm}
+                catFieldHidden={props.state.viewFields.catFieldHidden}
                 hideAddForm={props.onClickSave}
                 onAdd={props.onCategoryAdd}
             />
