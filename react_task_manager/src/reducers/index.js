@@ -129,8 +129,9 @@ export default function reducer(state = [], action) {
 
         case TOGGLE_SLOGAN:
             let sloganHidden = state.viewFields.sloganHidden;
-            state.viewFields.sloganHidden = !sloganHidden;
-            return state;
+            const newState = {...state}
+            newState.viewFields.sloganHidden = !sloganHidden;
+            return newState;
 
         case TOGGLE_CAT_FIELD:
             state.viewFields.catFieldHidden = !state.viewFields.catFieldHidden;
