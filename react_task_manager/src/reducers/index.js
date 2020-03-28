@@ -67,13 +67,15 @@ function oneMoreReducer(state = {}, action) {
 
         case TOGGLE_NOTE:
             if (state.id === action.categoryId) {
-                state.notes.map(note => {
-                    if (note.id === action.id) {
-                        note.completed = !note.completed;
-                    }
-
-                    return note;
-                });
+                return {
+                    ...state,
+                    notes: state.notes.map(note => {
+                        return {
+                            ...note,
+                            completed: note.id === action.id ? !note.completed : note.completed
+                        }
+                    })
+                }
             }
             return state;
 
@@ -107,7 +109,7 @@ export default function reducer(state = [], action) {
             return newState;
 
         case TOGGLE_NOTE:
-            newState.categories.map(obj => oneMoreReducer(obj, action));
+            newState.categories = newState.categories.map(obj => oneMoreReducer(obj, action));
             return newState;
 
         case EDIT_NOTE:
