@@ -28,6 +28,9 @@
     color: #2D487F;
     margin-left: 20px;
     cursor: pointer;
+    padding: 0;
+    background: none;
+    border: none;
 }
 
 .itemText {

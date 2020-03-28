@@ -1,7 +1,7 @@
 import React from 'react';
 import ButtonStyle from './Button.module.css';
 
-const Button = (props) => {
+function Button(props) {
     let _needWrapper = props.id ? ButtonStyle.wrapper_content : ButtonStyle.wrapper;
 
     return (

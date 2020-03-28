@@ -2,7 +2,7 @@ import React from 'react';
 import Slogan_style from './Slogan.module.css';
 
 const Slogan = (props) => {
-    const user = props.state.user;
+    const userName = props.state.user.name;
     const sloganHidden = props.state.viewFields.sloganHidden;
 
     const _wrapperVisible = Slogan_style.wrapperVisible;
@@ -11,9 +11,8 @@ const Slogan = (props) => {
     const _image = Slogan_style.image;
     const _needWrapper = sloganHidden ? _wrapperHidden : _wrapperVisible;
 
-    let greeting = `Hi, ${user.name}`;
+    const greeting = `Hi, ${userName}`;
     const welcome = 'Welcome back to the workspace!';
-
 
     return (
         <div className={_needWrapper}>

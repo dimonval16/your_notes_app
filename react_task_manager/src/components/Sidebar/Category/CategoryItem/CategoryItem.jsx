@@ -11,56 +11,47 @@ class CategoryItem extends React.Component {
             editing: false
         }
 
-        // -- styles css --
-        this._editList = CategoryStyle.formList;
-        this._input = CategoryStyle.input
-        this._editWrapper = CategoryStyle.editWrapper
-        this._saveIcon = CategoryStyle.save;
-        this._wrapper = CategoryStyle.wrapper;
-        this._list = CategoryStyle.list;
-        this._text = CategoryStyle.text;
-        this._create = CategoryStyle.create;
-        this._delete = CategoryStyle.delete;
-        // -- end --
-
-        // -- bind this for methods --
-        this.saveCategoryEdit = this.saveCategoryEdit.bind(this);
         this.renderCategory = this.renderCategory.bind(this);
-        this.renderEditingForm = this.renderEditingForm.bind(this);
-        this.catchDeleteIcon = this.catchDeleteIcon.bind(this);
-        // -- end --
+        this.renderEditForm = this.renderEditForm.bind(this);
+        this.handleDelete = this.handleDelete.bind(this);
+        this.handleEditSubmit = this.handleEditSubmit.bind(this);
     }
 
     componentDidUpdate() {
         if (this.state.editing) {
-            this.refs.categoryTitle.focus();
-            this.refs.categoryTitle.select();
+            this.refs.input.focus();
+            this.refs.input.select();
         }
     }
 
-    saveCategoryEdit(event) {
+    handleEditSubmit(event) {
         event.preventDefault();
+        const title = this.refs.input.value;
+        const id = this.props.link;
 
-        let title = this.refs.categoryTitle.value;
-
-        this.props.onEdit(title, this.props.link);
-
-        this.setState({ editing: false });
+        if (title) {
+            this.props.onEdit(id, title);
+            this.setState({ editing: false });
+        }
     }
 
-    catchDeleteIcon() {
+    handleDelete() {
         this.props.onDelete(this.props.link);
     }
 
-    renderEditingForm() {
+    renderEditForm() {
+        const _editWrapper = CategoryStyle.editWrapper;
+        const _input = CategoryStyle.input;
+        const _save = CategoryStyle.save;
+
         return (
-            <form className={this._editWrapper} onSubmit={this.saveCategoryEdit}>
+            <form className={_editWrapper} onSubmit={this.handleEditSubmit}>
                 <input
-                    className={this._input}
-                    ref='categoryTitle'
+                    className={_input}
+                    ref='input'
                     defaultValue={this.props.title} />
                 <NoteIcon
-                    className={this._saveIcon}
+                    className={_save}
                     icon='save'
                     type='submit'
                 />
@@ -69,31 +60,37 @@ class CategoryItem extends React.Component {
     }
 
     renderCategory() {
+        const _wrapper = CategoryStyle.wrapper;
+        const _list = CategoryStyle.list;
+        const _text = CategoryStyle.text;
+        const _create = CategoryStyle.create;
+        const _delete = CategoryStyle.delete;
+
         return (
-            <div className={this._wrapper}>
+            <div className={_wrapper}>
                 <NoteIcon
-                    className={this._list}
+                    className={_list}
                     icon='format_list_bulleted'
                 />
-                <NavLink to={'/' + this.props.link} className={this._text}>
+                <NavLink to={'/' + this.props.link} className={_text}>
                     {this.props.title}
                 </NavLink>
                 <NoteIcon
-                    className={this._create}
+                    className={_create}
                     icon='create'
                     onClick={() => this.setState({ editing: true })}
                 />
                 <NoteIcon
-                    className={this._delete}
+                    className={_delete}
                     icon='delete'
-                    onClick={this.catchDeleteIcon}
+                    onClick={this.handleDelete}
                 />
             </div>
         );
     }
 
     render() {
-        return (this.state.editing ? this.renderEditingForm() : this.renderCategory());
+        return (this.state.editing ? this.renderEditForm() : this.renderCategory());
     }
 }
 

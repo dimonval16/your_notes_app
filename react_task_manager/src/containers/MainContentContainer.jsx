@@ -5,18 +5,18 @@ import { addNote, deleteNote, toggleNote, editNote, toggleNoteField } from '../a
 
 function mapStateToProps(state) {
     return {
-        state: state
+        state: state,
+        notesFieldHidden: state.viewFields.notesFieldHidden
     };
 }
 
 function mapDispatchToProps(dispatch) {
     return {
-        onSaveNote: () => dispatch(toggleNoteField()),
-        onButtonClick: () => dispatch(toggleNoteField()),
-        onStatusChange: () => (id, categoryId) => dispatch(toggleNote(id, categoryId)),
+        onToggleAddField: () => dispatch(toggleNoteField()),
+        onToggleNote: (id, categoryId) => dispatch(toggleNote(id, categoryId)),
         onDelete: (id, categoryId) => dispatch(deleteNote(id, categoryId)),
         onEdit: (id, title, categoryId) => dispatch(editNote(id, title, categoryId)),
-        onAdd: (title, categoryId) => this.store.dispatch(addNote(title, categoryId))
+        onAdd: (title, categoryId) => dispatch(addNote(title, categoryId))
     };
 }
 

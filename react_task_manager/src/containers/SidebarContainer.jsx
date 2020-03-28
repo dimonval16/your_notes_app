@@ -3,19 +3,18 @@ import { connect } from 'react-redux';
 import Sidebar from '../components/Sidebar/Sidebar';
 import { addCategory, deleteCategory, editCategory, toggleCatField } from '../actions';
 
-function mapStateToProps (state){
+function mapStateToProps(state) {
     return {
         state: state
     };
 }
 
-function mapDispatchToProps (dispatch) {
+function mapDispatchToProps(dispatch) {
     return {
-        onClickSave: () => dispatch(toggleCatField()),
-        onButtonClick: () => dispatch(toggleCatField()),
+        onToggleAddField: () => dispatch(toggleCatField()),
         onCategoryDelete: categoryId => dispatch(deleteCategory(categoryId)),
         onCategoryEdit: (categoryId, title) => dispatch(editCategory(categoryId, title)),
-        onCategoryAdd:  title => dispatch(addCategory(title))
+        onCategoryAdd: title => dispatch(addCategory(title))
     };
 }
 

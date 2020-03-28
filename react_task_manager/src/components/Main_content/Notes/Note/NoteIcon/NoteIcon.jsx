@@ -1,6 +1,6 @@
 import React from 'react';
 
-const NoteIcon = (props) => {
+function NoteIcon(props) {
     return (
         <button className={props.className} {...props}>
             <i className='material-icons' onClick={props.onClick}>

@@ -7,7 +7,7 @@ import MainContentContainer from './containers/MainContentContainer';
 import SloganContainer from './containers/SloganContainer';
 import './App.css';
 
-const AppComponent = (props) => {
+function AppComponent(props) {
   const needWrapper = props.sloganHidden ? 'AppTwoRows' : 'AppThreeRows';
 
   return (

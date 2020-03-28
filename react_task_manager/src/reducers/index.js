@@ -95,50 +95,52 @@ function oneMoreReducer(state = {}, action) {
 }
 
 export default function reducer(state = [], action) {
-    let _state = state.categories;
+    const newState = {...state};
 
     switch (action.type) {
         case ADD_NOTE:
-            _state.map(obj => oneMoreReducer(obj, action));
-            return state;
+            newState.categories.map(obj => oneMoreReducer(obj, action));
+            return newState;
 
         case DELETE_NOTE:
-            _state.map(obj => oneMoreReducer(obj, action));
-            return state;
+            newState.categories.map(obj => oneMoreReducer(obj, action));
+            return newState;
 
         case TOGGLE_NOTE:
-            _state.map(obj => oneMoreReducer(obj, action));
-            return state;
+            newState.categories.map(obj => oneMoreReducer(obj, action));
+            return newState;
 
         case EDIT_NOTE:
-            _state.map(obj => oneMoreReducer(obj, action));
-            return state;
+            newState.categories.map(obj => oneMoreReducer(obj, action));
+            return newState;
 
         case ADD_CATEGORY:
-            _state.unshift(oneMoreReducer(_state, action));
-            return state; 
+            newState.categories.unshift(oneMoreReducer(newState.categories, action));
+            return newState; 
 
         case DELETE_CATEGORY:
-            let newCategories = _state.filter(category => category.id !== action.id);
-            state.categories = newCategories;
-            return state;
+            const newCategories = newState.categories.filter(category => category.id !== action.id);
+            newState.categories = newCategories;
+            return newState;
 
         case EDIT_CATEGORY:
-            _state.map(category => oneMoreReducer(category, action));
-            return state;
+            newState.categories.map(category => oneMoreReducer(category, action));
+            return newState;
 
         case TOGGLE_SLOGAN:
-            let sloganHidden = state.viewFields.sloganHidden;
-            state.viewFields.sloganHidden = !sloganHidden;
-            return state;
+            const sloganHidden = state.viewFields.sloganHidden;
+            newState.viewFields.sloganHidden = !sloganHidden;
+            return newState;
 
         case TOGGLE_CAT_FIELD:
-            state.viewFields.catFieldHidden = !state.viewFields.catFieldHidden;
-            return state;
+            const catFieldHidden = state.viewFields.catFieldHidden;
+            newState.viewFields.catFieldHidden = !catFieldHidden;
+            return newState;
 
         case TOGGLE_NOTE_FIELD:
-            state.viewFields.notesFieldHidden = !state.viewFields.notesFieldHidden;
-            return state;
+            const notesFieldHidden = state.viewFields.notesFieldHidden;
+            newState.viewFields.notesFieldHidden = !notesFieldHidden;
+            return newState;
         
         default:
             return state;

@@ -1,5 +1,4 @@
 import React from 'react';
-
 import AddCategoryStyle from './AddCategory.module.css'
 import NoteIcon from '../../../Main_content/Notes/Note/NoteIcon/NoteIcon';
 
@@ -11,55 +10,53 @@ class AddCategory extends React.Component {
             title: ''
         };
 
-        this.catFieldHidden = this.props.catFieldHidden;
-
-        // -- styles css --
-        this._wrapperHidden = AddCategoryStyle.wrapperHidden;
-        this._wrapperVisible = AddCategoryStyle.wrapperVisible;
-        this._input = AddCategoryStyle.input;
-        this._save = AddCategoryStyle.save;
-        // -- end --
-
-        // -- bind this for methods --
         this.activateInput = this.activateInput.bind(this);
-        this.catchSubmit = this.catchSubmit.bind(this);
-        // -- end --
+        this.handleAddSubmit = this.handleAddSubmit.bind(this);
     }
-    
-    activateInput(event) {
-        let newTitle = event.target.value;
 
+    componentDidUpdate() {
+        this.refs.input.focus();
+    }
+
+    activateInput(event) {
+        const newTitle = event.target.value;
         this.setState({ title: newTitle });
     }
 
-    catchSubmit(event) {
+    handleAddSubmit(event) {
         event.preventDefault();
-
-        let title = this.state.title;
+        const title = this.state.title;
 
         if (title) {
             this.props.onAdd(title);
-
             this.setState({ title: '' });
-
-            this.props.hideAddForm();
+            this.props.onHideAddForm();
         }
     }
 
     render() {
+        const _wrapperHidden = AddCategoryStyle.wrapperHidden;
+        const _wrapperVisible = AddCategoryStyle.wrapperVisible;
+        const _input = AddCategoryStyle.input;
+        const _save = AddCategoryStyle.save;
+
         return (
-            <form 
-                className={this.catFieldHidden ? this._wrapperHidden : this._wrapperVisible} 
-                onSubmit={this.catchSubmit}
+            <form
+                className={this.props.catFieldHidden ? _wrapperHidden : _wrapperVisible}
+                onSubmit={this.handleAddSubmit}
             >
                 <input
-                    className={this._input}
-                    ref='inputText'
+                    className={_input}
                     placeholder='Категория...'
                     value={this.state.title}
+                    ref='input'
                     onChange={this.activateInput}
                 />
-                <NoteIcon className={this._save} icon='save' type='submit' />
+                <NoteIcon
+                    className={_save}
+                    icon='save'
+                    type='submit'
+                />
             </form>
         );
     }

@@ -1,10 +1,8 @@
 import React from 'react';
 import NoteStyle from '../../Main_content.module.css';
-
-import Checkbox from './Checkbox/Checkbox';
 import NoteIcon from './NoteIcon/NoteIcon';
 
-class Note extends React.Component {
+export default class Note extends React.Component {
     constructor(props) {
         super(props);
 
@@ -12,98 +10,82 @@ class Note extends React.Component {
             editing: false
         }
 
-        // -- styles css --
-        this._input = NoteStyle.input;
-        this._saveIcon = NoteStyle.save;
-        this._editWrapper = NoteStyle.editWrapper;
-        this._itemText = NoteStyle.itemText;
-        this._edit = NoteStyle.edit;
-        this._delete = NoteStyle.delete;
-        this._checkbox = NoteStyle.checkbox;
-        // -- end --
-
-        // -- bind this in methods --
-        this.saveEdit = this.saveEdit.bind(this);
+        this.handleEdit = this.handleEdit.bind(this);
         this.renderNote = this.renderNote.bind(this);
-        this.renderEditingForm = this.renderEditingForm.bind(this);
-        this._needWrapper = this._needWrapper.bind(this);
-        this.catch_checkbox_id = this.catch_checkbox_id.bind(this);
-        this.catch_deleteIcon_id = this.catch_deleteIcon_id.bind(this);
-        // -- end --
+        this.renderEditForm = this.renderEditForm.bind(this);
     }
-
+    
     componentDidUpdate(prevProps, prevState) {
         if (this.state.editing) {
-            this.refs.title.focus();
-            this.refs.title.select();
+            this.refs.input.focus();
+            this.refs.input.select();
         };
     }
 
-    saveEdit(event) {
+    handleEdit(event) {
         event.preventDefault();
 
-        let title = this.refs.title.value;
-
+        const title = this.refs.input.value;
         this.props.onEdit(this.props.id, title, this.props.categoryId);
-
         this.setState({ editing: false });
     }
 
-    catch_checkbox_id() {
-        this.props.onChange(this.props.id, this.props.categoryId);
-    }
-
-    catch_deleteIcon_id() {
-        this.props.onDelete(this.props.id, this.props.categoryId);
-    }
-
-    _needWrapper() {
-        let _needWrapper;
-
-        if (this.props.completed === true) {
-            _needWrapper = `${NoteStyle.itemBlock} ${NoteStyle.completed}`;
-        } else {
-            _needWrapper = `${NoteStyle.itemBlock}`;
-        }
-
-        return _needWrapper;
-    }
-
     renderNote() {
+        const _completed = `${NoteStyle.itemBlock} ${NoteStyle.completed}`;
+        const _notCompleted = `${NoteStyle.itemBlock}`;
+        const _checkbox = NoteStyle.checkbox;
+        const _itemText = NoteStyle.itemText;
+        const _edit = NoteStyle.edit;
+        const _delete = NoteStyle.delete;
+        console.log(this.props.completed)
+
         return (
-            <div className={this._needWrapper()}>
-                <Checkbox
-                    className={this._checkbox}
-                    completed={this.props.completed}
-                    onChange={this.catch_checkbox_id}
+            <div className={this.props.completed ? _completed : _notCompleted}>
+                <NoteIcon
+                    className={_checkbox}
+                    icon={this.props.completed ? 'check_box' : 'check_box_outline_blank'}
+                    onClick={() => this.props.onChange(this.props.id, this.props.categoryId)}
                 />
-                <div className={this._itemText}>{this.props.title}</div>
+                <div className={_itemText}>{this.props.title}</div>
                 <NoteIcon 
-                    className={this._edit} 
+                    className={_edit} 
                     icon='create' 
                     onClick={() => this.setState({ editing: true }) }
                 />
                 <NoteIcon 
-                    className={this._delete} 
+                    className={_delete} 
                     icon='delete' 
-                    onClick={this.catch_deleteIcon_id} 
+                    onClick={() => this.props.onDelete(this.props.id, this.props.categoryId)} 
                 />
             </div>
         );
     }
 
-    renderEditingForm() {
+    renderEditForm() {
+        const _editWrapper = NoteStyle.editWrapper;
+        const _input = NoteStyle.input;
+        const _save = NoteStyle.save;
+
         return (
-            <form className={this._editWrapper} onSubmit={this.saveEdit}>
-                <input className={this._input} ref='title' defaultValue={this.props.title}/>
-                <NoteIcon className={this._saveIcon} icon='save' type='submit' />
+            <form 
+                className={_editWrapper}
+                onSubmit={this.handleEdit}
+            >
+                <input 
+                    className={_input}
+                    ref='input' 
+                    defaultValue={this.props.title}
+                />
+                <NoteIcon 
+                    className={_save} 
+                    icon='save' 
+                    type='submit' 
+                />
             </form>
         );
     }
 
     render() {
-        return ( this.state.editing ? this.renderEditingForm() : this.renderNote() );
+        return ( this.state.editing ? this.renderEditForm() : this.renderNote() );
     }
 }
-
-export default Note;
