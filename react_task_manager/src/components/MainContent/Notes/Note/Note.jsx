@@ -1,6 +1,6 @@
 import React from 'react';
-import NoteStyle from '../../Main_content.module.css';
-import NoteIcon from './NoteIcon/NoteIcon';
+import NoteStyle from '../../MainContent.module.css';
+import Icon from '../../../Buttons/Icon/Icon';
 
 export default class Note extends React.Component {
     constructor(props) {
@@ -10,11 +10,11 @@ export default class Note extends React.Component {
             editing: false
         }
 
-        this.handleEdit = this.handleEdit.bind(this);
+        this.handleEditSubmit = this.handleEditSubmit.bind(this);
         this.renderNote = this.renderNote.bind(this);
         this.renderEditForm = this.renderEditForm.bind(this);
     }
-    
+
     componentDidUpdate(prevProps, prevState) {
         if (this.state.editing) {
             this.refs.input.focus();
@@ -22,7 +22,7 @@ export default class Note extends React.Component {
         };
     }
 
-    handleEdit(event) {
+    handleEditSubmit(event) {
         event.preventDefault();
 
         const title = this.refs.input.value;
@@ -32,30 +32,29 @@ export default class Note extends React.Component {
 
     renderNote() {
         const _completed = `${NoteStyle.itemBlock} ${NoteStyle.completed}`;
-        const _notCompleted = `${NoteStyle.itemBlock}`;
+        const _notCompleted = NoteStyle.itemBlock;
         const _checkbox = NoteStyle.checkbox;
         const _itemText = NoteStyle.itemText;
         const _edit = NoteStyle.edit;
         const _delete = NoteStyle.delete;
-        console.log(this.props.completed)
 
         return (
             <div className={this.props.completed ? _completed : _notCompleted}>
-                <NoteIcon
+                <Icon
                     className={_checkbox}
                     icon={this.props.completed ? 'check_box' : 'check_box_outline_blank'}
                     onClick={() => this.props.onChange(this.props.id, this.props.categoryId)}
                 />
                 <div className={_itemText}>{this.props.title}</div>
-                <NoteIcon 
-                    className={_edit} 
-                    icon='create' 
-                    onClick={() => this.setState({ editing: true }) }
+                <Icon
+                    className={_edit}
+                    icon='create'
+                    onClick={() => this.setState({ editing: true })}
                 />
-                <NoteIcon 
-                    className={_delete} 
-                    icon='delete' 
-                    onClick={() => this.props.onDelete(this.props.id, this.props.categoryId)} 
+                <Icon
+                    className={_delete}
+                    icon='delete'
+                    onClick={() => this.props.onDelete(this.props.id, this.props.categoryId)}
                 />
             </div>
         );
@@ -67,25 +66,25 @@ export default class Note extends React.Component {
         const _save = NoteStyle.save;
 
         return (
-            <form 
+            <form
                 className={_editWrapper}
-                onSubmit={this.handleEdit}
+                onSubmit={this.handleEditSubmit}
             >
-                <input 
+                <input
                     className={_input}
-                    ref='input' 
+                    ref='input'
                     defaultValue={this.props.title}
                 />
-                <NoteIcon 
-                    className={_save} 
-                    icon='save' 
-                    type='submit' 
+                <Icon
+                    className={_save}
+                    icon='save'
+                    type='submit'
                 />
             </form>
         );
     }
 
     render() {
-        return ( this.state.editing ? this.renderEditForm() : this.renderNote() );
+        return (this.state.editing ? this.renderEditForm() : this.renderNote());
     }
 }

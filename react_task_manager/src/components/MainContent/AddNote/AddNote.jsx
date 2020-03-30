@@ -1,8 +1,8 @@
 import React from 'react';
 import AddNoteStyle from './AddNote.module.css';
-import NoteIcon from '../Notes/Note/NoteIcon/NoteIcon';
+import Icon from '../../Buttons/Icon/Icon';
 
-export default  class AddNote extends React.Component {
+export default class AddNote extends React.Component {
     constructor(props) {
         super(props);
 
@@ -11,7 +11,7 @@ export default  class AddNote extends React.Component {
         };
 
         this.activateField = this.activateField.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleAddSubmit = this.handleAddSubmit.bind(this);
     }
 
     componentDidUpdate() {
@@ -25,7 +25,7 @@ export default  class AddNote extends React.Component {
         this.setState({ title: newTitle })
     }
 
-    handleSubmit(event) {
+    handleAddSubmit(event) {
         event.preventDefault();
         const title = this.state.title;
 
@@ -43,9 +43,9 @@ export default  class AddNote extends React.Component {
         const _save = AddNoteStyle.save;
 
         return (
-            <form 
-                className={this.props.notesFieldHidden ? _wrapperHidden : _wrapperVisible} 
-                onSubmit={this.handleSubmit}
+            <form
+                className={this.props.notesFieldHidden ? _wrapperHidden : _wrapperVisible}
+                onSubmit={this.handleAddSubmit}
             >
                 <input
                     className={_input}
@@ -55,10 +55,10 @@ export default  class AddNote extends React.Component {
                     onChange={this.activateField}
                     ref='input'
                 />
-                <NoteIcon 
-                    className={_save} 
+                <Icon
+                    className={_save}
                     icon='save'
-                    type='submit' 
+                    type='submit'
                 />
             </form>
         );

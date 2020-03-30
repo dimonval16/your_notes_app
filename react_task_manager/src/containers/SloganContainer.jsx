@@ -7,6 +7,4 @@ function mapStateToProps(state) {
     };
 }
 
-const SloganContainer = connect(mapStateToProps)(Slogan); 
-
-export default SloganContainer;
+export default connect(mapStateToProps)(Slogan); 

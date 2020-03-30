@@ -1,9 +1,9 @@
 import React from 'react';
+
 import Header_style from './Header.module.css'
+import ArrowButton from '../Buttons/ArrowButton/ArrowButton'
 
-import ArrowButton from './ArrowButton/ArrowButton'
-
-const Header = (props) => {
+export default function Header(props) {
     const _wrapper = Header_style.wrapper;
     const _arrows = Header_style.arrows;
     const _arrow = `material-icons ${Header_style.arrow}`;
@@ -23,5 +23,3 @@ const Header = (props) => {
         </div>
     );
 }
-
-export default Header;

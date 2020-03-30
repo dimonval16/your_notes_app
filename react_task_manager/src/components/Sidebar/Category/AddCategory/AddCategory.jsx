@@ -1,8 +1,8 @@
 import React from 'react';
-import AddCategoryStyle from './AddCategory.module.css'
-import NoteIcon from '../../../Main_content/Notes/Note/NoteIcon/NoteIcon';
+import AddCategoryStyle from './AddCategory.module.css';
+import Icon from '../../../Buttons/Icon/Icon';
 
-class AddCategory extends React.Component {
+export default class AddCategory extends React.Component {
     constructor(props) {
         super(props);
 
@@ -15,7 +15,9 @@ class AddCategory extends React.Component {
     }
 
     componentDidUpdate() {
-        this.refs.input.focus();
+        if (!this.props.catFieldHidden) {
+            this.refs.input.focus();
+        }
     }
 
     activateInput(event) {
@@ -52,7 +54,7 @@ class AddCategory extends React.Component {
                     ref='input'
                     onChange={this.activateInput}
                 />
-                <NoteIcon
+                <Icon
                     className={_save}
                     icon='save'
                     type='submit'
@@ -61,5 +63,3 @@ class AddCategory extends React.Component {
         );
     }
 }
-
-export default AddCategory;

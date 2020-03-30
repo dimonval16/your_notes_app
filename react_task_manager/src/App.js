@@ -7,7 +7,7 @@ import MainContentContainer from './containers/MainContentContainer';
 import SloganContainer from './containers/SloganContainer';
 import './App.css';
 
-function AppComponent(props) {
+function App(props) {
   const needWrapper = props.sloganHidden ? 'AppTwoRows' : 'AppThreeRows';
 
   return (
@@ -26,6 +26,4 @@ function mapStateToProps(state) {
   };
 }
 
-const App = connect(mapStateToProps)(AppComponent);
-
-export default App;
+export default connect(mapStateToProps)(App);

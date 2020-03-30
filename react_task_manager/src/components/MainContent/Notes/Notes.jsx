@@ -2,7 +2,7 @@ import React from 'react';
 
 import Note from './Note/Note';
 import AddNote from '../AddNote/AddNote';
-import Button from '../../Button/Button';
+import Button from '../../Buttons/AddButton/Button';
 
 export default function Notes(props) {
     return (

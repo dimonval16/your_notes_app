@@ -1,11 +1,11 @@
 import React from 'react';
 import Acc from './Account.module.css';
 
-function Account(props) {
-    let _wrapper = Acc.wrapper;
-    let userPhoto = props.user.photo;
-    let userName = props.user.name;
-    let userSurname = props.user.surname;
+export default function Account(props) {
+    const _wrapper = Acc.wrapper;
+    const userPhoto = props.user.photo;
+    const userName = props.user.name;
+    const userSurname = props.user.surname;
 
     return (
         <div className={_wrapper}>
@@ -16,5 +16,3 @@ function Account(props) {
         </div>
     );
 }
-
-export default Account;

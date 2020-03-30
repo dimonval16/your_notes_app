@@ -1,9 +1,9 @@
 import React from 'react';
-import CategoryStyle from '../Category.module.css'
 import { NavLink } from 'react-router-dom';
-import NoteIcon from '../../../Main_content/Notes/Note/NoteIcon/NoteIcon';
+import CategoryStyle from '../Category.module.css';
+import Icon from '../../../Buttons/Icon/Icon';
 
-class CategoryItem extends React.Component {
+export default class CategoryItem extends React.Component {
     constructor(props) {
         super(props);
 
@@ -13,7 +13,6 @@ class CategoryItem extends React.Component {
 
         this.renderCategory = this.renderCategory.bind(this);
         this.renderEditForm = this.renderEditForm.bind(this);
-        this.handleDelete = this.handleDelete.bind(this);
         this.handleEditSubmit = this.handleEditSubmit.bind(this);
     }
 
@@ -35,10 +34,6 @@ class CategoryItem extends React.Component {
         }
     }
 
-    handleDelete() {
-        this.props.onDelete(this.props.link);
-    }
-
     renderEditForm() {
         const _editWrapper = CategoryStyle.editWrapper;
         const _input = CategoryStyle.input;
@@ -50,7 +45,7 @@ class CategoryItem extends React.Component {
                     className={_input}
                     ref='input'
                     defaultValue={this.props.title} />
-                <NoteIcon
+                <Icon
                     className={_save}
                     icon='save'
                     type='submit'
@@ -68,22 +63,22 @@ class CategoryItem extends React.Component {
 
         return (
             <div className={_wrapper}>
-                <NoteIcon
+                <Icon
                     className={_list}
                     icon='format_list_bulleted'
                 />
                 <NavLink to={'/' + this.props.link} className={_text}>
                     {this.props.title}
                 </NavLink>
-                <NoteIcon
+                <Icon
                     className={_create}
                     icon='create'
                     onClick={() => this.setState({ editing: true })}
                 />
-                <NoteIcon
+                <Icon
                     className={_delete}
                     icon='delete'
-                    onClick={this.handleDelete}
+                    onClick={() => this.props.onDelete(this.props.link)}
                 />
             </div>
         );
@@ -93,5 +88,3 @@ class CategoryItem extends React.Component {
         return (this.state.editing ? this.renderEditForm() : this.renderCategory());
     }
 }
-
-export default CategoryItem;

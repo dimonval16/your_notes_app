@@ -18,6 +18,4 @@ function mapDispatchToProps(dispatch) {
     };
 }
 
-const SidebarContainer = connect(mapStateToProps, mapDispatchToProps)(Sidebar);
-
-export default SidebarContainer;
+export default connect(mapStateToProps, mapDispatchToProps)(Sidebar);

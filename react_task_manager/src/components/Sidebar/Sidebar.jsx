@@ -1,13 +1,13 @@
 import React from 'react';
-import Sidebar_style from './Sidebar.module.css';
+import SidebarStyle from './Sidebar.module.css';
 
 import Account from './Account/Account';
 import Category from './Category/Category';
-import Button from '../Button/Button';
+import Button from '../Buttons/AddButton/Button';
 
 
-function Sidebar(props) {
-    const _wrapper = Sidebar_style.wrapper;
+export default function Sidebar(props) {
+    const _wrapper = SidebarStyle.wrapper;
 
     return (
         <div className={_wrapper}>
@@ -23,5 +23,3 @@ function Sidebar(props) {
         </div>
     );
 }
-
-export default Sidebar;

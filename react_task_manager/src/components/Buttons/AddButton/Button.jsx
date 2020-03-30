@@ -1,8 +1,8 @@
 import React from 'react';
 import ButtonStyle from './Button.module.css';
 
-function Button(props) {
-    let _needWrapper = props.id ? ButtonStyle.wrapper_content : ButtonStyle.wrapper;
+export default function Button(props) {
+    const _needWrapper = props.id ? ButtonStyle.wrapper_content : ButtonStyle.wrapper;
 
     return (
         <div className={_needWrapper} onClick={props.onButtonClick}>
@@ -11,5 +11,3 @@ function Button(props) {
         </div>
     );
 }
-
-export default Button;

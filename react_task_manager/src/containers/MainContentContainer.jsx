@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
  
-import MainContent from '../components/Main_content/MainContent';
+import MainContent from '../components/MainContent/MainContent';
 import { addNote, deleteNote, toggleNote, editNote, toggleNoteField } from '../actions';
 
 function mapStateToProps(state) {
@@ -20,6 +20,4 @@ function mapDispatchToProps(dispatch) {
     };
 }
 
-const MainContentContainer = connect(mapStateToProps, mapDispatchToProps)(MainContent) 
-
-export default MainContentContainer;
+export default connect(mapStateToProps, mapDispatchToProps)(MainContent) 

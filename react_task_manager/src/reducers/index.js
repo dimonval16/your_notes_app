@@ -3,11 +3,11 @@ import { ADD_NOTE, DELETE_NOTE, TOGGLE_NOTE, EDIT_NOTE, ADD_CATEGORY, DELETE_CAT
 function nextId(state) {
     let _nextId = 1;
 
-    let idArray = state.map(note => {
+    const idArray = state.map(note => {
         return note.id
     });
 
-    let sortIdArray = idArray.sort((a, b) => {
+    const sortIdArray = idArray.sort((a, b) => {
         return a - b;
     });
 
@@ -31,7 +31,7 @@ function oneMoreReducer(state = {}, action) {
                 notes: [
                     {
                         id: 1,
-                        title: 'Новый чоткий раздел',
+                        title: 'Классная заметка',
                         completed: false
                     }
                 ]
@@ -45,9 +45,9 @@ function oneMoreReducer(state = {}, action) {
 
         case ADD_NOTE:
             if (state.id === action.categoryId) {
-                let notes = state.notes;
+                const notes = state.notes;
 
-                let note = {
+                const note = {
                     id: nextId(notes),
                     title: action.title,
                     completed: false
@@ -59,7 +59,7 @@ function oneMoreReducer(state = {}, action) {
 
         case DELETE_NOTE: 
             if (state.id === action.categoryId) {
-                let notes = state.notes.filter(note => note.id !== action.id);
+                const notes = state.notes.filter(note => note.id !== action.id);
 
                 state.notes = notes;
             }

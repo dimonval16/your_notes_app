@@ -1,10 +1,10 @@
 import React from 'react';
 import { Route } from 'react-router';
 
-import MainContentStyle from './Main_content.module.css';
+import MainContentStyle from './MainContent.module.css';
 import Notes from './Notes/Notes';
 
-function MainContent(props) {
+export default function MainContent(props) {
     const _wrapper = MainContentStyle.wrapper;
     const _mainBlock = MainContentStyle.mainBlock;
 
@@ -33,5 +33,3 @@ function MainContent(props) {
         </div>
     );
 }
-
-export default MainContent;

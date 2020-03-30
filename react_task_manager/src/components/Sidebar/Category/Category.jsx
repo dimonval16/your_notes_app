@@ -1,10 +1,10 @@
 import React from 'react';
+import CategoryStyle from './Category.module.css';
 import CategoryItem from './CategoryItem/CategoryItem';
-import CategoryBlock from './Category.module.css'
 import AddCategory from './AddCategory/AddCategory';
 
-function Category(props) {
-    const _categoryBlock = CategoryBlock.category_block;
+export default function Category(props) {
+    const _categoryBlock = CategoryStyle.category_block;
 
     return (
         <div className={_categoryBlock}>
@@ -20,10 +20,8 @@ function Category(props) {
                     link={el.id}
                     onDelete={props.onCategoryDelete}
                     onEdit={props.onCategoryEdit}
-                />;
+                />
             })}
         </div>
     );
 }
-
-export default Category;
