@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 
 import Sidebar from '../components/Sidebar/Sidebar';
-import { addCategory, deleteCategory, editCategory, toggleCatField } from '../actions';
+import { addCategory, deleteCategory, editCategory, toggleCatField } from '../redux/actions';
 
 function mapStateToProps(state) {
     return {

@@ -6,8 +6,8 @@ import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 
 import App from './App';
-import state from './data/state';
-import reducer from './reducers';
+import state from './redux/data/state';
+import reducer from './redux/reducers/index';
 
 const store = createStore(reducer, state);
 

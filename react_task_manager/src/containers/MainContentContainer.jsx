@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
  
 import MainContent from '../components/MainContent/MainContent';
-import { addNote, deleteNote, toggleNote, editNote, toggleNoteField } from '../actions';
+import { addNote, deleteNote, toggleNote, editNote, toggleNoteField } from '../redux/actions';
 
 function mapStateToProps(state) {
     return {
