@@ -6,10 +6,8 @@ import nextId from './idCalculate';
 function oneMoreReducer(state = {}, action) {
     switch (action.type) {
         case ADD_CATEGORY:
-            const newCat=[...state]
-
             return {
-                id: nextId(newCat),
+                id: nextId(state),
                 title: action.title,
                 notes: [
                     {
@@ -18,15 +16,13 @@ function oneMoreReducer(state = {}, action) {
                         completed: false
                     }
                 ]
-            };
+            }
 
         case EDIT_CATEGORY:
-            const newState = { ...state };
-
-            if (newState.id === action.id) {
-                newState.title = action.title;
+            return {
+                ...state,
+                title: state.id === action.id ? state.title = action.title : state.title
             }
-            return newState;
 
         default:
             return state;
@@ -34,30 +30,29 @@ function oneMoreReducer(state = {}, action) {
 }
 
 export default function reducer(state = [], action) {
-    const newState = [...state];
-
     switch (action.type) {
         case ADD_CATEGORY:
-            newState.unshift(oneMoreReducer(newState, action));
-            return newState;
+            const newCategories = [...state]
+            newCategories.unshift(oneMoreReducer(state, action));
+            return newCategories;
 
         case DELETE_CATEGORY:
-            return newState.filter(category => category.id !== action.id);
+            return state.filter(category => category.id !== action.id);
 
         case EDIT_CATEGORY:
-            return newState.map(obj => oneMoreReducer(obj, action));
+            return state.map(obj => oneMoreReducer(obj, action));
 
         case ADD_NOTE:
-            return notesReducer(newState, action);
+            return notesReducer(state, action);
 
         case DELETE_NOTE:
-            return notesReducer(newState, action);
+            return notesReducer(state, action);
 
         case TOGGLE_NOTE:
-            return notesReducer(newState, action);
+            return notesReducer(state, action);
 
         case EDIT_NOTE:
-            return notesReducer(newState, action);
+            return notesReducer(state, action);
 
         default:
             return state;

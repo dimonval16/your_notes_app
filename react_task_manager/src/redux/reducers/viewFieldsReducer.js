@@ -1,20 +1,24 @@
 import { TOGGLE_SLOGAN, TOGGLE_CAT_FIELD, TOGGLE_NOTE_FIELD } from '../actions/viewFieldsActions';
 
 export default function reducer(state = {}, action) {
-    const newState = { ...state };
-
     switch (action.type) {
         case TOGGLE_SLOGAN:
-            newState.sloganHidden = !newState.sloganHidden;
-            return newState;
+            return {
+                ...state,
+                sloganHidden: !state.sloganHidden
+            }
 
         case TOGGLE_CAT_FIELD:
-            newState.catFieldHidden = !newState.catFieldHidden;
-            return newState;
+            return {
+                ...state,
+                catFieldHidden: !state.catFieldHidden
+            }
 
         case TOGGLE_NOTE_FIELD:
-            newState.notesFieldHidden = !newState.notesFieldHidden;
-            return newState;
+            return {
+                ...state,
+                notesFieldHidden: !state.notesFieldHidden
+            }
 
         default:
             return state;

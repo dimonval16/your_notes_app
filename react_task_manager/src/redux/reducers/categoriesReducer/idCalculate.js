@@ -1,8 +1,7 @@
 export default function nextId(state) {
-    const newState = [...state];
     let _nextId = 1;
 
-    const idArray = newState.map(note => {
+    const idArray = state.map(note => {
         return note.id
     });
 
