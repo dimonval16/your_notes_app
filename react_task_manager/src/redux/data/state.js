@@ -11,7 +11,7 @@ const state = {
                 }
             ]
         },
-        {   
+        {
             id: 2,
             title: 'Вторник',
             notes: [
@@ -66,7 +66,8 @@ const state = {
                 }
             ]
         },
-        {   id: 7,
+        {
+            id: 7,
             title: 'Воскресенье',
             notes: [
                 {
@@ -88,7 +89,8 @@ const state = {
         sloganHidden: false,
         notesFieldHidden: true,
         catFieldHidden: true
-    }
+    },
+    filter: 'ALL'
 }
 
 export default state;

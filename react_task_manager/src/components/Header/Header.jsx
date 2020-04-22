@@ -17,7 +17,7 @@ export default function Header(props) {
                 <ArrowButton
                     className={_arrow}
                     icon={props.sloganHidden ? arrowDownIcon : arrowUpIcon}
-                    onClick={props.toggleSlogan}
+                    onClick={props.onToggleSlogan}
                 />
             </div>
         </div>

@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import * as serviceWorker from './serviceWorker';
-import { createStore } from 'redux';
-import { Provider } from 'react-redux';
-import { BrowserRouter } from 'react-router-dom';
+import {createStore} from 'redux';
+import {Provider} from 'react-redux';
+import {BrowserRouter} from 'react-router-dom';
 
 import App from './App';
 import state from './redux/data/state';
@@ -14,7 +14,7 @@ const store = createStore(reducer, state);
 ReactDOM.render(
     <Provider store={store}>
         <BrowserRouter>
-            <App />
+            <App/>
         </BrowserRouter>
     </Provider>,
     document.getElementById('root'));

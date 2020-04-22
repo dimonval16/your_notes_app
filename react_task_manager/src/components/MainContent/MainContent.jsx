@@ -11,7 +11,7 @@ export default function MainContent(props) {
     return (
         <div className={_wrapper}>
             <div className={_mainBlock}>
-                {props.state.categories.map(obj => {
+                {props.categories.map(obj => {
                     return <Route
                         path={'/' + obj.id}
                         render={() => {

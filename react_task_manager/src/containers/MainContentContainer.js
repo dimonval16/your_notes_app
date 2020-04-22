@@ -1,11 +1,10 @@
-import { connect } from 'react-redux';
- 
+import {connect} from 'react-redux';
 import MainContent from '../components/MainContent/MainContent';
-import { addNote, deleteNote, toggleNote, editNote, toggleNoteField } from '../redux/actions';
+import {addNote, deleteNote, toggleNote, editNote, toggleNoteField} from '../redux/actions';
 
 function mapStateToProps(state) {
     return {
-        state: state,
+        categories: state.categories,
         notesFieldHidden: state.viewFields.notesFieldHidden
     };
 }
@@ -20,4 +19,4 @@ function mapDispatchToProps(dispatch) {
     };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(MainContent) 
+export default connect(mapStateToProps, mapDispatchToProps)(MainContent)

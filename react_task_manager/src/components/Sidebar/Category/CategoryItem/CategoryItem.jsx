@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import {NavLink} from 'react-router-dom';
 import CategoryStyle from '../Category.module.css';
 import Icon from '../../../Buttons/Icon/Icon';
 
@@ -30,7 +30,7 @@ export default class CategoryItem extends React.Component {
 
         if (title) {
             this.props.onEdit(id, title);
-            this.setState({ editing: false });
+            this.setState({editing: false});
         }
     }
 
@@ -44,7 +44,7 @@ export default class CategoryItem extends React.Component {
                 <input
                     className={_input}
                     ref='input'
-                    defaultValue={this.props.title} />
+                    defaultValue={this.props.title}/>
                 <Icon
                     className={_save}
                     icon='save'
@@ -73,7 +73,7 @@ export default class CategoryItem extends React.Component {
                 <Icon
                     className={_create}
                     icon='create'
-                    onClick={() => this.setState({ editing: true })}
+                    onClick={() => this.setState({editing: true})}
                 />
                 <Icon
                     className={_delete}

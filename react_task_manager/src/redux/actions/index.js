@@ -7,7 +7,7 @@ export {
     editCategory
 } from './categoryActions';
 
-export { 
+export {
     ADD_NOTE,
     DELETE_NOTE,
     TOGGLE_NOTE,
@@ -18,7 +18,7 @@ export {
     editNote
 } from './notesActions';
 
-export { 
+export {
     TOGGLE_SLOGAN,
     TOGGLE_CAT_FIELD,
     TOGGLE_NOTE_FIELD,
@@ -26,5 +26,10 @@ export {
     toggleCatField,
     toggleSlogan
 } from './viewFieldsActions';
+
+export {
+    SET_FILTER,
+    setFilterAC
+} from './filterActions'
 
 

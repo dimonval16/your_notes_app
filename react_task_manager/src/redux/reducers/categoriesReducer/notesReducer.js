@@ -1,23 +1,18 @@
-import { ADD_NOTE, DELETE_NOTE, TOGGLE_NOTE, EDIT_NOTE } from '../../actions/notesActions';
+import {ADD_NOTE, DELETE_NOTE, TOGGLE_NOTE, EDIT_NOTE} from '../../actions/notesActions';
 import nextId from './idCalculate';
 
 function oneMoreReducer(state = {}, action) {
     switch (action.type) {
         case ADD_NOTE:
-            if (state.id === action.categoryId) {
-                const newCategory = { ...state }
-
-                newCategory.notes.unshift(
-                    {
-                        id: nextId(state.notes),
-                        title: action.title,
-                        completed: false
-                    }
-                )
-
-                return newCategory;
+            const newNote = {
+                id: nextId(state.notes),
+                title: action.title,
+                completed: false
             }
-            return state;
+            return {
+                ...state,
+                notes: state.id === action.categoryId ? [newNote, ...state.notes] : state.notes
+            }
 
         case DELETE_NOTE:
             return {
@@ -67,16 +62,16 @@ function oneMoreReducer(state = {}, action) {
 export default function reducer(state = [], action) {
     switch (action.type) {
         case ADD_NOTE:
-            return state.map(obj => oneMoreReducer(obj, action));
+            return state.map(category => oneMoreReducer(category, action));
 
         case DELETE_NOTE:
-            return state.map(obj => oneMoreReducer(obj, action));
+            return state.map(category => oneMoreReducer(category, action));
 
         case TOGGLE_NOTE:
-            return state.map(obj => oneMoreReducer(obj, action));
+            return state.map(category => oneMoreReducer(category, action));
 
         case EDIT_NOTE:
-            return state.map(obj => oneMoreReducer(obj, action));
+            return state.map(category => oneMoreReducer(category, action));
 
         default:
             return state;

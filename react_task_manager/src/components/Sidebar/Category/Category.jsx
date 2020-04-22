@@ -9,11 +9,11 @@ export default function Category(props) {
     return (
         <div className={_categoryBlock}>
             <AddCategory
-                catFieldHidden={props.state.viewFields.catFieldHidden}
+                catFieldHidden={props.catFieldHidden}
                 onHideAddForm={props.onClickSave}
                 onAdd={props.onCategoryAdd}
             />
-            {props.state.categories.map(el => {
+            {props.categories.map(el => {
                 return <CategoryItem
                     title={el.title}
                     key={el.id}

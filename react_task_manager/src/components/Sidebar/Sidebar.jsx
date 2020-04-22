@@ -11,15 +11,16 @@ export default function Sidebar(props) {
 
     return (
         <div className={_wrapper}>
-            <Account user={props.state.user} />
+            <Account user={props.user}/>
             <Category
-                state={props.state}
+                categories={props.categories}
+                catFieldHidden={props.catFieldHidden}
                 onClickSave={props.onToggleAddField}
                 onCategoryDelete={props.onCategoryDelete}
                 onCategoryEdit={props.onCategoryEdit}
                 onCategoryAdd={props.onCategoryAdd}
             />
-            <Button name="Категория" onButtonClick={props.onToggleAddField} />
+            <Button name="Категория" onButtonClick={props.onToggleAddField}/>
         </div>
     );
 }

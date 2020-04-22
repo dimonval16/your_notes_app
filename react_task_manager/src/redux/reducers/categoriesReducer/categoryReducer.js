@@ -1,6 +1,6 @@
-import { ADD_CATEGORY, DELETE_CATEGORY, EDIT_CATEGORY } from '../../actions/categoryActions';
-import { ADD_NOTE, DELETE_NOTE, TOGGLE_NOTE, EDIT_NOTE } from '../../actions/notesActions';
-import { default as notesReducer } from './notesReducer';
+import {ADD_CATEGORY, DELETE_CATEGORY, EDIT_CATEGORY} from '../../actions/categoryActions';
+import {ADD_NOTE, DELETE_NOTE, TOGGLE_NOTE, EDIT_NOTE} from '../../actions/notesActions';
+import {default as notesReducer} from './notesReducer';
 import nextId from './idCalculate';
 
 function oneMoreReducer(state = {}, action) {
@@ -32,15 +32,13 @@ function oneMoreReducer(state = {}, action) {
 export default function reducer(state = [], action) {
     switch (action.type) {
         case ADD_CATEGORY:
-            const newCategories = [...state]
-            newCategories.unshift(oneMoreReducer(state, action));
-            return newCategories;
+            return [oneMoreReducer(state, action), ...state]
 
         case DELETE_CATEGORY:
             return state.filter(category => category.id !== action.id);
 
         case EDIT_CATEGORY:
-            return state.map(obj => oneMoreReducer(obj, action));
+            return state.map(category => oneMoreReducer(category, action));
 
         case ADD_NOTE:
             return notesReducer(state, action);

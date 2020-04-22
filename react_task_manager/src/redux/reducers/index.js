@@ -1,8 +1,9 @@
-import { combineReducers } from 'redux';
+import {combineReducers} from 'redux';
 
-import { default as categories} from './categoriesReducer/categoryReducer';
-import { default as user } from './userReducer';
-import { default as viewFields } from './viewFieldsReducer';
+import {default as categories} from './categoriesReducer/categoryReducer';
+import {default as user} from './userReducer';
+import {default as viewFields} from './viewFieldsReducer';
+import {default as filter} from './filterReducer';
 
 /*function reducer(state = {}, action) {
     return {
@@ -15,7 +16,8 @@ import { default as viewFields } from './viewFieldsReducer';
 const reducer = combineReducers({
     categories,
     user,
-    viewFields
+    viewFields,
+    filter
 });
 
 export default reducer;

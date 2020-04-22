@@ -1,9 +1,10 @@
-import { connect } from 'react-redux';
+import {connect} from 'react-redux';
 import Slogan from '../components/Slogan/Slogan';
 
 function mapStateToProps(state) {
     return {
-        state: state
+        sloganHidden: state.viewFields.sloganHidden,
+        userName: state.user.name
     };
 }
 
