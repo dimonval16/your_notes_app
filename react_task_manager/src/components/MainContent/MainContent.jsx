@@ -1,6 +1,5 @@
 import React from 'react';
-import { Route } from 'react-router';
-
+import {Route} from 'react-router';
 import MainContentStyle from './MainContent.module.css';
 import Notes from './Notes/Notes';
 

@@ -1,5 +1,4 @@
 import React from 'react';
-
 import Note from './Note/Note';
 import AddNote from '../AddNote/AddNote';
 import Button from '../../Buttons/AddButton/Button';

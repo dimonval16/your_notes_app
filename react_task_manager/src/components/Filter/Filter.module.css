@@ -13,6 +13,15 @@
     cursor: pointer;
 }
 
+.icon_block_active {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    border-radius: 5px 5px 0px 0px;
+    cursor: pointer;
+    border-bottom: 2px solid #2D487F;
+}
+
 .filter_icon {
     background: none;
     border: none;
@@ -23,5 +32,11 @@
 }
 
 .icon_block:hover {
-    background-color: #dddddd;
+    background-color: #e6e6e6;
+    transition-duration: .3s;
+    /*background-color: rgba(255, 55, 103, 0.2);*/
+}
+.icon_block_active:hover {
+    background-color: #e6e6e6;
+    /*background-color: rgba(255, 55, 103, 0.2);*/
 }

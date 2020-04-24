@@ -1,5 +1,4 @@
 import {connect} from 'react-redux';
-
 import {setFilterAC} from "../redux/actions";
 import Filter from "../components/Filter/Filter";
 

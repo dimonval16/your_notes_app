@@ -1,6 +1,5 @@
 import React from 'react';
 import {connect} from 'react-redux';
-
 import HeaderContainer from './containers/HeaderContainer';
 import SidebarContainer from './containers/SidebarContainer';
 import MainContentContainer from './containers/MainContentContainer';

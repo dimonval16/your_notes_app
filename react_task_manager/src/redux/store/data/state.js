@@ -51,7 +51,7 @@ const state = {
                 {
                     id: 1,
                     title: 'Заметки для Пятницы',
-                    completed: false
+                    completed: true
                 }
             ]
         },
@@ -62,7 +62,7 @@ const state = {
                 {
                     id: 1,
                     title: 'Заметки для Субботы',
-                    completed: false
+                    completed: true
                 }
             ]
         },
@@ -73,7 +73,7 @@ const state = {
                 {
                     id: 1,
                     title: 'Заметки для Воскресенья',
-                    completed: false
+                    completed: true
                 }
             ]
         }

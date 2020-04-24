@@ -2,6 +2,7 @@ import {ADD_CATEGORY, DELETE_CATEGORY, EDIT_CATEGORY} from '../../actions/catego
 import {ADD_NOTE, DELETE_NOTE, TOGGLE_NOTE, EDIT_NOTE} from '../../actions/notesActions';
 import {default as notesReducer} from './notesReducer';
 import nextId from './idCalculate';
+import {ALL, COMPLETED, NOT_COMPLETED} from "../../actions/filterActions";
 
 function oneMoreReducer(state = {}, action) {
     switch (action.type) {
@@ -51,6 +52,32 @@ export default function reducer(state = [], action) {
 
         case EDIT_NOTE:
             return notesReducer(state, action);
+
+        default:
+            return state;
+    }
+}
+
+export function getFilteredNotes(state, filter) {
+    switch (filter) {
+        case ALL:
+            return state;
+
+        case COMPLETED:
+            return state.map(cat => {
+                return {
+                    ...cat,
+                    notes: cat.notes.filter(note => note.completed)
+                }
+            });
+
+        case NOT_COMPLETED:
+            return state.map(cat => {
+                return {
+                    ...cat,
+                    notes: cat.notes.filter(note => !note.completed)
+                }
+            });
 
         default:
             return state;

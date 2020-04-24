@@ -1,10 +1,11 @@
 import {connect} from 'react-redux';
 import MainContent from '../components/MainContent/MainContent';
 import {addNote, deleteNote, toggleNote, editNote, toggleNoteField} from '../redux/actions';
+import {getFilteredNotes} from "../redux/reducers";
 
 function mapStateToProps(state) {
     return {
-        categories: state.categories,
+        categories: getFilteredNotes(state),
         notesFieldHidden: state.viewFields.notesFieldHidden
     };
 }
