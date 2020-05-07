@@ -67,7 +67,7 @@ export default class CategoryItem extends React.Component {
                     className={_list}
                     icon='format_list_bulleted'
                 />
-                <NavLink to={'/' + this.props.link} className={_text}>
+                <NavLink to={'/' + this.props.title} className={_text}>
                     {this.props.title}
                 </NavLink>
                 <Icon

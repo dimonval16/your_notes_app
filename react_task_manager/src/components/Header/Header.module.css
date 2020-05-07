@@ -11,9 +11,21 @@
     margin-right: 10px;
     justify-content: flex-end;
     align-items: center;
+    -webkit-user-select: none;
 }
 
 .arrow {
     cursor: pointer;
     color: #2D487F;
   }
+
+.logOut {
+    align-self: center;
+    margin-left: 10px;
+    font-weight: bold;
+    color: #363636;
+    cursor: pointer;
+}
+.logOut:hover {
+    font-size: 18px;
+}

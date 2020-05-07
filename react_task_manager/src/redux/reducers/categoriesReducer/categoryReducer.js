@@ -1,8 +1,17 @@
-import {ADD_CATEGORY, DELETE_CATEGORY, EDIT_CATEGORY} from '../../actions/categoryActions';
-import {ADD_NOTE, DELETE_NOTE, TOGGLE_NOTE, EDIT_NOTE} from '../../actions/notesActions';
-import {default as notesReducer} from './notesReducer';
+import
+    {
+        ADD_CATEGORY, DELETE_CATEGORY, EDIT_CATEGORY
+    } from '../../actions/categoryActions';
+import
+    {
+        ADD_NOTE, DELETE_NOTE, TOGGLE_NOTE, EDIT_NOTE
+    } from '../../actions/notesActions';
+import
+    {
+        ALL, COMPLETED, NOT_COMPLETED
+    } from "../../actions/filterActions";
+import { default as notesReducer } from './notesReducer';
 import nextId from './idCalculate';
-import {ALL, COMPLETED, NOT_COMPLETED} from "../../actions/filterActions";
 
 function oneMoreReducer(state = {}, action) {
     switch (action.type) {

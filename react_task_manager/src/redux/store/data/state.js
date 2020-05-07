@@ -80,9 +80,10 @@ const state = {
     ],
     user: {
         id: 1,
-        name: 'Dmytro',
+        name: 'Dimas',
         surname: 'Volynskyi',
-        email: 'brazzers.com',
+        email: 'brazzers@gmail.com',
+        pass: '',
         photo: 'account_circle'
     },
     viewFields: {
@@ -90,7 +91,12 @@ const state = {
         notesFieldHidden: true,
         catFieldHidden: true
     },
-    filter: 'ALL'
+    filter: 'ALL',
+    registrationForm: {
+        email: '',
+        pass: '',
+        registered: true
+    }
 }
 
 export default state;

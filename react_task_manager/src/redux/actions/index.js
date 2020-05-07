@@ -30,6 +30,17 @@ export {
 export {
     SET_FILTER,
     setFilterAC
-} from './filterActions'
+} from './filterActions';
+
+export {
+    CHANGE_EMAIL_INPUT,
+    CHANGE_PASSWORD_INPUT,
+    TRY_LOGIN,
+    LOG_OUT,
+    changeEmailInputAC,
+    changePasswordInputAC,
+    tryLoginAC,
+    logOutAC
+} from './registrationFormActions';
 
 

@@ -12,7 +12,7 @@ export default function MainContent(props) {
             <div className={_mainBlock}>
                 {props.categories.map(obj => {
                     return <Route
-                        path={'/' + obj.id}
+                        path={'/' + obj.title}
                         render={() => {
                             return <Notes
                                 notes={obj.notes}
