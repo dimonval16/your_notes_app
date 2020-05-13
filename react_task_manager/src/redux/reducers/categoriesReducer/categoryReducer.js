@@ -19,13 +19,7 @@ function oneMoreReducer(state = {}, action) {
             return {
                 id: nextId(state),
                 title: action.title,
-                notes: [
-                    {
-                        id: 1,
-                        title: 'Классная заметка',
-                        completed: false
-                    }
-                ]
+                notes: []
             }
 
         case EDIT_CATEGORY:

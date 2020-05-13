@@ -13,15 +13,15 @@ export default function Category(props) {
                 onHideAddForm={props.onClickSave}
                 onAdd={props.onCategoryAdd}
             />
-            {props.categories.map(el => {
-                return <CategoryItem
+            {props.categories.map(el => (
+                <CategoryItem
                     title={el.title}
                     key={el.id}
                     link={el.id}
                     onDelete={props.onCategoryDelete}
                     onEdit={props.onCategoryEdit}
                 />
-            })}
+            ))}
         </div>
     );
 }

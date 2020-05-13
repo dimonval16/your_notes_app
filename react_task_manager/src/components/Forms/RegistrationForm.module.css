@@ -1,0 +1,66 @@
+.wrapper {
+    margin: auto;
+    padding-top: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 400px;
+    height: 530px;
+}
+
+.staticWord {
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    color: #2D487F;
+}
+
+.itemStyle {
+    height: 50px;
+    border-radius: 10px;
+}
+
+.buttons {
+    border: 2px solid #2D487F;
+    background-color: white;
+    font-size: 16px;
+    font-weight: bold;
+    color: #2D487F;
+    border-radius: 15px;
+    outline: none;
+}
+.buttons:hover {
+    border: none;
+    background-color: #FF3767;
+    color: white;
+}
+
+.input {
+    padding: 0 10px 0 10px;
+    font-size: 16px;
+    border: 2px solid #b5b5b5;
+    outline: none;
+}
+.input:focus {
+    border: 2px solid #396cd4;
+}
+
+.googleBlock {
+    display: flex;
+    justify-content: center;
+}
+
+.googleIcon {
+    background-image: url(../../img/symbol.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 16px;
+    width: 16px;
+    margin-right: 10px;
+}
+
+.registered {
+    color: #2D487F;
+    text-align: center;
+    cursor: pointer;
+}

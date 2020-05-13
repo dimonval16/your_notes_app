@@ -1,20 +1,22 @@
 import React from 'react';
 import Header_style from './Header.module.css'
 import ArrowButton from '../Buttons/ArrowButton/ArrowButton'
+import { withRouter } from "react-router";
 
-export default function Header(props) {
+function Header(props) {
     const _wrapper = Header_style.wrapper;
     const _arrows = Header_style.arrows;
     const _arrow = `material-icons ${Header_style.arrow}`;
     const arrowUpIcon = 'keyboard_arrow_up';
     const arrowDownIcon = 'keyboard_arrow_down';
     const _logOut = Header_style.logOut;
+    const history = props.history;
 
     return (
         <div className={_wrapper}>
             <div
+                onClick={() => props.onLogOut(history)}
                 className={_logOut}
-                onClick={props.onLogout}
             >
                 Log out
             </div>
@@ -28,3 +30,5 @@ export default function Header(props) {
         </div>
     );
 }
+
+export default withRouter(Header);

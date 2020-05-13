@@ -1,4 +1,4 @@
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import Sidebar from '../components/Sidebar/Sidebar';
 import {addCategory, deleteCategory, editCategory, toggleCatField} from '../redux/actions';
 

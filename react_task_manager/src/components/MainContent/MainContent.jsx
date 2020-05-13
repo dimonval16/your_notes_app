@@ -1,5 +1,5 @@
 import React from 'react';
-import {Route} from 'react-router';
+import { Route, Switch } from 'react-router';
 import MainContentStyle from './MainContent.module.css';
 import Notes from './Notes/Notes';
 
@@ -10,11 +10,10 @@ export default function MainContent(props) {
     return (
         <div className={_wrapper}>
             <div className={_mainBlock}>
-                {props.categories.map(obj => {
-                    return <Route
-                        path={'/' + obj.title}
-                        render={() => {
-                            return <Notes
+                <Switch>
+                    {props.categories.map(obj => (
+                        <Route path={`/main/${obj.id}`} key={obj.id}>
+                            <Notes
                                 notes={obj.notes}
                                 categoryId={obj.id}
                                 notesFieldHidden={props.notesFieldHidden}
@@ -24,10 +23,9 @@ export default function MainContent(props) {
                                 onEdit={props.onEdit}
                                 onAdd={props.onAdd}
                             />
-                        }}
-                        key={obj.id}
-                    />
-                })}
+                        </Route>
+                    ))}
+                </Switch>
             </div>
         </div>
     );

@@ -1,5 +1,5 @@
 import React from 'react';
-import {NavLink} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import CategoryStyle from '../Category.module.css';
 import Icon from '../../../Buttons/Icon/Icon';
 
@@ -67,9 +67,9 @@ export default class CategoryItem extends React.Component {
                     className={_list}
                     icon='format_list_bulleted'
                 />
-                <NavLink to={'/' + this.props.title} className={_text}>
+                <Link to={`/main/${this.props.link}`} className={_text}>
                     {this.props.title}
-                </NavLink>
+                </Link>
                 <Icon
                     className={_create}
                     icon='create'

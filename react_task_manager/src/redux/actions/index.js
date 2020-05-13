@@ -35,12 +35,22 @@ export {
 export {
     CHANGE_EMAIL_INPUT,
     CHANGE_PASSWORD_INPUT,
-    TRY_LOGIN,
+    LOGIN_SUCCESS,
     LOG_OUT,
     changeEmailInputAC,
     changePasswordInputAC,
-    tryLoginAC,
+    loginRequestAC,
     logOutAC
-} from './registrationFormActions';
+} from './loginFormActions';
 
+export {
+    CHANGE_REG_EMAIL_INPUT,
+    CHANGE_REG_NAME_INPUT,
+    CHANGE_REG_PASSWORD_INPUT,
+    CHANGE_CONFIRM_PASSWORD_INPUT,
+    changeRegEmailInputAC,
+    changeRegNameInput,
+    changeRegPasswordInput,
+    changeConfirmPasswordInput
+} from './registrationFormActions'
 

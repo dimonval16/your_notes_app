@@ -1,7 +1,7 @@
 import {
     CHANGE_EMAIL_INPUT,
     CHANGE_PASSWORD_INPUT,
-    TRY_LOGIN,
+    LOGIN_SUCCESS,
     LOG_OUT
 } from '../actions';
 
@@ -19,16 +19,19 @@ export default function reducer(state = {}, action) {
                 pass: action.inputValue
             }
 
-        case TRY_LOGIN:
+        case LOGIN_SUCCESS:
             return {
                 ...state,
-                registered: state.email && state.pass ? !state.registered : state.registered
+                isAuth: true
             }
 
         case LOG_OUT:
+            localStorage.removeItem('accessToken');
+            action.history.push('/main');
+
             return {
                 ...state,
-                registered: !state.registered,
+                isAuth: false,
                 email: '',
                 pass: ''
             }
@@ -36,5 +39,4 @@ export default function reducer(state = {}, action) {
         default:
             return {...state};
     }
-
 }

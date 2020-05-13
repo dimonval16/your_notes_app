@@ -2,87 +2,29 @@ const state = {
     categories: [
         {
             id: 1,
-            title: 'Понедельник',
-            notes: [
-                {
-                    id: 1,
-                    title: 'Заметки для Понедельника',
-                    completed: false
-                }
-            ]
+            title: 'Home',
+            notes: []
         },
         {
             id: 2,
-            title: 'Вторник',
-            notes: [
-                {
-                    id: 1,
-                    title: 'Заметки для Вторника',
-                    completed: false
-                }
-            ]
+            title: 'Work',
+            notes: []
         },
         {
             id: 3,
-            title: 'Среда',
-            notes: [
-                {
-                    id: 1,
-                    title: 'Заметки для Среды',
-                    completed: false
-                }
-            ]
+            title: 'Planned',
+            notes: []
         },
         {
             id: 4,
-            title: 'Четверг',
-            notes: [
-                {
-                    id: 1,
-                    title: 'Заметки для Четверга',
-                    completed: false
-                }
-            ]
-        },
-        {
-            id: 5,
-            title: 'Пятница',
-            notes: [
-                {
-                    id: 1,
-                    title: 'Заметки для Пятницы',
-                    completed: true
-                }
-            ]
-        },
-        {
-            id: 6,
-            title: 'Суббота',
-            notes: [
-                {
-                    id: 1,
-                    title: 'Заметки для Субботы',
-                    completed: true
-                }
-            ]
-        },
-        {
-            id: 7,
-            title: 'Воскресенье',
-            notes: [
-                {
-                    id: 1,
-                    title: 'Заметки для Воскресенья',
-                    completed: true
-                }
-            ]
+            title: 'Chill',
+            notes: []
         }
     ],
     user: {
         id: 1,
         name: 'Dimas',
-        surname: 'Volynskyi',
-        email: 'brazzers@gmail.com',
+        email: '',
         pass: '',
         photo: 'account_circle'
     },
@@ -92,11 +34,18 @@ const state = {
         catFieldHidden: true
     },
     filter: 'ALL',
-    registrationForm: {
+    loginForm: {
         email: '',
         pass: '',
-        registered: true
-    }
+        isAuth: false
+    },
+    regForm: {
+        email: '',
+        name: '',
+        pass: '',
+        confirmPass: '',
+    },
+
 }
 
 export default state;

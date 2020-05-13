@@ -1,40 +1,44 @@
 import React from 'react';
+import { Switch, Route, Redirect } from 'react-router-dom';
+import { withRouter } from 'react-router';
 import { connect } from 'react-redux';
-import HeaderContainer from './containers/HeaderContainer';
-import SidebarContainer from './containers/SidebarContainer';
-import MainContentContainer from './containers/MainContentContainer';
-import SloganContainer from './containers/SloganContainer';
-import FilterContainer from "./containers/FilterContainer";
-import RegistrationFormContainer from "./containers/RegistrationFormContainer";
-import './App.css';
+import MainApplication from "./components/MainApplication/MainApplication";
+import LoginFormContainer from "./containers/LoginFormContainer";
+import RegFormContainer from "./containers/RegFormContainer";
 
-function MainApplication(props) {
+const PrivateRoute = ({component: Component, path, isAuth, ...rest}) => {
+    const isToken = localStorage.getItem('accessToken');
+    console.log('Private Route')
+
     return (
-        <div className={props._needWrapper}>
-            <HeaderContainer/>
-            <SidebarContainer/>
-            <SloganContainer/>
-            <FilterContainer/>
-            <MainContentContainer/>
-        </div>
+        <Route
+            {...rest}
+            exact
+            path={path}
+            render={props => isToken ? <Component {...props}/> : <Redirect to={'/signin'}/>}
+        />
     );
 }
 
 function App(props) {
-    const _needWrapper = props.sloganHidden ? 'AppThreeRows' : 'AppFourRows';
-    const registered = props.registered;
-
-    return registered ?
-        <MainApplication _needWrapper={_needWrapper}/>
-        :
-        <RegistrationFormContainer/>;
+    return (
+        <Switch>
+            <PrivateRoute
+                path={'/main'}
+                isAuth={props.isAuth}
+                component={MainApplication}
+            />
+            <Route path={'/signin'} exact component={LoginFormContainer}/>
+            <Route path={'/signup'} exact component={RegFormContainer}/>
+            <Redirect from={'/'} to={props.isAuth ? '/main' : '/signin'} />
+        </Switch>
+    );
 }
 
 function mapStateToProps(state) {
     return {
-        sloganHidden: state.viewFields.sloganHidden,
-        registered: state.registrationForm.registered
-    };
+        isAuth: state.loginForm.isAuth
+    }
 }
 
-export default connect(mapStateToProps)(App);
+export default connect(mapStateToProps)(withRouter(App));
