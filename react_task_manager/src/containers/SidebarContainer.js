@@ -1,10 +1,15 @@
 import { connect } from 'react-redux';
 import Sidebar from '../components/Sidebar/Sidebar';
-import {addCategory, deleteCategory, editCategory, toggleCatField} from '../redux/actions';
+import {
+    addCategory,
+    deleteCategory,
+    editCategory,
+    toggleCatField
+} from '../redux/actions';
 
 function mapStateToProps(state) {
     return {
-        categories: state.categories,
+        categories: state.categories.data,
         user: state.user,
         catFieldHidden: state.viewFields.catFieldHidden
     };

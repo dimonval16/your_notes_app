@@ -5,7 +5,7 @@ import Button from '../../Buttons/AddButton/Button';
 
 export default function Notes(props) {
     return (
-        <div >
+        <div>
             <Button
                 id="content"
                 name="Добавить задачу"
@@ -17,8 +17,8 @@ export default function Notes(props) {
                 onAdd={props.onAdd}
                 hideAddForm={props.onToggleAddField}
             />
-            {props.notes.map(note => {
-                return <Note
+            {props.notes.map(note => (
+                <Note
                     title={note.title}
                     completed={note.completed}
                     key={note.id}
@@ -28,7 +28,7 @@ export default function Notes(props) {
                     onDelete={props.onDelete}
                     onEdit={props.onEdit}
                 />
-            })}
+            ))}
         </div>
     );
 }

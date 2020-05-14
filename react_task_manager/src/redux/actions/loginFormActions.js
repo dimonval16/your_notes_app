@@ -3,10 +3,11 @@ export const CHANGE_PASSWORD_INPUT = 'CHANGE_PASSWORD_INPUT';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOG_OUT = 'LOG_OUT';
 
-export function logOutAC(history) {
+export function logOutAC() {
+    localStorage.removeItem('accessToken');
+
     return {
-        type: LOG_OUT,
-        history
+        type: LOG_OUT
     }
 }
 
@@ -24,15 +25,13 @@ export function changePasswordInputAC(inputValue) {
     };
 }
 
-function loginSuccessAC(response, data) {
+function loginSuccessAC() {
     return {
         type: LOGIN_SUCCESS,
-        response,
-        data
     }
 }
 
-export function loginRequestAC(url, data, history) {
+export function loginRequestAC(url, data) {
     return dispatch => {
         fetch(url, {
             method: 'POST',
@@ -45,12 +44,13 @@ export function loginRequestAC(url, data, history) {
             .then(response => {
                 if (response.status >= 400) {
                     alert(`Error ${response.status}: ${response.message}`);
-                } else if (response.Error) {
-                    alert(`Error: ${response.Error}`)
-                } else {
+                }
+                else if (response.Error) {
+                    alert(`Error: ${response.Error}`);
+                }
+                else if (response.accessToken) {
                     localStorage.setItem('accessToken', response.accessToken);
-                    history.push('/main');
-                    return dispatch(loginSuccessAC(response, data));
+                    return dispatch(loginSuccessAC());
                 }
             })
             .catch(error => console.error(`Ошибка капець: ${error}`))

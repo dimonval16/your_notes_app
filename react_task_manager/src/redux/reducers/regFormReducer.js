@@ -2,7 +2,8 @@ import {
     CHANGE_REG_EMAIL_INPUT,
     CHANGE_REG_NAME_INPUT,
     CHANGE_REG_PASSWORD_INPUT,
-    CHANGE_CONFIRM_PASSWORD_INPUT
+    CHANGE_CONFIRM_PASSWORD_INPUT,
+    LOG_OUT
 } from '../actions'
 
 export default function reducer(state = {}, action) {
@@ -29,6 +30,15 @@ export default function reducer(state = {}, action) {
             return{
                 ...state,
                 confirmPass: action.inputValue
+            }
+
+        case LOG_OUT:
+            return {
+                ...state,
+                email: '',
+                name: '',
+                pass: '',
+                confirmPass: ''
             }
 
         default:

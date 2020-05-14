@@ -1,9 +1,10 @@
+import nextId from './idCalculate';
 import {
     ADD_NOTE,
     DELETE_NOTE,
     TOGGLE_NOTE,
-    EDIT_NOTE} from '../../actions/notesActions';
-import nextId from './idCalculate';
+    EDIT_NOTE
+} from '../../actions';
 
 function oneMoreReducer(state = {}, action) {
     switch (action.type) {

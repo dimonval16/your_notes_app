@@ -1,26 +1,29 @@
 const state = {
-    categories: [
-        {
-            id: 1,
-            title: 'Home',
-            notes: []
-        },
-        {
-            id: 2,
-            title: 'Work',
-            notes: []
-        },
-        {
-            id: 3,
-            title: 'Planned',
-            notes: []
-        },
-        {
-            id: 4,
-            title: 'Chill',
-            notes: []
-        }
-    ],
+    categories: {
+        filterStatus: 'ALL',
+        data: [
+            {
+                id: 1,
+                title: 'Home',
+                notes: []
+            },
+            {
+                id: 2,
+                title: 'Work',
+                notes: []
+            },
+            {
+                id: 3,
+                title: 'Planned',
+                notes: []
+            },
+            {
+                id: 4,
+                title: 'Chill',
+                notes: []
+            }
+        ]
+    },
     user: {
         id: 1,
         name: 'Dimas',
@@ -33,19 +36,19 @@ const state = {
         notesFieldHidden: true,
         catFieldHidden: true
     },
-    filter: 'ALL',
+    authorized: {
+        status: false
+    },
     loginForm: {
         email: '',
-        pass: '',
-        isAuth: false
+        pass: ''
     },
     regForm: {
         email: '',
         name: '',
         pass: '',
-        confirmPass: '',
-    },
-
+        confirmPass: ''
+    }
 }
 
 export default state;

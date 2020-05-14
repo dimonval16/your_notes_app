@@ -4,7 +4,8 @@ import {
     changeRegEmailInputAC,
     changeRegNameInput,
     changeRegPasswordInput,
-    changeConfirmPasswordInput
+    changeConfirmPasswordInput,
+    requestSignUpAC
 } from '../redux/actions'
 
 
@@ -16,6 +17,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
+        onSignUp: (url, data) => dispatch(requestSignUpAC(url, data)),
         onEmailRegInputChange: inputValue => dispatch(changeRegEmailInputAC(inputValue)),
         onNameRegInputChange: inputValue => dispatch(changeRegNameInput(inputValue)),
         onPasswordRegInputChange: inputValue => dispatch(changeRegPasswordInput(inputValue)),

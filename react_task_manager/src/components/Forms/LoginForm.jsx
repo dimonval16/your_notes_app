@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import LoginStyles from './LoginForm.module.css';
 
-export default function LoginForm(props) {
+function LoginForm(props) {
     const _wrapper = LoginStyles.wrapper;
     const _staticWord = LoginStyles.staticWord;
     const _itemStyle = LoginStyles.itemStyle;
@@ -36,9 +36,8 @@ export default function LoginForm(props) {
             email: props.loginForm.email,
             password: props.loginForm.pass
         }
-        const history = props.history;
 
-        props.onLogin(url, data, history);
+        props.onLogin(url, data);
     }
 
     return (
@@ -80,3 +79,5 @@ export default function LoginForm(props) {
         </div>
     );
 }
+
+export default LoginForm;

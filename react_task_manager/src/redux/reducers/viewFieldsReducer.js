@@ -1,4 +1,8 @@
-import {TOGGLE_SLOGAN, TOGGLE_CAT_FIELD, TOGGLE_NOTE_FIELD} from '../actions/viewFieldsActions';
+import {
+    TOGGLE_SLOGAN,
+    TOGGLE_CAT_FIELD,
+    TOGGLE_NOTE_FIELD
+} from '../actions';
 
 export default function reducer(state = {}, action) {
     switch (action.type) {

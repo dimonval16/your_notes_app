@@ -1,10 +1,10 @@
-import {connect} from 'react-redux';
-import {setFilterAC} from "../redux/actions";
+import { connect } from 'react-redux';
+import { setFilterAC } from "../redux/actions";
 import Filter from "../components/Filter/Filter";
 
 function mapStateToProps(state) {
     return {
-        activeFilter: state.filter
+        activeFilter: state.categories.filterStatus
     }
 }
 

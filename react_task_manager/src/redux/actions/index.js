@@ -29,6 +29,9 @@ export {
 
 export {
     SET_FILTER,
+    ALL,
+    COMPLETED,
+    NOT_COMPLETED,
     setFilterAC
 } from './filterActions';
 
@@ -40,7 +43,7 @@ export {
     changeEmailInputAC,
     changePasswordInputAC,
     loginRequestAC,
-    logOutAC
+    logOutAC,
 } from './loginFormActions';
 
 export {
@@ -48,9 +51,11 @@ export {
     CHANGE_REG_NAME_INPUT,
     CHANGE_REG_PASSWORD_INPUT,
     CHANGE_CONFIRM_PASSWORD_INPUT,
+    SIGN_UP_SUCCESS,
     changeRegEmailInputAC,
     changeRegNameInput,
     changeRegPasswordInput,
-    changeConfirmPasswordInput
+    changeConfirmPasswordInput,
+    requestSignUpAC
 } from './registrationFormActions'
 

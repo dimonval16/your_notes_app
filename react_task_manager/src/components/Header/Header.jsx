@@ -1,7 +1,6 @@
 import React from 'react';
-import Header_style from './Header.module.css'
-import ArrowButton from '../Buttons/ArrowButton/ArrowButton'
-import { withRouter } from "react-router";
+import Header_style from './Header.module.css';
+import ArrowButton from '../Buttons/ArrowButton/ArrowButton';
 
 function Header(props) {
     const _wrapper = Header_style.wrapper;
@@ -10,12 +9,19 @@ function Header(props) {
     const arrowUpIcon = 'keyboard_arrow_up';
     const arrowDownIcon = 'keyboard_arrow_down';
     const _logOut = Header_style.logOut;
-    const history = props.history;
+
+    function handleLogOut() {
+        const isSure = window.confirm('Are you sure?')
+
+        if(isSure) {
+            props.onLogOut();
+        }
+    }
 
     return (
         <div className={_wrapper}>
             <div
-                onClick={() => props.onLogOut(history)}
+                onClick={handleLogOut}
                 className={_logOut}
             >
                 Log out
@@ -31,4 +37,4 @@ function Header(props) {
     );
 }
 
-export default withRouter(Header);
+export default Header;

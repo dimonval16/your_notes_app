@@ -1,4 +1,4 @@
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import Header from '../components/Header/Header';
 import { toggleSlogan, logOutAC } from '../redux/actions'
 
@@ -11,7 +11,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
     return {
         onToggleSlogan: () => dispatch(toggleSlogan()),
-        onLogOut: (history) => dispatch(dispatch(logOutAC(history)))
+        onLogOut: () => dispatch(dispatch(logOutAC()))
     };
 }
 

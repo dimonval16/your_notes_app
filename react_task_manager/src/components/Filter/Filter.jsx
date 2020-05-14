@@ -1,7 +1,7 @@
 import React from "react";
 import filterStyle from './Filter.module.css';
 import Icon from "../Buttons/Icon/Icon";
-import {ALL, COMPLETED, NOT_COMPLETED} from "../../redux/actions/filterActions";
+import { ALL, COMPLETED, NOT_COMPLETED } from '../../redux/actions';
 
 export default function Filter(props) {
     const _wrapper = filterStyle.wrapper;
