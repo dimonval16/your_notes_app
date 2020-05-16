@@ -1,66 +1,56 @@
-import React from 'react';
+import React, { createRef, useState, useEffect } from 'react';
 import AddNoteStyle from './AddNote.module.css';
 import Icon from '../../Buttons/Icon/Icon';
 
-export default class AddNote extends React.Component {
-    constructor(props) {
-        super(props);
+export default function AddNote(props) {
+    const _wrapperHidden = AddNoteStyle.wrapperHidden;
+    const _wrapperVisible = AddNoteStyle.wrapperVisible;
+    const _input = AddNoteStyle.input;
+    const _save = AddNoteStyle.save;
+    const inputRef = createRef();
 
-        this.state = {
-            title: ''
-        };
+    const [title, setTitle] = useState('');
 
-        this.activateField = this.activateField.bind(this);
-        this.handleAddSubmit = this.handleAddSubmit.bind(this);
-    }
+    useEffect(() => {
+        if (!props.notesFieldHidden) {
+            inputRef.current.focus();
+        }
+    }, [props.notesFieldHidden, inputRef]);
 
-    componentDidUpdate() {
-        if (!this.props.notesFieldHidden) {
-            this.refs.input.focus();
+    function handleAddSubmit(e) {
+        e.preventDefault();
+        const newTitle = title;
+
+        if (newTitle) {
+            props.onAdd(newTitle, props.categoryId);
+            setTitle('');
+            props.hideAddForm();
         }
     }
 
-    activateField(event) {
-        let newTitle = event.target.value;
-        this.setState({ title: newTitle })
+    function changeInput(e) {
+        const newTitle = e.target.value;
+        setTitle(newTitle);
     }
 
-    handleAddSubmit(event) {
-        event.preventDefault();
-        const title = this.state.title;
-
-        if (title) {
-            this.props.onAdd(title, this.props.categoryId);
-            this.setState({ title: '' });
-            this.props.hideAddForm();
-        }
-    }
-
-    render() {
-        const _wrapperHidden = AddNoteStyle.wrapperHidden;
-        const _wrapperVisible = AddNoteStyle.wrapperVisible;
-        const _input = AddNoteStyle.input;
-        const _save = AddNoteStyle.save;
-
-        return (
-            <form
-                className={this.props.notesFieldHidden ? _wrapperHidden : _wrapperVisible}
-                onSubmit={this.handleAddSubmit}
-            >
-                <input
-                    className={_input}
-                    type='text'
-                    value={this.state.title}
-                    placeholder='Добавить новую задачу...'
-                    onChange={this.activateField}
-                    ref='input'
-                />
-                <Icon
-                    className={_save}
-                    icon='save'
-                    type='submit'
-                />
-            </form>
-        );
-    }
+    return (
+        <form
+            className={props.notesFieldHidden ? _wrapperHidden : _wrapperVisible}
+            onSubmit={handleAddSubmit}
+        >
+            <input
+                className={_input}
+                type='text'
+                value={title}
+                placeholder='Добавить новую задачу...'
+                onChange={changeInput}
+                ref={inputRef}
+            />
+            <Icon
+                className={_save}
+                icon='save'
+                type='submit'
+            />
+        </form>
+    );
 }

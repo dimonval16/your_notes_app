@@ -31,13 +31,13 @@ function LoginForm(props) {
 
     function handleLoginButton(e) {
         e.preventDefault();
-        const url = 'https://damp-headland-57051.herokuapp.com/api/v1/signin';
+
         const data = {
             email: props.loginForm.email,
             password: props.loginForm.pass
         }
 
-        props.onLogin(url, data);
+        props.onLogin(data);
     }
 
     return (

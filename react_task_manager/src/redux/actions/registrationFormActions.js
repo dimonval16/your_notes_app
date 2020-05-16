@@ -1,3 +1,10 @@
+import {
+    HOST_SAMOHA,
+    HOST_SASHKA,
+    SIGN_UP_SAMOHA,
+    SIGN_UP_SASHKA
+} from '../requestsData/requestData'
+
 export const CHANGE_REG_EMAIL_INPUT = 'CHANGE_REG_EMAIL_INPUT';
 export const CHANGE_REG_NAME_INPUT = 'CHANGE_REG_NAME_INPUT';
 export const CHANGE_REG_PASSWORD_INPUT = 'CHANGE_REG_PASSWORD_INPUT';
@@ -38,13 +45,23 @@ function signUpSuccessAC() {
     }
 }
 
-export const requestSignUpAC = (url, data) => dispatch => {
-    fetch(url, {
+export const requestSignUpAC = (data) => dispatch => {
+    const signUpSashka = HOST_SASHKA+SIGN_UP_SASHKA;
+    const signUpSamoha = HOST_SAMOHA+SIGN_UP_SAMOHA;
+    const activeUrl = signUpSamoha;
+
+    const sashkaData = {
+        email: data.email,
+        password: data.password,
+        username: data.name
+    }
+
+    fetch(activeUrl, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify(data)
+        body: JSON.stringify(activeUrl === signUpSashka ? sashkaData : data)
     })
         .then(response => response.json())
         .then(response => {
@@ -60,4 +77,5 @@ export const requestSignUpAC = (url, data) => dispatch => {
                 return dispatch(signUpSuccessAC());
             }
         })
+        .catch(error => console.error(`Ошибка: ${error}`))
 }

@@ -3,7 +3,7 @@ import {
     CHANGE_REG_NAME_INPUT,
     CHANGE_REG_PASSWORD_INPUT,
     CHANGE_CONFIRM_PASSWORD_INPUT,
-    LOG_OUT
+    SIGN_UP_SUCCESS
 } from '../actions'
 
 export default function reducer(state = {}, action) {
@@ -32,7 +32,7 @@ export default function reducer(state = {}, action) {
                 confirmPass: action.inputValue
             }
 
-        case LOG_OUT:
+        case SIGN_UP_SUCCESS:
             return {
                 ...state,
                 email: '',

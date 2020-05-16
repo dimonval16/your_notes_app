@@ -57,5 +57,12 @@ export {
     changeRegPasswordInput,
     changeConfirmPasswordInput,
     requestSignUpAC
-} from './registrationFormActions'
+} from './registrationFormActions';
+
+export {
+    GET_USER_INFO,
+    GET_CATEGORY_INFO,
+    getUserRequestAC,
+    getCategoryInfo
+} from './userAction';
 

@@ -1,7 +1,7 @@
 import {
     CHANGE_EMAIL_INPUT,
     CHANGE_PASSWORD_INPUT,
-    LOG_OUT,
+    LOGIN_SUCCESS
 } from '../actions';
 
 export default function reducer(state = {}, action) {
@@ -18,7 +18,7 @@ export default function reducer(state = {}, action) {
                 pass: action.inputValue
             }
 
-        case LOG_OUT:
+        case LOGIN_SUCCESS:
             return {
                 ...state,
                 email: '',

@@ -1,6 +1,6 @@
 import { default as notesReducer } from './notesReducer';
-import nextId from './idCalculate';
 import {
+    GET_CATEGORY_INFO,
     ADD_CATEGORY,
     DELETE_CATEGORY,
     EDIT_CATEGORY,
@@ -11,47 +11,40 @@ import {
     ALL,
     COMPLETED,
     NOT_COMPLETED,
-    SET_FILTER
+    SET_FILTER,
+    LOG_OUT
 } from '../../actions';
-
-function oneMoreReducer(state = {}, action) {
-    switch (action.type) {
-        case ADD_CATEGORY:
-            return {
-                id: nextId(state),
-                title: action.title,
-                notes: []
-            }
-
-        case EDIT_CATEGORY:
-            return {
-                ...state,
-                title: state.id === action.id ? state.title = action.title : state.title
-            }
-
-        default:
-            return state;
-    }
-}
 
 export default function reducer(state = {}, action) {
     switch (action.type) {
+        case GET_CATEGORY_INFO:
+            return {
+                ...state,
+                data: [...action.result]
+            }
+
         case ADD_CATEGORY:
             return {
                 ...state,
-                data: [oneMoreReducer(state.data, action), ...state.data]
+                data: [...action.result]
             }
 
         case DELETE_CATEGORY:
             return {
                 ...state,
-                data: state.data.filter(category => category.id !== action.id)
+                data: [...action.result]
             }
 
         case EDIT_CATEGORY:
             return {
                 ...state,
-                data: state.data.map(category => oneMoreReducer(category, action))
+                data: [...action.result]
+            }
+
+        case LOG_OUT:
+            return {
+                ...state,
+                data: []
             }
 
         case ADD_NOTE:

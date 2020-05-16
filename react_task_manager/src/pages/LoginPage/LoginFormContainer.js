@@ -1,10 +1,10 @@
 import { connect } from 'react-redux';
-import LoginForm from '../components/Forms/LoginForm';
+import LoginForm from './LoginForm';
 import {
     changeEmailInputAC,
     changePasswordInputAC,
     loginRequestAC
-} from '../redux/actions';
+} from '../../redux/actions';
 
 function mapStateToProps(state) {
     return {
@@ -16,7 +16,7 @@ function mapDispatchToProps(dispatch) {
     return {
         onEmailInputChange: inputValue => dispatch(changeEmailInputAC(inputValue)),
         onPasswordInputChange: inputValue => dispatch(changePasswordInputAC(inputValue)),
-        onLogin: (url, data) => dispatch(loginRequestAC(url, data))
+        onLogin: (data) => dispatch(loginRequestAC(data))
     };
 }
 

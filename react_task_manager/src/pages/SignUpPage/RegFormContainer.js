@@ -1,12 +1,12 @@
 import { connect } from 'react-redux';
-import RegForm from '../components/Forms/RegForm';
+import RegForm from './RegForm';
 import {
     changeRegEmailInputAC,
     changeRegNameInput,
     changeRegPasswordInput,
     changeConfirmPasswordInput,
     requestSignUpAC
-} from '../redux/actions'
+} from '../../redux/actions'
 
 
 function mapStateToProps(state) {
@@ -17,7 +17,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        onSignUp: (url, data) => dispatch(requestSignUpAC(url, data)),
+        onSignUp: (data) => dispatch(requestSignUpAC(data)),
         onEmailRegInputChange: inputValue => dispatch(changeRegEmailInputAC(inputValue)),
         onNameRegInputChange: inputValue => dispatch(changeRegNameInput(inputValue)),
         onPasswordRegInputChange: inputValue => dispatch(changeRegPasswordInput(inputValue)),

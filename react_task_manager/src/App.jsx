@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import { withRouter } from 'react-router';
 import { connect } from 'react-redux';
-import MainApplication from "./components/MainApplication/MainApplication";
-import LoginFormContainer from "./containers/LoginFormContainer";
-import RegFormContainer from "./containers/RegFormContainer";
+import MainPage from "./pages/MainPage/MainPage";
+import LoginPage from "./pages/LoginPage/LoginFormContainer";
+import SignUpPage from "./pages/SignUpPage/RegFormContainer";
 
 
 const PrivateRoute = ({component: Component, path, redirect, isAuth, ...rest}) => {
@@ -15,42 +15,38 @@ const PrivateRoute = ({component: Component, path, redirect, isAuth, ...rest}) =
             {...rest}
             exact
             path={path}
-            render={props => isToken && isAuth ? <Component {...props}/> : <Redirect to={redirect}/>}
+            render={props => isToken ? <Component {...props}/> : <Redirect to={redirect}/>}
         />
     );
 }
 
-class App extends React.Component {
+function App(props) {
+    const { history } = props;
+    const isToken = localStorage.getItem('accessToken');
 
-    componentDidUpdate(prevProps) {
-        const isAuthorize = !prevProps.isAuth && this.props.isAuth;
-        const isLogOut = prevProps.isAuth && !this.props.isAuth;
-        const { history } = this.props;
-
-        if(isAuthorize) {
+    useEffect(() => {
+        if(isToken) {
             history.push('/main');
-            console.log('user Login');
-        } else if (isLogOut) {
+            console.log('User login');
+        } else {
             history.push('/signin');
-            console.log('user Logout');
+            console.log('User log out');
         }
-    }
+    }, [props.isAuth, history, isToken])
 
-    render() {
-        return (
-            <Switch>
-                <PrivateRoute
-                    path={'/main'}
-                    redirect={'/signin'}
-                    isAuth={this.props.isAuth}
-                    component={MainApplication}
-                />
-                <Route path={'/signin'} exact component={LoginFormContainer}/>
-                <Route path={'/signup'} exact component={RegFormContainer}/>
-                <Redirect from={'/'} to={'/main'}/>
-            </Switch>
-        );
-    }
+    return (
+        <Switch>
+            <PrivateRoute
+                path={'/main'}
+                redirect={'/signin'}
+                isAuth={props.isAuth}
+                component={MainPage}
+            />
+            <Route path={'/signin'} exact component={LoginPage}/>
+            <Route path={'/signup'} exact component={SignUpPage}/>
+            <Redirect from={'/'} to={'/main'}/>
+        </Switch>
+    );
 }
 
 function mapStateToProps(state) {

@@ -1,50 +1,44 @@
-import React from 'react';
+import React, { useEffect, useState, createRef } from 'react';
 import { Link } from 'react-router-dom';
 import CategoryStyle from '../Category.module.css';
 import Icon from '../../../Buttons/Icon/Icon';
 
-export default class CategoryItem extends React.Component {
-    constructor(props) {
-        super(props);
+export default function CategoryItem(props) {
+    const [editing, setEditing] = useState(false);
+    const inputRef = createRef();
 
-        this.state = {
-            editing: false
+    useEffect(() => {
+        if (editing) {
+            console.log(inputRef);
+            inputRef.current.focus();
+            inputRef.current.select();
         }
+    }, [editing, inputRef])
 
-        this.renderCategory = this.renderCategory.bind(this);
-        this.renderEditForm = this.renderEditForm.bind(this);
-        this.handleEditSubmit = this.handleEditSubmit.bind(this);
-    }
+    function handleEdit(e) {
+        e.preventDefault();
+        const title = inputRef.current.value;
+        const id = props.link;
 
-    componentDidUpdate() {
-        if (this.state.editing) {
-            this.refs.input.focus();
-            this.refs.input.select();
-        }
-    }
-
-    handleEditSubmit(event) {
-        event.preventDefault();
-        const title = this.refs.input.value;
-        const id = this.props.link;
-
-        if (title) {
-            this.props.onEdit(id, title);
-            this.setState({editing: false});
+        if (title === props.title) {
+            setEditing(false);
+        } else {
+            props.onEdit(id, title);
+            setEditing(false);
         }
     }
 
-    renderEditForm() {
+    function RenderEditForm() {
         const _editWrapper = CategoryStyle.editWrapper;
         const _input = CategoryStyle.input;
         const _save = CategoryStyle.save;
 
         return (
-            <form className={_editWrapper} onSubmit={this.handleEditSubmit}>
+            <form className={_editWrapper} onSubmit={handleEdit}>
                 <input
                     className={_input}
-                    ref='input'
-                    defaultValue={this.props.title}/>
+                    ref={inputRef}
+                    defaultValue={props.title}/>
                 <Icon
                     className={_save}
                     icon='save'
@@ -54,7 +48,7 @@ export default class CategoryItem extends React.Component {
         );
     }
 
-    renderCategory() {
+    function RenderCategory() {
         const _wrapper = CategoryStyle.wrapper;
         const _list = CategoryStyle.list;
         const _text = CategoryStyle.text;
@@ -67,24 +61,22 @@ export default class CategoryItem extends React.Component {
                     className={_list}
                     icon='format_list_bulleted'
                 />
-                <Link to={`/main/${this.props.link}`} className={_text}>
-                    {this.props.title}
+                <Link to={`/main/${props.link}`} className={_text}>
+                    {props.title}
                 </Link>
                 <Icon
                     className={_create}
                     icon='create'
-                    onClick={() => this.setState({editing: true})}
+                    onClick={() => setEditing(true)}
                 />
                 <Icon
                     className={_delete}
                     icon='delete'
-                    onClick={() => this.props.onDelete(this.props.link)}
+                    onClick={() => props.onDelete(props.link)}
                 />
             </div>
         );
     }
 
-    render() {
-        return (this.state.editing ? this.renderEditForm() : this.renderCategory());
-    }
+    return editing ? RenderEditForm() : RenderCategory();
 }

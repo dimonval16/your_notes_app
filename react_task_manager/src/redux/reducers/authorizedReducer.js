@@ -9,19 +9,19 @@ export default function reducer(state = { status: false }, action) {
         case LOGIN_SUCCESS:
             return {
                 ...state,
-                status: true
+                status: !state.status
             }
 
         case SIGN_UP_SUCCESS:
             return {
                 ...state,
-                status: true
+                status: !state.status
             }
 
         case LOG_OUT:
             return {
                 ...state,
-                status: false
+                status: !state.status
             }
 
         default:

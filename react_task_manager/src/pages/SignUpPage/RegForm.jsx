@@ -42,8 +42,7 @@ export default function RegForm(props) {
     }
 
     function handleSignUpButton(e) {
-        e.preventDefault();
-        const url = 'https://damp-headland-57051.herokuapp.com/api/v1/signup';
+        e.preventDefault()
         const data = {
             confirmPassword: props.regForm.confirmPass,
             email: props.regForm.email,
@@ -51,7 +50,7 @@ export default function RegForm(props) {
             password: props.regForm.pass
         }
 
-        props.onSignUp(url, data);
+        props.onSignUp(data);
     }
 
     return (
