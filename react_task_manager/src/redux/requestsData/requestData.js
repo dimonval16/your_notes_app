@@ -11,3 +11,5 @@ export const GET_USER_INFO_SASHKA = '/api/v1/users/me';
 export const GET_USER_INFO_SAMOHA = '/api/v1/users';
 
 export const GET_CATEGORY_INFO_SAMOHA = '/api/v1/categories';
+
+export const SET_PHOTO_URL = '/api/v1/users/photo';

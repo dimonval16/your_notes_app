@@ -1,5 +1,5 @@
 import React, { useEffect, useState, createRef } from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import CategoryStyle from '../Category.module.css';
 import Icon from '../../../Buttons/Icon/Icon';
 
@@ -9,7 +9,6 @@ export default function CategoryItem(props) {
 
     useEffect(() => {
         if (editing) {
-            console.log(inputRef);
             inputRef.current.focus();
             inputRef.current.select();
         }
@@ -54,16 +53,21 @@ export default function CategoryItem(props) {
         const _text = CategoryStyle.text;
         const _create = CategoryStyle.create;
         const _delete = CategoryStyle.delete;
+        const _Active = CategoryStyle.Active;
 
         return (
-            <div className={_wrapper}>
+            <NavLink
+                to={`/main/${props.link}`}
+                activeClassName={_Active}
+                className={_wrapper}
+            >
                 <Icon
                     className={_list}
                     icon='format_list_bulleted'
                 />
-                <Link to={`/main/${props.link}`} className={_text}>
-                    {props.title}
-                </Link>
+                <span className={_text}>
+                        {props.title}
+                    </span>
                 <Icon
                     className={_create}
                     icon='create'
@@ -74,7 +78,7 @@ export default function CategoryItem(props) {
                     icon='delete'
                     onClick={() => props.onDelete(props.link)}
                 />
-            </div>
+            </NavLink>
         );
     }
 

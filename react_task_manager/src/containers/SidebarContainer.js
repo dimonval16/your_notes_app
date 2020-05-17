@@ -4,7 +4,9 @@ import {
     addCategory,
     deleteCategory,
     editCategory,
-    toggleCatField
+    toggleCatField,
+    logOutAC,
+    setPhotoAC
 } from '../redux/actions';
 
 function mapStateToProps(state) {
@@ -20,7 +22,9 @@ function mapDispatchToProps(dispatch) {
         onToggleAddField: () => dispatch(toggleCatField()),
         onCategoryDelete: categoryId => dispatch(deleteCategory(categoryId)),
         onCategoryEdit: (categoryId, title) => dispatch(editCategory(categoryId, title)),
-        onCategoryAdd: title => dispatch(addCategory(title))
+        onCategoryAdd: title => dispatch(addCategory(title)),
+        onLogOut: () => dispatch(logOutAC()),
+        onSetPhoto: file => dispatch(setPhotoAC(file))
     };
 }
 

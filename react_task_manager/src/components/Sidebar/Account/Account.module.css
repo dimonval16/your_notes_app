@@ -1,17 +1,109 @@
+/* -- user profile -- */
 .wrapper {
-    align-self: center;
-    text-align: center;
     color: white;
     line-height: 2;
-    margin-top: 20px;
+    margin-top: 10px;
     margin-bottom: 40px;
 }
 
-.wrapper>div:first-child {
+.settings {
+    background: none;
+    border: none;
+    color: white;
+    outline: none;
+    margin-bottom: 60px;
+    margin-left: 4px;
+    cursor: pointer;
+}
+
+.wrapperUser {
+    align-self: center;
+    text-align: center;
+}
+
+.userPhoto {
     font-size: 132px;
 }
 
-.wrapper>div:nth-child(2) {
+.userName {
     font-weight: lighter;
     font-size: 24px;
+}
+
+/* -- user setting -- */
+.menu {
+    position: absolute;
+    left: -100%;
+    transition-duration: .5s;
+}
+
+.menuActive {
+    position: absolute;
+    left: 0;
+    background: #2D487F;
+    color: white;
+    width: 20%;
+    height: 300px;
+    min-width: 224px;
+    transition-duration: .3s;
+}
+
+.wrapperSetting {
+    display: flex;
+    justify-content: space-between;
+    padding-left: 10px;
+    padding-right: 4px;
+    font-weight: lighter;
+    font-size: 18px;
+    border-bottom: 1px solid;
+    border-bottom-color: rgba(255, 255, 255, .3);
+}
+
+.cancel {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    outline: none;
+}
+
+.setParams ul {
+    list-style: none;
+    padding-left: 0;
+    font-weight: lighter;
+}
+
+.setParams li {
+    padding-left: 20px;
+    cursor: pointer;
+}
+
+.setParams li:hover{
+    background: rgba(255, 255, 255, .2);
+}
+
+.addPhotoWrapper {
+    display: flex;
+}
+
+.addPhoto {
+    background: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    color: white;
+}
+
+.addPhotoHidden {
+    position: absolute;
+    visibility: hidden;
+}
+
+.inputFile {
+    position: absolute;
+    visibility: hidden;
+}
+
+.label {
+    cursor: pointer;
 }

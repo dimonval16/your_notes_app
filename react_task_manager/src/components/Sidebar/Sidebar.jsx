@@ -4,17 +4,19 @@ import Account from './Account/Account';
 import Category from './Category/Category';
 import Button from '../Buttons/AddButton/Button';
 
-
 export default function Sidebar(props) {
     const _wrapper = SidebarStyle.wrapper;
 
     return (
         <div className={_wrapper}>
-            <Account user={props.user}/>
+            <Account
+                user={props.user}
+                onLogOut={props.onLogOut}
+                onSetPhoto={props.onSetPhoto}
+            />
             <Category
                 categories={props.categories}
                 catFieldHidden={props.catFieldHidden}
-                onClickSave={props.onToggleAddField}
                 onCategoryDelete={props.onCategoryDelete}
                 onCategoryEdit={props.onCategoryEdit}
                 onCategoryAdd={props.onCategoryAdd}

@@ -29,7 +29,6 @@ export default function AddCategory(props) {
         if (newTitle) {
             props.onAdd(newTitle);
             setTitle('');
-            props.onHideAddForm();
         }
     }
 

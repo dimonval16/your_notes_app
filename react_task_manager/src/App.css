@@ -8,7 +8,7 @@ body {
 
 .AppFourRows {
   display: grid;
-  grid-template-columns: 1fr 3fr;
+  grid-template-columns: 1fr 4fr;
   grid-template-rows: 50px 1fr 50px 3fr;
   min-height: 435px;
   height: 100vh;
@@ -16,7 +16,7 @@ body {
 
 .AppThreeRows {
   display: grid;
-  grid-template-columns: 1fr 3fr;
+  grid-template-columns: 1fr 4fr;
   grid-template-rows: 50px 50px 1fr;
   min-height: 435px;
   height: 100vh;

@@ -10,7 +10,6 @@ export default function Category(props) {
         <div className={_categoryBlock}>
             <AddCategory
                 catFieldHidden={props.catFieldHidden}
-                onHideAddForm={props.onClickSave}
                 onAdd={props.onCategoryAdd}
             />
             {props.categories.map(el => (

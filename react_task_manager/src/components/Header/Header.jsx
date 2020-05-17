@@ -8,24 +8,10 @@ function Header(props) {
     const _arrow = `material-icons ${Header_style.arrow}`;
     const arrowUpIcon = 'keyboard_arrow_up';
     const arrowDownIcon = 'keyboard_arrow_down';
-    const _logOut = Header_style.logOut;
-
-    function handleLogOut() {
-        const isSure = window.confirm('Are you sure?')
-
-        if(isSure) {
-            props.onLogOut();
-        }
-    }
 
     return (
         <div className={_wrapper}>
-            <div
-                onClick={handleLogOut}
-                className={_logOut}
-            >
-                Log out
-            </div>
+            <div />
             <div className={_arrows}>
                 <ArrowButton
                     className={_arrow}

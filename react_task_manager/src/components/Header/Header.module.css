@@ -18,15 +18,3 @@
     cursor: pointer;
     color: #2D487F;
   }
-
-.logOut {
-    align-self: center;
-    margin-left: 10px;
-    font-weight: bold;
-    color: #363636;
-    cursor: pointer;
-    text-decoration: none;
-}
-.logOut:hover {
-    font-size: 18px;
-}
