@@ -6,6 +6,7 @@ import {
     GET_CATEGORY_INFO_SAMOHA,
     SET_PHOTO_URL
 } from '../requestsData/requestData';
+import {LOG_OUT} from "./loginFormActions";
 
 export const GET_USER_INFO = 'GET_USER_INFO';
 export const GET_CATEGORY_INFO = 'GET_CATEGORY_INFO';
@@ -56,7 +57,7 @@ export const getCategoryInfo = () => dispatch => {
                 return response.json();
             } else {
                 localStorage.removeItem('accessToken');
-                return console.log(`Error get category info, ${response.status}: ${response.message}`);
+                return console.log(`Error get category info, status ${response.status}: Access denied`);
             }
         })
         .then(result => dispatch({
@@ -87,7 +88,10 @@ export const getUserRequestAC = () => dispatch => {
                 return response.json();
             } else {
                 localStorage.removeItem('accessToken');
-                return alert(`Error get user info, ${response.status}: ${response.message}`);
+                alert(`Error get user info, status ${response.status}: Your session is over`);
+                return dispatch({
+                    type: LOG_OUT
+                })
             }
         })
         .then(result => dispatch({

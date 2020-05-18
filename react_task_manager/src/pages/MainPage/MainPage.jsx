@@ -12,10 +12,12 @@ function MainPage(props) {
     const _needWrapper = props.sloganHidden ? 'AppThreeRows' : 'AppFourRows';
 
     useEffect(() => {
-       console.log('useEffect in MainPage');
-       props.onGetUserInfo();
-       props.onGetCategoryInfo();
-    });
+        console.log('useEffect in MainPage');
+
+        props.onGetUserInfo();
+        props.onGetCategoryInfo();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    },[]);
 
     return (
         <div className={_needWrapper}>

@@ -34,7 +34,7 @@ export function changePasswordInputAC(inputValue) {
 
 function loginSuccessAC() {
     return {
-        type: LOGIN_SUCCESS,
+        type: LOGIN_SUCCESS
     }
 }
 
