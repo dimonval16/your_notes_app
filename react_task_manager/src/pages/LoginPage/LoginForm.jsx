@@ -29,7 +29,7 @@ function LoginForm(props) {
         props.onPasswordInputChange(inputText);
     }
 
-    function handleLoginButton(e) {
+    function handleLoginSubmit(e) {
         e.preventDefault();
 
         const data = {
@@ -42,35 +42,36 @@ function LoginForm(props) {
 
     return (
         <div>
-            <form className={_wrapper}>
+            <form className={_wrapper} onSubmit={handleLoginSubmit}>
                 <button
                     className={`${_itemStyle} ${_buttons} ${_googleBlock}`}
                     onClick={handleGoogleButton}
                 >
-                    <div className={_googleIcon}></div>
+                    <div className={_googleIcon} />
                     <div>Log in with Google</div>
                 </button>
                 <span className={_staticWord}>or</span>
                 <input
                     className={`${_itemStyle} ${_input}`}
-                    type='text'
+                    required
+                    type='email'
                     placeholder='Email'
                     value={props.loginForm.email}
                     onChange={handleEmailInput}
                 />
                 <input
                     className={`${_itemStyle} ${_input}`}
+                    required
                     type='password'
                     placeholder='Password'
                     value={props.loginForm.pass}
                     onChange={handlePasswordInput}
                 />
-                <button
+                <input
                     className={`${_itemStyle} ${_buttons}`}
-                    onClick={handleLoginButton}
-                >
-                   Log in
-                </button>
+                    type={'submit'}
+                    value={'Log in'}
+                />
                 <div className={_registered}>Forgot password?</div>
                 <Link to='/signup' className='link'>
                     <div className={_registered}>Create account</div>

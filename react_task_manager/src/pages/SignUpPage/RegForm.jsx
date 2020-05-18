@@ -41,7 +41,7 @@ export default function RegForm(props) {
         props.onPasswordConfirmInputChange(inputText);
     }
 
-    function handleSignUpButton(e) {
+    function handleSignUpSubmit(e) {
         e.preventDefault()
         const data = {
             confirmPassword: props.regForm.confirmPass,
@@ -55,49 +55,55 @@ export default function RegForm(props) {
 
     return (
         <div>
-            <form className={_wrapper}>
+            <form className={_wrapper} onSubmit={handleSignUpSubmit}>
                 <button
                     className={`${_itemStyle} ${_buttons} ${_googleBlock}`}
                     onClick={handleGoogleButton}
                 >
-                    <div className={_googleIcon}></div>
+                    <div className={_googleIcon} />
                     <div>Log in with Google</div>
                 </button>
                 <span className={_staticWord}>or</span>
                 <input
                     className={`${_itemStyle} ${_input}`}
-                    type='text'
+                    required
+                    type='email'
                     placeholder='Email'
                     value={props.regForm.email}
                     onChange={handleRegEmailInput}
                 />
                 <input
                     className={`${_itemStyle} ${_input}`}
+                    required
                     type='text'
+                    maxLength={'16'}
                     placeholder='Name'
                     value={props.regForm.name}
                     onChange={handleNameInput}
                 />
                 <input
                     className={`${_itemStyle} ${_input}`}
+                    required
                     type='password'
+                    minLength={'6'}
                     placeholder='Password'
                     value={props.regForm.pass}
                     onChange={handlePasswordInput}
                 />
                 <input
                     className={`${_itemStyle} ${_input}`}
+                    required
                     type='password'
+                    minLength={'6'}
                     placeholder='Confirm Password'
                     value={props.regForm.confirmPass}
                     onChange={handleConfirmPasswordInput}
                 />
-                <button
+                <input
                     className={`${_itemStyle} ${_buttons}`}
-                    onClick={handleSignUpButton}
-                >
-                    Sign up
-                </button>
+                    type={'submit'}
+                    value={'Sign up'}
+                />
                 <Link to='/signin' className='link'>
                     <div className={_registered}>Have account? Sign In</div>
                 </Link>
