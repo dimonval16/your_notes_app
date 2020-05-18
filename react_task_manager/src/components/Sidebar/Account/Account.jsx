@@ -11,26 +11,37 @@ export default function Account(props) {
     const _userName = Acc.userName;
     const _menu = Acc.menu;
     const _menuActive = Acc.menuActive;
-    const userPhoto = <img src={"data:image/jpg;base64," + props.user.photo} width={'132px'}/>;
+    const _imageStyle = Acc.imageStyle;
 
     const [showMenu, setShowMenu] = useState(false);
-debugger
-    console.log(props.user)
+
+    function handleSetPhoto(file) {
+        setShowMenu(false);
+        props.onSetPhoto(file);
+    }
+
+    function renderPhoto() {
+        if (props.user.photo === 'account_circle') {
+            return <div className={`material-icons ${_userPhoto}`}>{props.user.photo}</div>
+        } else {
+            return <img className={_imageStyle} src={"data:image/jpg;base64," + props.user.photo} alt={''}/>
+        }
+    }
 
     return (
         <div className={_wrapper}>
             <SettingMenu
                 className={showMenu ? _menuActive : _menu}
-                onClose={() =>  setShowMenu(false)}
+                onClose={() => setShowMenu(false)}
                 onLogOut={props.onLogOut}
-                onSetPhoto={props.onSetPhoto}
+                onSetPhoto={handleSetPhoto}
             />
             <Icon
                 className={_settings} icon={'settings'}
                 onClick={() => setShowMenu(true)}
             />
             <div className={_wrapperUser}>
-                <div className={`material-icons ${_userPhoto}`}>{props.user.photo}</div>
+                {renderPhoto()}
                 <div className={_userName}>
                     {props.user.name}
                 </div>

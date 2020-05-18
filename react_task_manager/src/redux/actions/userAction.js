@@ -51,7 +51,14 @@ export const getCategoryInfo = () => dispatch => {
     }
 
     fetch(activeUrl, requestOptions)
-        .then(response => response.ok ? response.json() : alert(`Error: Access denied.`))
+        .then(response => {
+            if(response.ok) {
+                return response.json();
+            } else {
+                localStorage.removeItem('accessToken');
+                return console.log(`Error get category info, ${response.status}: ${response.message}`);
+            }
+        })
         .then(result => dispatch({
             type: GET_CATEGORY_INFO,
             result
@@ -75,7 +82,14 @@ export const getUserRequestAC = () => dispatch => {
     }
 
     fetch(activeUrl, requestOptions)
-        .then(response => response.ok ? response.json() : alert(`Error: Access denied.`))
+        .then(response => {
+            if(response.ok) {
+                return response.json();
+            } else {
+                localStorage.removeItem('accessToken');
+                return alert(`Error get user info, ${response.status}: ${response.message}`);
+            }
+        })
         .then(result => dispatch({
             type: GET_USER_INFO,
             result

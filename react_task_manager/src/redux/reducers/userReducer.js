@@ -7,13 +7,12 @@ import {
 export default function reducer(state = {}, action) {
     switch (action.type) {
         case GET_USER_INFO:
-            console.log('get user info ' + action.result)
             return {
                 ...state,
                 email: action.result.email,
                 enabled: action.result.enabled,
                 id: action.result.id,
-                photo: action.photo ? action.photo : state.photo,
+                photo: action.result.photo ? action.result.photo : state.photo,
                 signUpDate: action.result.signUpDate,
                 name: action.result.username ? action.result.username : 'A User'
             }

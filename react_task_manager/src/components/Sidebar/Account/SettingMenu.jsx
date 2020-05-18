@@ -16,6 +16,7 @@ export default function SettingMenu(props) {
     function sendPhoto() {
         if(file) {
             props.onSetPhoto(file);
+            setFile(null);
         }
     }
 

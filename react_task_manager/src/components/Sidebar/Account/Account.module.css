@@ -82,6 +82,8 @@
     background: rgba(255, 255, 255, .2);
 }
 
+
+/* -- styles for list item Change Photo  -- */
 .addPhotoWrapper {
     display: flex;
 }
@@ -106,4 +108,12 @@
 
 .label {
     cursor: pointer;
+}
+
+.imageStyle {
+    height: 132px;
+    width: 132px;
+    border-radius: 50%;
+    background-size: cover;
+    background-position: 50% 50%;
 }
