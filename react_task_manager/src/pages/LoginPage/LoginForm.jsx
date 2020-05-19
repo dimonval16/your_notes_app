@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import LoginStyles from './LoginForm.module.css';
 
-function LoginForm(props) {
+export default function LoginForm(props) {
     const _wrapper = LoginStyles.wrapper;
     const _staticWord = LoginStyles.staticWord;
     const _itemStyle = LoginStyles.itemStyle;
@@ -19,13 +19,11 @@ function LoginForm(props) {
 
     function handleEmailInput(e) {
         const inputText = e.target.value;
-
         props.onEmailInputChange(inputText);
     }
 
     function handlePasswordInput(e) {
         const inputText = e.target.value;
-
         props.onPasswordInputChange(inputText);
     }
 
@@ -36,7 +34,6 @@ function LoginForm(props) {
             email: props.loginForm.email,
             password: props.loginForm.pass
         }
-
         props.onLogin(data);
     }
 
@@ -47,7 +44,7 @@ function LoginForm(props) {
                     className={`${_itemStyle} ${_buttons} ${_googleBlock}`}
                     onClick={handleGoogleButton}
                 >
-                    <div className={_googleIcon} />
+                    <div className={_googleIcon}/>
                     <div>Log in with Google</div>
                 </button>
                 <span className={_staticWord}>or</span>
@@ -64,6 +61,7 @@ function LoginForm(props) {
                     required
                     type='password'
                     placeholder='Password'
+                    minLength={'6'}
                     value={props.loginForm.pass}
                     onChange={handlePasswordInput}
                 />
@@ -80,5 +78,3 @@ function LoginForm(props) {
         </div>
     );
 }
-
-export default LoginForm;

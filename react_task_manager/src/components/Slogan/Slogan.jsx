@@ -14,7 +14,7 @@ export default function Slogan(props) {
                 <br />
                 <span>Welcome back to the workspace!</span>
             </div>
-            <div className={_image}></div>
+            <div className={_image} />
         </div>
     );
 }

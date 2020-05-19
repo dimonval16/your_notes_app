@@ -3,18 +3,30 @@
     box-shadow: 0 2px 2px rgba(0, 0, 0, 0.15);
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 
-.arrows {
-    display: flex;
-    height: 50px;
-    margin-right: 10px;
-    justify-content: flex-end;
-    align-items: center;
-    -webkit-user-select: none;
+.confirmMes {
+    padding: 16px 10px 15px 10px;
+    background: #f296ac;
+}
+
+.confirmMesHid {
+    visibility: hidden;
+}
+
+.confirmWord {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.confirmWord:hover {
+    color: white;
 }
 
 .arrow {
     cursor: pointer;
     color: #2D487F;
+    margin-right: 10px;
+    -webkit-user-select: none;
   }

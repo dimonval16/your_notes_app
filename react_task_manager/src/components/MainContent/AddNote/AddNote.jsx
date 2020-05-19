@@ -42,7 +42,7 @@ export default function AddNote(props) {
                 className={_input}
                 type='text'
                 value={title}
-                placeholder='Добавить новую задачу...'
+                placeholder='Add new note...'
                 onChange={changeInput}
                 ref={inputRef}
             />

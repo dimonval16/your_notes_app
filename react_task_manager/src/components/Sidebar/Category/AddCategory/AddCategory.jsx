@@ -7,6 +7,7 @@ export default function AddCategory(props) {
     const _wrapperVisible = AddCategoryStyle.wrapperVisible;
     const _input = AddCategoryStyle.input;
     const _save = AddCategoryStyle.save;
+    const _list = AddCategoryStyle.list;
     const inputRef = createRef();
 
     const [title, setTitle] = useState('');
@@ -37,9 +38,13 @@ export default function AddCategory(props) {
             className={props.catFieldHidden ? _wrapperHidden : _wrapperVisible}
             onSubmit={handleAddSubmit}
         >
+            <Icon
+                className={_list}
+                icon={'format_list_bulleted'}
+            />
             <input
                 className={_input}
-                placeholder='Категория...'
+                placeholder={'Category...'}
                 value={title}
                 ref={inputRef}
                 onChange={changeInput}

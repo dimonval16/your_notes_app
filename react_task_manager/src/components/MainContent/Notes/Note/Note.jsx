@@ -17,8 +17,12 @@ export default function Note(props) {
         e.preventDefault();
         const title = inputRef.current.value;
 
-        props.onEdit(props.id, title, props.categoryId);
-        setEditing(false);
+        if (title === props.title) {
+            setEditing(false)
+        } else if (title !== '') {
+            props.onEdit(props.id, title, props.categoryId);
+            setEditing(false);
+        }
     }
 
     function renderForm() {
@@ -35,6 +39,7 @@ export default function Note(props) {
                     className={_input}
                     ref={inputRef}
                     defaultValue={props.title}
+                    placeholder={'Edit note...'}
                 />
                 <Icon
                     className={_save}

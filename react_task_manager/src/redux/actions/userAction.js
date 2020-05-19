@@ -11,6 +11,13 @@ import {LOG_OUT} from "./loginFormActions";
 export const GET_USER_INFO = 'GET_USER_INFO';
 export const GET_CATEGORY_INFO = 'GET_CATEGORY_INFO';
 export const SET_PHOTO = 'SET_PHOTO';
+export const CONFIRM_EMAIL = 'CONFIRM_EMAIL';
+
+export const confirmEmailAC = () => {
+    return {
+        type: CONFIRM_EMAIL
+    }
+}
 
 export const setPhotoAC = file => dispatch => {
     const setPhotoUrl = HOST_SAMOHA+SET_PHOTO_URL;

@@ -1,3 +1,4 @@
+/* -- uni styles for form -- */
 .wrapper {
     margin: auto;
     padding-top: 60px;
@@ -17,32 +18,22 @@
 
 .itemStyle {
     height: 50px;
-    border-radius: 10px;
 }
 
+/* -- all about buttons -- */
 .buttons {
     border: 2px solid #2D487F;
     background-color: white;
     font-size: 16px;
     font-weight: bold;
     color: #2D487F;
-    border-radius: 15px;
+    border-radius: 30px;
     outline: none;
 }
 .buttons:hover {
     border: none;
     background-color: #FF3767;
     color: white;
-}
-
-.input {
-    padding: 0 10px 0 10px;
-    font-size: 16px;
-    border: 2px solid #b5b5b5;
-    outline: none;
-}
-.input:focus {
-    border: 2px solid #396cd4;
 }
 
 .googleBlock {
@@ -59,6 +50,32 @@
     margin-right: 10px;
 }
 
+/* -- input's settings -- */
+.input {
+    padding: 0 10px 0 10px;
+    font-size: 16px;
+    border: 2px solid #b5b5b5;
+    border-radius: 10px;
+    outline: none;
+}
+
+.input:focus {
+    border: 2px solid #396cd4;
+}
+
+.input:focus:valid {
+    border: 2px solid #76bd6a;
+}
+
+.errorMes {
+    color: #e04167;
+}
+.errorMesHid {
+    visibility: hidden;
+    position: absolute;
+    color: #e04167;
+}
+/* -- forgot and create account styles -- */
 .registered {
     color: #2D487F;
     text-align: center;

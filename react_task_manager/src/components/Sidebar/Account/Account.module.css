@@ -111,9 +111,9 @@
 }
 
 .imageStyle {
-    height: 132px;
-    width: 132px;
+    height: 122px;
+    width: 122px;
     border-radius: 50%;
-    background-size: cover;
-    background-position: 50% 50%;
+    object-fit: cover;
+    object-position: 50% 50%;
 }

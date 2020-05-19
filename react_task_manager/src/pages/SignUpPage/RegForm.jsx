@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { Link } from 'react-router-dom';
 import RegistrationStyles from './RegistrationForm.module.css';
 
@@ -11,6 +11,10 @@ export default function RegForm(props) {
     const _googleIcon = RegistrationStyles.googleIcon;
     const _googleBlock = RegistrationStyles.googleBlock;
     const _registered = RegistrationStyles.registered;
+    const _errorMes = RegistrationStyles.errorMes;
+    const _errorMesHid = RegistrationStyles.errorMesHid;
+
+    const [err, setErr] = useState(false);
 
     function handleGoogleButton(e) {
         e.preventDefault();
@@ -19,38 +23,36 @@ export default function RegForm(props) {
 
     function handleRegEmailInput(e) {
         const inputText = e.target.value;
-
         props.onEmailRegInputChange(inputText);
     }
 
     function handleNameInput(e) {
         const inputText = e.target.value;
-
         props.onNameRegInputChange(inputText);
     }
 
     function handlePasswordInput(e) {
         const inputText = e.target.value;
-
         props.onPasswordRegInputChange(inputText);
     }
 
     function handleConfirmPasswordInput(e) {
         const inputText = e.target.value;
-
+        props.regForm.pass !== inputText ? setErr(true) : setErr(false);
         props.onPasswordConfirmInputChange(inputText);
     }
 
     function handleSignUpSubmit(e) {
         e.preventDefault()
-        const data = {
-            confirmPassword: props.regForm.confirmPass,
-            email: props.regForm.email,
-            name: props.regForm.name,
-            password: props.regForm.pass
+        if (props.regForm.pass === props.regForm.confirmPass) {
+            const data = {
+                confirmPassword: props.regForm.confirmPass,
+                email: props.regForm.email,
+                name: props.regForm.name,
+                password: props.regForm.pass
+            }
+            props.onSignUp(data);
         }
-
-        props.onSignUp(data);
     }
 
     return (
@@ -60,7 +62,7 @@ export default function RegForm(props) {
                     className={`${_itemStyle} ${_buttons} ${_googleBlock}`}
                     onClick={handleGoogleButton}
                 >
-                    <div className={_googleIcon} />
+                    <div className={_googleIcon}/>
                     <div>Log in with Google</div>
                 </button>
                 <span className={_staticWord}>or</span>
@@ -99,6 +101,7 @@ export default function RegForm(props) {
                     value={props.regForm.confirmPass}
                     onChange={handleConfirmPasswordInput}
                 />
+                <span className={err ? _errorMes : _errorMesHid}>Passwords are not equal.</span>
                 <input
                     className={`${_itemStyle} ${_buttons}`}
                     type={'submit'}

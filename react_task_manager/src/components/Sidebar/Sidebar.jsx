@@ -21,7 +21,7 @@ export default function Sidebar(props) {
                 onCategoryEdit={props.onCategoryEdit}
                 onCategoryAdd={props.onCategoryAdd}
             />
-            <Button name="Категория" onButtonClick={props.onToggleAddField}/>
+            <Button name="Category" onButtonClick={props.onToggleAddField}/>
         </div>
     );
 }

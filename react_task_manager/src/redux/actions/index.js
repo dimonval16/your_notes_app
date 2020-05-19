@@ -63,8 +63,10 @@ export {
     GET_USER_INFO,
     GET_CATEGORY_INFO,
     SET_PHOTO,
+    CONFIRM_EMAIL,
     getUserRequestAC,
     getCategoryInfo,
-    setPhotoAC
+    setPhotoAC,
+    confirmEmailAC
 } from './userAction';
 

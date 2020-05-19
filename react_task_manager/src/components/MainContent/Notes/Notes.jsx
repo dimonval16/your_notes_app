@@ -8,7 +8,7 @@ export default function Notes(props) {
         <div>
             <Button
                 id="content"
-                name="Добавить задачу"
+                name="Add note"
                 onButtonClick={props.onToggleAddField}
             />
             <AddNote

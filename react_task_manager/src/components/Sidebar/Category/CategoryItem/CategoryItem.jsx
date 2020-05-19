@@ -21,7 +21,7 @@ export default function CategoryItem(props) {
 
         if (title === props.title) {
             setEditing(false);
-        } else {
+        } else if (title !== '') {
             props.onEdit(id, title);
             setEditing(false);
         }
@@ -34,10 +34,16 @@ export default function CategoryItem(props) {
 
         return (
             <form className={_editWrapper} onSubmit={handleEdit}>
+                <Icon
+                    className={CategoryStyle.list}
+                    icon={'format_list_bulleted'}
+                />
                 <input
                     className={_input}
                     ref={inputRef}
-                    defaultValue={props.title}/>
+                    defaultValue={props.title}
+                    placeholder={'Category...'}
+                />
                 <Icon
                     className={_save}
                     icon='save'
@@ -67,17 +73,19 @@ export default function CategoryItem(props) {
                 />
                 <span className={_text}>
                         {props.title}
-                    </span>
-                <Icon
-                    className={_create}
-                    icon='create'
-                    onClick={() => setEditing(true)}
-                />
-                <Icon
-                    className={_delete}
-                    icon='delete'
-                    onClick={() => props.onDelete(props.link)}
-                />
+                </span>
+                <div>
+                    <Icon
+                        className={_create}
+                        icon='create'
+                        onClick={() => setEditing(true)}
+                    />
+                    <Icon
+                        className={_delete}
+                        icon='delete'
+                        onClick={() => props.onDelete(props.link)}
+                    />
+                </div>
             </NavLink>
         );
     }
