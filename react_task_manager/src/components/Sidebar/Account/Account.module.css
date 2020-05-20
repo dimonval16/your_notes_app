@@ -6,6 +6,23 @@
     margin-bottom: 30px;
 }
 
+.menu {
+    position: absolute;
+    left: -100%;
+    transition-duration: .5s;
+}
+
+.menuActive {
+    position: absolute;
+    left: 0;
+    background: #2D487F;
+    color: white;
+    width: 20%;
+    height: 255px;
+    min-width: 224px;
+    transition-duration: .3s;
+}
+
 .settings {
     background: none;
     border: none;
@@ -21,33 +38,12 @@
     text-align: center;
 }
 
-.userPhoto {
-    font-size: 132px;
-}
-
 .userName {
     font-weight: lighter;
     font-size: 24px;
 }
 
-/* -- user setting -- */
-.menu {
-    position: absolute;
-    left: -100%;
-    transition-duration: .5s;
-}
-
-.menuActive {
-    position: absolute;
-    left: 0;
-    background: #2D487F;
-    color: white;
-    width: 20%;
-    height: 300px;
-    min-width: 224px;
-    transition-duration: .3s;
-}
-
+/* -- user setting ./SettingMenu.jsx -- */
 .wrapperSetting {
     display: flex;
     justify-content: space-between;
@@ -67,7 +63,7 @@
     outline: none;
 }
 
-.setParams ul {
+.setParams {
     list-style: none;
     padding-left: 0;
     font-weight: lighter;
@@ -82,13 +78,13 @@
     background: rgba(255, 255, 255, .2);
 }
 
-
-/* -- styles for list item Change Photo  -- */
+/* -- styles for list item Change Photo ./PhotoSetter.jsx -- */
 .addPhotoWrapper {
     display: flex;
 }
 
 .addPhoto {
+    margin-right: 14px;
     background: none;
     border: none;
     outline: none;
@@ -108,6 +104,12 @@
 
 .label {
     cursor: pointer;
+    width: 100%;
+}
+
+/* -- ./UserPhoto.jsx -- */
+.userPhoto {
+    font-size: 132px;
 }
 
 .imageStyle {

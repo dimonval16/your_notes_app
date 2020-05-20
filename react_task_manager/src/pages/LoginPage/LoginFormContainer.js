@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import LoginForm from './LoginForm';
+import LoginFormHandler from './LoginFormHandler';
 import {
     changeEmailInputAC,
     changePasswordInputAC,
@@ -16,8 +16,8 @@ function mapDispatchToProps(dispatch) {
     return {
         onEmailInputChange: inputValue => dispatch(changeEmailInputAC(inputValue)),
         onPasswordInputChange: inputValue => dispatch(changePasswordInputAC(inputValue)),
-        onLogin: (data) => dispatch(loginRequestAC(data))
+        onLogin: data => dispatch(loginRequestAC(data))
     };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(LoginForm);
+export default connect(mapStateToProps, mapDispatchToProps)(LoginFormHandler);

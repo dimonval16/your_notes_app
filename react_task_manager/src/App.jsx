@@ -4,7 +4,7 @@ import { withRouter } from 'react-router';
 import { connect } from 'react-redux';
 import MainPage from "./pages/MainPage/MainPage";
 import LoginPage from "./pages/LoginPage/LoginFormContainer";
-import SignUpPage from "./pages/SignUpPage/RegFormContainer";
+import SignUpPage from "./pages/SignUpPage/SignUpFormContainer";
 
 
 const PrivateRoute = ({component: Component, path, redirect, isAuth, ...rest}) => {

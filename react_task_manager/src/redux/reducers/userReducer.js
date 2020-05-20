@@ -15,7 +15,7 @@ export default function reducer(state = {}, action) {
                 id: action.result.id,
                 photo: action.result.photo ? action.result.photo : state.photo,
                 signUpDate: action.result.signUpDate,
-                name: action.result.username ? action.result.username : 'A User'
+                name: action.result.username ? action.result.username : 'User'
             }
 
         case SET_PHOTO:

@@ -1,0 +1,26 @@
+/* -- uni styles for form -- */
+.wrapper {
+    margin: auto;
+    padding-top: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 400px;
+    height: 530px;
+}
+
+.errorMes {
+    color: #e04167;
+}
+
+.errorMesHid {
+    visibility: hidden;
+    position: absolute;
+    color: #e04167;
+}
+
+.registered {
+    color: #2D487F;
+    text-align: center;
+    cursor: pointer;
+}

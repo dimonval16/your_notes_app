@@ -1,0 +1,23 @@
+/* -- uni styles for form  ./LoginForm.jsx -- */
+.wrapper {
+    margin: auto;
+    padding-top: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 400px;
+    height: 450px;
+}
+
+.linkWrapper {
+    display: flex;
+    flex-direction: column;
+    height: 60px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.registered {
+    color: #2D487F;
+    cursor: pointer;
+}

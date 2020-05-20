@@ -11,8 +11,13 @@
     background: #f296ac;
 }
 
-.confirmMesHid {
-    visibility: hidden;
+.logo {
+    background-image: url('../../img/logo_un_i.svg');
+    height: 42px;
+    width: 42px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin-left: 10px;
 }
 
 .confirmWord {

@@ -1,0 +1,15 @@
+.logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 32px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #2d487f;
+}
+
+.logoImg {
+    width: 40px;
+    margin-right: 10px;
+}

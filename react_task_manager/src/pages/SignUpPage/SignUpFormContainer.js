@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import RegForm from './RegForm';
+import SignUpFormHandler from './SignUpFormHandler';
 import {
     changeRegEmailInputAC,
     changeRegNameInput,
@@ -25,4 +25,4 @@ function mapDispatchToProps(dispatch) {
     };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(RegForm);
+export default connect(mapStateToProps, mapDispatchToProps)(SignUpFormHandler);
