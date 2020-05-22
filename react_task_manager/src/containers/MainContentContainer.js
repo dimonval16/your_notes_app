@@ -1,5 +1,3 @@
-import { connect } from 'react-redux';
-import MainContent from '../components/MainContent/MainContent';
 import {
     addNote,
     deleteNote,
@@ -7,6 +5,8 @@ import {
     editNote,
     toggleNoteField
 } from '../redux/actions';
+import { connect } from 'react-redux';
+import MainContent from '../components/MainContent/MainContent';
 import { getFilteredNotes } from "../redux/reducers";
 
 function mapStateToProps(state) {
@@ -26,4 +26,4 @@ function mapDispatchToProps(dispatch) {
     };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(MainContent)
+export default connect(mapStateToProps, mapDispatchToProps)(MainContent);

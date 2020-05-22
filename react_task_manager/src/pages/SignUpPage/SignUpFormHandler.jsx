@@ -46,6 +46,8 @@ export default function SignUpFormHandler(props) {
             pass={props.regForm.pass}
             confPass={props.regForm.confirmPass}
             err={err}
+            fetching={props.fetching}
+            errTitle={props.regForm.errorTitle}
             onHandleSignUpSubmit={handleSignUpSubmit}
             onHandleRegEmailInput={handleRegEmailInput}
             onHandleNameInput={handleNameInput}

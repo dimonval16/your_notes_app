@@ -3,6 +3,7 @@ import {Link} from "react-router-dom";
 import sSignUp from "./SignUpForm.module.css";
 import AppTitle from "../../AppTitle/AppTitle";
 import FormsInput from "../FormsInput/FormsInput";
+import Preloader from "../../Preloader/Preloader";
 
 export default function SignUpForm(props) {
     const _wrapper = sSignUp.wrapper;
@@ -40,6 +41,11 @@ export default function SignUpForm(props) {
                 value={props.confPass}
                 onChange={props.onHandleConfirmPasswordInput}
             />
+            {props.fetching ?
+                <Preloader />
+                :
+                <span className={props.errTitle ? _errorMes : _errorMesHid}>{props.errTitle}</span>
+            }
             <span className={props.err ? _errorMes : _errorMesHid}>Passwords are not equal.</span>
             <FormsInput
                 type={'submit'}

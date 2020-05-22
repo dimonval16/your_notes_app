@@ -9,6 +9,7 @@ import {
 function mapStateToProps(state) {
     return {
         loginForm: state.loginForm,
+        fetching: state.fetching.status
     };
 }
 

@@ -31,6 +31,8 @@ export default function LoginFormHandler(props) {
         <LoginForm
             email={props.loginForm.email}
             pass={props.loginForm.pass}
+            err={props.loginForm.errorTitle}
+            fetching={props.fetching}
             onHandleLoginSubmit={handleLoginSubmit}
             onHandleGoogleButton={handleGoogleButton}
             onHandleEmailInput={handleEmailInput}

@@ -5,7 +5,7 @@ export {
     addCategory,
     deleteCategory,
     editCategory
-} from './categoryActions';
+} from './aCatAndNotes/categoryActions';
 
 export {
     ADD_NOTE,
@@ -16,7 +16,7 @@ export {
     deleteNote,
     toggleNote,
     editNote
-} from './notesActions';
+} from './aCatAndNotes/notesActions';
 
 export {
     TOGGLE_SLOGAN,
@@ -25,7 +25,7 @@ export {
     toggleNoteField,
     toggleCatField,
     toggleSlogan
-} from './viewFieldsActions';
+} from './aViewFields/viewFieldsActions';
 
 export {
     SET_FILTER,
@@ -33,18 +33,20 @@ export {
     COMPLETED,
     NOT_COMPLETED,
     setFilterAC
-} from './filterActions';
+} from './aFilter/filterActions';
 
 export {
     CHANGE_EMAIL_INPUT,
     CHANGE_PASSWORD_INPUT,
     LOGIN_SUCCESS,
     LOG_OUT,
+    LOGIN_FAILURE,
+    LOADING,
     changeEmailInputAC,
     changePasswordInputAC,
     loginRequestAC,
     logOutAC,
-} from './loginFormActions';
+} from './aForms/loginFormActions';
 
 export {
     CHANGE_REG_EMAIL_INPUT,
@@ -52,12 +54,14 @@ export {
     CHANGE_REG_PASSWORD_INPUT,
     CHANGE_CONFIRM_PASSWORD_INPUT,
     SIGN_UP_SUCCESS,
+    SIGN_UP_FAILURE,
     changeRegEmailInputAC,
     changeRegNameInput,
     changeRegPasswordInput,
     changeConfirmPasswordInput,
-    requestSignUpAC
-} from './registrationFormActions';
+    requestSignUpAC,
+    signUpSuccess
+} from './aForms/registrationFormActions';
 
 export {
     GET_USER_INFO,
@@ -68,5 +72,12 @@ export {
     getCategoryInfo,
     setPhotoAC,
     confirmEmailAC
-} from './userAction';
+} from './aUser/userAction';
+
+export {
+    ACTIVATE_MODAL_WINDOW,
+    CLOSE_MODAL_WINDOW,
+    activateModalAC,
+    closeModalWindowAC
+} from './aModalWindow/aModalWindow';
 

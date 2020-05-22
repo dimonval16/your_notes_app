@@ -1,6 +1,7 @@
+import { toggleSlogan, confirmEmailAC } from '../redux/actions';
 import { connect } from 'react-redux';
 import Header from '../components/Header/Header';
-import { toggleSlogan, confirmEmailAC } from '../redux/actions'
+
 
 function mapStateToProps(state) {
     return {

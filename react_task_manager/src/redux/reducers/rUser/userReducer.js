@@ -3,7 +3,7 @@ import {
     LOG_OUT,
     SET_PHOTO,
     CONFIRM_EMAIL
-} from '../actions'
+} from '../../actions'
 
 export default function reducer(state = {}, action) {
     switch (action.type) {

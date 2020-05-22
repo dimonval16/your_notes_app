@@ -1,11 +1,13 @@
 import { combineReducers } from 'redux';
-import { default as categories } from './categoriesReducer/categoryReducer';
-import { default as user } from './userReducer';
-import { default as viewFields } from './viewFieldsReducer';
-import { default as loginForm } from './loginFormReducer';
-import { default as regForm } from './regFormReducer';
-import { default as authorized } from './authorizedReducer'
-import * as fromCategoryReducer from './categoriesReducer/categoryReducer';
+import { default as categories } from './rCategories/categoryReducer';
+import { default as user } from './rUser/userReducer';
+import { default as viewFields } from './rViewFields/viewFieldsReducer';
+import { default as loginForm } from './rForms/loginFormReducer';
+import { default as regForm } from './rForms/regFormReducer';
+import { default as authorized } from './rAuthorize/authorizedReducer';
+import modalWindow from "./rModalWindow/rModalWindow";
+import fetching from './rFetching/rFetching';
+import * as fromCategoryReducer from './rCategories/categoryReducer';
 
 /*function reducer(state = {}, action) {
     return {
@@ -22,7 +24,9 @@ const reducer = combineReducers({
     viewFields,
     authorized,
     loginForm,
-    regForm
+    regForm,
+    modalWindow,
+    fetching
 });
 
 export default reducer;

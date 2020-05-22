@@ -5,8 +5,8 @@ import {
     //GET_USER_INFO_SASHKA,
     GET_CATEGORY_INFO_SAMOHA,
     SET_PHOTO_URL
-} from '../requestsData/requestData';
-import {LOG_OUT} from "./loginFormActions";
+} from '../../requestsData/requestData';
+import {ACTIVATE_MODAL_WINDOW, LOADING} from '../index';
 
 export const GET_USER_INFO = 'GET_USER_INFO';
 export const GET_CATEGORY_INFO = 'GET_CATEGORY_INFO';
@@ -20,7 +20,7 @@ export const confirmEmailAC = () => {
 }
 
 export const setPhotoAC = file => dispatch => {
-    const setPhotoUrl = HOST_SAMOHA+SET_PHOTO_URL;
+    const setPhotoUrl = HOST_SAMOHA + SET_PHOTO_URL;
     const token = localStorage.getItem('accessToken');
     const formData = new FormData();
 
@@ -35,14 +35,27 @@ export const setPhotoAC = file => dispatch => {
     }
 
     fetch(setPhotoUrl, requestOptions)
-        .then(response => response.ok ? response.json() : alert('Error to add photo'))
+        .then(response => {
+            if (response.ok) {
+                return response.json();
+            } else {
+                localStorage.removeItem('accessToken');
+                const title = 'Error adding photo. Your session is over.';
+                const reason = 'Error adding photo.';
+
+                return dispatch({
+                    type: ACTIVATE_MODAL_WINDOW,
+                    title,
+                    reason
+                });
+            }
+        })
         .then(result => dispatch({
-                type: SET_PHOTO,
-                photo: result.photo
+            type: SET_PHOTO,
+            photo: result.photo
         }))
         .catch(error => console.log('Error', error));
 }
-
 
 export const getCategoryInfo = () => dispatch => {
     const getCategorySamoha = HOST_SAMOHA + GET_CATEGORY_INFO_SAMOHA;
@@ -60,11 +73,11 @@ export const getCategoryInfo = () => dispatch => {
 
     fetch(activeUrl, requestOptions)
         .then(response => {
-            if(response.ok) {
+            if (response.ok) {
                 return response.json();
             } else {
                 localStorage.removeItem('accessToken');
-                return console.log(`Error get category info, status ${response.status}: Access denied`);
+                return console.error(`Error to get cat-info`);
             }
         })
         .then(result => dispatch({
@@ -75,6 +88,8 @@ export const getCategoryInfo = () => dispatch => {
 }
 
 export const getUserRequestAC = () => dispatch => {
+    dispatch({ type: LOADING });
+
     //const getUserSashka = HOST_SASHKA+GET_USER_INFO_SASHKA;
     const getUserSamoha = HOST_SAMOHA + GET_USER_INFO_SAMOHA;
     const activeUrl = getUserSamoha;
@@ -91,14 +106,18 @@ export const getUserRequestAC = () => dispatch => {
 
     fetch(activeUrl, requestOptions)
         .then(response => {
-            if(response.ok) {
+            if (response.ok) {
                 return response.json();
             } else {
                 localStorage.removeItem('accessToken');
-                alert(`Error get user info, status ${response.status}: Your session is over`);
+                const title = 'Your session is over.';
+                const reason = 'Your session is over.';
+
                 return dispatch({
-                    type: LOG_OUT
-                })
+                    type: ACTIVATE_MODAL_WINDOW,
+                    title,
+                    reason
+                });
             }
         })
         .then(result => dispatch({

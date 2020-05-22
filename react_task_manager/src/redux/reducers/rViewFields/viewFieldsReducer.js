@@ -3,7 +3,7 @@ import {
     TOGGLE_CAT_FIELD,
     TOGGLE_NOTE_FIELD,
     ADD_CATEGORY
-} from '../actions';
+} from '../../actions';
 
 export default function reducer(state = {}, action) {
     switch (action.type) {

@@ -21,13 +21,24 @@ const state = {
     },
     loginForm: {
         email: '',
-        pass: ''
+        pass: '',
+        errorTitle: ''
     },
     regForm: {
         email: '',
         name: '',
         pass: '',
-        confirmPass: ''
+        confirmPass: '',
+        errorTitle: ''
+    },
+    modalWindow: {
+        status: null,
+        ok: null,
+        reason: '',
+        title: ''
+    },
+    fetching: {
+        status: false
     }
 }
 

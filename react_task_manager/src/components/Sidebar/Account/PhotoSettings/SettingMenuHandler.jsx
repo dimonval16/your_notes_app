@@ -4,8 +4,8 @@ import SettingMenu from "./SettingMenu";
 export default function SettingMenuHandler(props) {
     const [file, setFile] = useState(null);
 
-    function sendPhoto() {
-        if(file) {
+    function handleSendPhoto() {
+        if (file) {
             props.onSetPhoto(file);
             setFile(null);
         }
@@ -21,12 +21,11 @@ export default function SettingMenuHandler(props) {
         setFile(null);
     }
 
-    function handleLogOut() {
-        const isSure = window.confirm('Are you sure?')
+    function activateModalWindow() {
+        const title = 'Are you sure?';
+        const reason = 'log out';
 
-        if(isSure) {
-            props.onLogOut();
-        }
+        props.onModalWindow(title, reason);
     }
 
     return (
@@ -35,8 +34,8 @@ export default function SettingMenuHandler(props) {
             file={file}
             onClose={handleClose}
             onHandleSelectFile={handleSelectFile}
-            onSendPhoto={sendPhoto}
-            onHandleLogOut={handleLogOut}
+            onSendPhoto={handleSendPhoto}
+            onHandleLogOut={activateModalWindow}
         />
     );
 }

@@ -11,8 +11,10 @@ export default function Sidebar(props) {
         <div className={_wrapper}>
             <Account
                 user={props.user}
-                onLogOut={props.onLogOut}
+                modalWidow={props.modalWindow}
+                fetching={props.fetching}
                 onSetPhoto={props.onSetPhoto}
+                onModalWindow={props.onModalWindow}
             />
             <Category
                 categories={props.categories}

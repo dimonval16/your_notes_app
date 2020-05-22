@@ -19,7 +19,7 @@
     color: white;
     width: 20%;
     height: 255px;
-    min-width: 224px;
+    min-width: 185px;
     transition-duration: .3s;
 }
 
@@ -34,13 +34,27 @@
 }
 
 .wrapperUser {
-    align-self: center;
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .userName {
     font-weight: lighter;
     font-size: 24px;
+}
+
+/* -- ./UserPhoto.jsx -- */
+.userPhoto {
+    font-size: 132px;
+}
+
+.imageStyle {
+    height: 122px;
+    width: 122px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: 50% 50%;
 }
 
 /* -- user setting ./SettingMenu.jsx -- */
@@ -105,17 +119,4 @@
 .label {
     cursor: pointer;
     width: 100%;
-}
-
-/* -- ./UserPhoto.jsx -- */
-.userPhoto {
-    font-size: 132px;
-}
-
-.imageStyle {
-    height: 122px;
-    width: 122px;
-    border-radius: 50%;
-    object-fit: cover;
-    object-position: 50% 50%;
 }

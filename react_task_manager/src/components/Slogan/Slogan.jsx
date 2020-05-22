@@ -1,5 +1,6 @@
 import React from 'react';
 import SloganStyle from './Slogan.module.css';
+import Preloader from "../Preloader/Preloader";
 
 export default function Slogan(props) {
     const _wrapperVisible = SloganStyle.wrapperVisible;
@@ -10,7 +11,11 @@ export default function Slogan(props) {
     return (
         <div className={props.sloganHidden ? _wrapperHidden : _wrapperVisible}>
             <div className={_slogan}>
-                <span>{`Hi, ${props.userName}`}</span>
+                {props.fetching ?
+                    <Preloader/>
+                    :
+                    <span>{`Hi, ${props.userName}`}</span>
+                }
                 <br />
                 <span>Welcome back to the workspace!</span>
             </div>

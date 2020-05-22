@@ -1,12 +1,13 @@
-import React, { useEffect } from "react";
+import React, {useEffect} from "react";
 import '../../App.css';
-import { connect } from 'react-redux';
+import {connect} from 'react-redux';
 import HeaderContainer from '../../containers/HeaderContainer';
 import SidebarContainer from '../../containers/SidebarContainer';
 import SloganContainer from '../../containers/SloganContainer';
 import FilterContainer from '../../containers/FilterContainer';
 import MainContentContainer from '../../containers/MainContentContainer';
-import { getUserRequestAC, getCategoryInfo } from '../../redux/actions'
+import ModalWindowContainer from "../../containers/ModalWindowContainer";
+import {getUserRequestAC, getCategoryInfo} from '../../redux/actions'
 
 function MainPage(props) {
     const _needWrapper = props.sloganHidden ? 'AppThreeRows' : 'AppFourRows';
@@ -17,7 +18,7 @@ function MainPage(props) {
         props.onGetUserInfo();
         props.onGetCategoryInfo();
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    },[]);
+    }, []);
 
     return (
         <div className={_needWrapper}>
@@ -26,6 +27,7 @@ function MainPage(props) {
             <SloganContainer/>
             <FilterContainer/>
             <MainContentContainer/>
+            <ModalWindowContainer/>
         </div>
     );
 }

@@ -11,7 +11,8 @@ import {
 
 function mapStateToProps(state) {
     return {
-        regForm: state.regForm
+        regForm: state.regForm,
+        fetching: state.fetching.status
     };
 }
 

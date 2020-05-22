@@ -3,15 +3,18 @@ import {Link} from "react-router-dom";
 import sLogin from "./LoginForm.module.css";
 import FormsInput from "../FormsInput/FormsInput";
 import AppTitle from "../../AppTitle/AppTitle";
+import Preloader from "../../Preloader/Preloader";
 
 export default function LoginForm(props) {
     const _wrapper = sLogin.wrapper;
     const _registered = sLogin.registered;
     const _linkWrapper = sLogin.linkWrapper;
+    const _errHid = sLogin.errHid;
+    const _errVis = sLogin.errVis;
 
     return (
         <form className={_wrapper} onSubmit={props.onHandleLoginSubmit}>
-            <AppTitle />
+            <AppTitle/>
             <FormsInput
                 type='email'
                 placeholder='Email'
@@ -25,6 +28,11 @@ export default function LoginForm(props) {
                 value={props.pass}
                 onChange={props.onHandlePasswordInput}
             />
+            {props.fetching ?
+                <Preloader />
+                :
+                <span className={props.err ? _errVis : _errHid}>{props.err}</span>
+            }
             <FormsInput
                 type={'submit'}
                 value={'Log in'}

@@ -1,7 +1,8 @@
 import {
     HOST_SAMOHA,
     GET_CATEGORY_INFO_SAMOHA
-} from '../requestsData/requestData';
+} from '../../requestsData/requestData';
+import {ACTIVATE_MODAL_WINDOW} from "..";
 
 export const ADD_CATEGORY = 'ADD_CATEGORY';
 export const DELETE_CATEGORY = 'DELETE_CATEGORY';
@@ -23,7 +24,21 @@ export const addCategory = title => dispatch => {
     }
 
     fetch(activeUrl, requestOptions)
-        .then(response => response.ok ? response.json() : alert('Error add category.'))
+        .then(response => {
+            if (response.ok) {
+                return response.json();
+            } else {
+                localStorage.removeItem('accessToken');
+                const title = 'Error adding category. Your session is over.';
+                const reason = 'Error adding category.';
+
+                return dispatch({
+                    type: ACTIVATE_MODAL_WINDOW,
+                    title,
+                    reason
+                });
+            }
+        })
         .then(result => dispatch({
             type: ADD_CATEGORY,
             result
@@ -43,7 +58,21 @@ export const deleteCategory = id => dispatch => {
     }
 
     fetch(`${activeUrl}?id=${id}`, requestOptions)
-        .then(response => response.ok ? response.json() : alert('Error delete category'))
+        .then(response => {
+            if (response.ok) {
+                return response.json();
+            } else {
+                localStorage.removeItem('accessToken');
+                const title = 'Error deleting category. Your session is over.';
+                const reason = 'Error deleting category.';
+
+                return dispatch({
+                    type: ACTIVATE_MODAL_WINDOW,
+                    title,
+                    reason
+                });
+            }
+        })
         .then(result => dispatch({
             type: DELETE_CATEGORY,
             result
@@ -64,7 +93,21 @@ export const editCategory = (id, title) => dispatch => {
     }
 
     fetch(activeUrl, requestOptions)
-        .then(response => response.ok ? response.json() : alert('Error edit category'))
+        .then(response => {
+            if (response.ok) {
+                return response.json();
+            } else {
+                localStorage.removeItem('accessToken');
+                const title = 'Error editing category. Your session is over.';
+                const reason = 'Error editing category.';
+
+                return dispatch({
+                    type: ACTIVATE_MODAL_WINDOW,
+                    title,
+                    reason
+                });
+            }
+        })
         .then(result => dispatch({
             type: EDIT_CATEGORY,
             result

@@ -1,8 +1,9 @@
 import {
     LOGIN_SUCCESS,
     SIGN_UP_SUCCESS,
-    LOG_OUT
-} from '../actions'
+    LOG_OUT,
+    ACTIVATE_MODAL_WINDOW
+} from '../../actions'
 
 export default function reducer(state = { status: false }, action) {
     switch (action.type) {
@@ -22,6 +23,12 @@ export default function reducer(state = { status: false }, action) {
             return {
                 ...state,
                 status: !state.status
+            }
+
+        case ACTIVATE_MODAL_WINDOW:
+            return {
+                ...state,
+                status: action.reason === 'SignUp success.' ? !state.status : state.status
             }
 
         default:

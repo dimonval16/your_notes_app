@@ -21,3 +21,12 @@
     color: #2D487F;
     cursor: pointer;
 }
+
+.errHid {
+    position: absolute;
+    visibility: hidden;
+}
+
+.errVis {
+    color: #e04167;
+}
