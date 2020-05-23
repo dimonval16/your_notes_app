@@ -61,7 +61,7 @@ export default function reducer(state = {}, action) {
         case SIGN_UP_FAILURE:
             return {
                 ...state,
-                errorTitle: `Error ${action.response.status}: ${action.response.message}.`
+                errorTitle: `${action.response.message}.`
             }
 
         default:
