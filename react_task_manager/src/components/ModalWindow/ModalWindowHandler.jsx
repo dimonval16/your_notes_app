@@ -7,6 +7,10 @@ export default function (props) {
 
         if (reason === 'SignUp success.') {
             props.onSignUp();
+        } else if (reason === 'Conflict') {
+            props.onCloseWindow();
+        } else if (reason === 'Not Found') {
+            props.onCloseWindow();
         } else {
             props.onLogOut();
         }

@@ -2,7 +2,8 @@ import {
     TOGGLE_SLOGAN,
     TOGGLE_CAT_FIELD,
     TOGGLE_NOTE_FIELD,
-    ADD_CATEGORY
+    ADD_CATEGORY,
+    ADD_NOTE
 } from '../../actions';
 
 export default function reducer(state = {}, action) {
@@ -26,6 +27,12 @@ export default function reducer(state = {}, action) {
             }
 
         case TOGGLE_NOTE_FIELD:
+            return {
+                ...state,
+                notesFieldHidden: !state.notesFieldHidden
+            }
+
+        case ADD_NOTE:
             return {
                 ...state,
                 notesFieldHidden: !state.notesFieldHidden

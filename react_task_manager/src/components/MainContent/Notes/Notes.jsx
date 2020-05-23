@@ -15,7 +15,6 @@ export default function Notes(props) {
                 categoryId={props.categoryId}
                 notesFieldHidden={props.notesFieldHidden}
                 onAdd={props.onAdd}
-                hideAddForm={props.onToggleAddField}
             />
             {props.notes.map(note => (
                 <Note

@@ -1,4 +1,3 @@
-import nextId from './idCalculate';
 import {
     ADD_NOTE,
     DELETE_NOTE,
@@ -10,9 +9,9 @@ function oneMoreReducer(state = {}, action) {
     switch (action.type) {
         case ADD_NOTE:
             const newNote = {
-                id: nextId(state.notes),
+                id: action.id,
                 title: action.title,
-                completed: false
+                completed: action.completed
             }
             return {
                 ...state,
@@ -37,7 +36,7 @@ function oneMoreReducer(state = {}, action) {
                         state.notes.map(note => {
                             return {
                                 ...note,
-                                completed: note.id === action.id ? !note.completed : note.completed
+                                completed: note.id === action.id ? action.completed : note.completed
                             }
                         })
                         :

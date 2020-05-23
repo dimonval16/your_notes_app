@@ -63,7 +63,7 @@ export default function Note(props) {
                 <Icon
                     className={_checkbox}
                     icon={props.completed ? 'check_box' : 'check_box_outline_blank'}
-                    onClick={() => props.onChange(props.id, props.categoryId)}
+                    onClick={() => props.onChange(props.id, props.categoryId, props.completed)}
                 />
                 <div className={_itemText}>{props.title}</div>
                 <Icon

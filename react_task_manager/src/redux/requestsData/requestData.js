@@ -13,3 +13,8 @@ export const GET_USER_INFO_SAMOHA = '/api/v1/users';
 export const GET_CATEGORY_INFO_SAMOHA = '/api/v1/categories';
 
 export const SET_PHOTO_URL = '/api/v1/users/photo';
+
+export const ADD_NOTES_SAMOHA = '/api/v1/notes';
+export const TOGGLE_NOTES_SAMOHA = '/api/v1/notes/status';
+export const DELETE_NOTE_SAMOHA = '/api/v1/notes';
+export const EDIT_NOTE_SAMOHA = '/api/v1/notes/title';

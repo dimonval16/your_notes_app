@@ -13,6 +13,14 @@ export const GET_CATEGORY_INFO = 'GET_CATEGORY_INFO';
 export const SET_PHOTO = 'SET_PHOTO';
 export const CONFIRM_EMAIL = 'CONFIRM_EMAIL';
 
+const badResponse = (dispatch, result) => {
+    dispatch({
+        type: ACTIVATE_MODAL_WINDOW,
+        title: result.message,
+        reason: result.error
+    })
+}
+
 export const confirmEmailAC = () => {
     return {
         type: CONFIRM_EMAIL
@@ -35,25 +43,14 @@ export const setPhotoAC = file => dispatch => {
     }
 
     fetch(setPhotoUrl, requestOptions)
-        .then(response => {
-            if (response.ok) {
-                return response.json();
-            } else {
-                localStorage.removeItem('accessToken');
-                const title = 'Error adding photo. Your session is over.';
-                const reason = 'Error adding photo.';
-
-                return dispatch({
-                    type: ACTIVATE_MODAL_WINDOW,
-                    title,
-                    reason
-                });
-            }
-        })
-        .then(result => dispatch({
-            type: SET_PHOTO,
-            photo: result.photo
-        }))
+        .then(response => response.json())
+        .then(result => result.status >= 400 ?
+            badResponse(dispatch, result)
+            :
+            dispatch({
+                type: SET_PHOTO,
+                photo: result.photo
+            }))
         .catch(error => console.log('Error', error));
 }
 
@@ -72,18 +69,14 @@ export const getCategoryInfo = () => dispatch => {
     }
 
     fetch(activeUrl, requestOptions)
-        .then(response => {
-            if (response.ok) {
-                return response.json();
-            } else {
-                localStorage.removeItem('accessToken');
-                return console.error(`Error to get cat-info`);
-            }
-        })
-        .then(result => dispatch({
-            type: GET_CATEGORY_INFO,
-            result
-        }))
+        .then(response => response.json())
+        .then(result => result.status >= 400 ?
+            console.error(result.error)
+            :
+            dispatch({
+                type: GET_CATEGORY_INFO,
+                result
+            }))
         .catch(error => console.log('Error', error));
 }
 
@@ -105,24 +98,13 @@ export const getUserRequestAC = () => dispatch => {
     }
 
     fetch(activeUrl, requestOptions)
-        .then(response => {
-            if (response.ok) {
-                return response.json();
-            } else {
-                localStorage.removeItem('accessToken');
-                const title = 'Your session is over.';
-                const reason = 'Your session is over.';
-
-                return dispatch({
-                    type: ACTIVATE_MODAL_WINDOW,
-                    title,
-                    reason
-                });
-            }
-        })
-        .then(result => dispatch({
-            type: GET_USER_INFO,
-            result
-        }))
+        .then(response => response.json())
+        .then(result => result.status >= 400 ?
+            badResponse(dispatch, result)
+            :
+            dispatch({
+                type: GET_USER_INFO,
+                result
+            }))
         .catch(error => console.log('Error', error));
 }

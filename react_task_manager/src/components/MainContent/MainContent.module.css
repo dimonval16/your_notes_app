@@ -103,6 +103,7 @@
     border: none;
     height: 60%;
     border-bottom: 1px solid #D2D2D2;
+    outline: none;
 }
 
 .save {

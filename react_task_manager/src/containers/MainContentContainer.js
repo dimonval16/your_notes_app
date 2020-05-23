@@ -19,7 +19,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
     return {
         onToggleAddField: () => dispatch(toggleNoteField()),
-        onToggleNote: (id, categoryId) => dispatch(toggleNote(id, categoryId)),
+        onToggleNote: (id, categoryId, status) => dispatch(toggleNote(id, categoryId, status)),
         onDelete: (id, categoryId) => dispatch(deleteNote(id, categoryId)),
         onEdit: (id, title, categoryId) => dispatch(editNote(id, title, categoryId)),
         onAdd: (title, categoryId) => dispatch(addNote(title, categoryId))

@@ -24,7 +24,6 @@ export default function AddNote(props) {
         if (newTitle) {
             props.onAdd(newTitle, props.categoryId);
             setTitle('');
-            props.hideAddForm();
         }
     }
 
