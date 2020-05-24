@@ -1,10 +1,10 @@
+import {ACTIVATE_MODAL_WINDOW, LOADING} from "..";
 import {
     HOST_SAMOHA,
     HOST_SASHKA,
     SIGN_UP_SAMOHA,
     SIGN_UP_SASHKA
 } from '../../requestsData/requestData';
-import {ACTIVATE_MODAL_WINDOW, LOADING} from "..";
 
 export const CHANGE_REG_EMAIL_INPUT = 'CHANGE_REG_EMAIL_INPUT';
 export const CHANGE_REG_NAME_INPUT = 'CHANGE_REG_NAME_INPUT';
@@ -87,5 +87,5 @@ export const requestSignUpAC = data => dispatch => {
                 });
             }
         })
-        .catch(error => console.error(`Ошибка: ${error}`));
+        .catch(error => console.log('Error', error));
 }

@@ -19,6 +19,7 @@ export default function Sidebar(props) {
             <Category
                 categories={props.categories}
                 catFieldHidden={props.catFieldHidden}
+                fetching={props.fetching}
                 onCategoryDelete={props.onCategoryDelete}
                 onCategoryEdit={props.onCategoryEdit}
                 onCategoryAdd={props.onCategoryAdd}

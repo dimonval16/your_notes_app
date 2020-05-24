@@ -4,7 +4,6 @@ import {
     LOGIN_SUCCESS,
     SIGN_UP_FAILURE,
     ACTIVATE_MODAL_WINDOW,
-    GET_CATEGORY_INFO,
     GET_USER_INFO
 } from "../../actions";
 
@@ -41,12 +40,6 @@ export default function reducer(state = {}, action) {
             }
 
         case GET_USER_INFO:
-            return {
-                ...state,
-                status: false
-            }
-
-        case GET_CATEGORY_INFO:
             return {
                 ...state,
                 status: false

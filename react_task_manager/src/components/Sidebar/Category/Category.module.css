@@ -1,7 +1,9 @@
+/* -- ./Category.jsx -- */
 .category_block {
     overflow-y: auto;
 }
 
+/* -- ./CategoryItem.jsx -- */
 .wrapper {
     display: flex;
     color: white;

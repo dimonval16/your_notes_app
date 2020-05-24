@@ -1,8 +1,8 @@
+import { ACTIVATE_MODAL_WINDOW } from "..";
 import {
     HOST_SAMOHA,
     GET_CATEGORY_INFO_SAMOHA
 } from '../../requestsData/requestData';
-import { ACTIVATE_MODAL_WINDOW } from "..";
 
 export const ADD_CATEGORY = 'ADD_CATEGORY';
 export const DELETE_CATEGORY = 'DELETE_CATEGORY';

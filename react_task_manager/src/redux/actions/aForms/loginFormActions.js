@@ -60,6 +60,6 @@ export const loginRequestAC = data => dispatch => {
                 return dispatch({ type: LOGIN_SUCCESS });
             }
         })
-        .catch(error => console.error(`Ошибка: ${error}`))
+        .catch(error => console.log('Error', error));
 }
 
