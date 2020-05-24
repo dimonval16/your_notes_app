@@ -26,8 +26,8 @@ export default function SettingMenu(props) {
                         onSendPhoto={props.onSendPhoto}
                     />
                 </li>
-                <li>Change name</li>
-                <li>Change password</li>
+                <li onClick={props.onChangeName}>Change name</li>
+                <li onClick={props.onChangePass}>Change password</li>
                 <li onClick={props.onHandleLogOut}>Log out</li>
             </ul>
         </div>

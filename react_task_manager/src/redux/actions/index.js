@@ -68,10 +68,13 @@ export {
     GET_CATEGORY_INFO,
     SET_PHOTO,
     CONFIRM_EMAIL,
+    CHANGE_NAME,
     getUserRequestAC,
     getCategoryInfo,
     setPhotoAC,
-    confirmEmailAC
+    confirmEmailAC,
+    changeNameAC,
+    changePassAC
 } from './aUser/userAction';
 
 export {

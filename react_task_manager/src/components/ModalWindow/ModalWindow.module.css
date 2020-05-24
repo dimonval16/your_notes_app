@@ -63,3 +63,35 @@
 .buttons i{
     font-style: normal;
 }
+
+/* -- ModalForm.jsx -- */
+.wrapperForm {
+    display: flex;
+    flex-direction: column;
+    height: 270px;
+    justify-content: space-between;
+    margin: 10px 10px 0 10px;
+}
+
+.wrapperChangeName {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 10px 10px 0 10px;
+}
+
+.wrapperChangeName input:last-child {
+    margin-top: 25px;
+}
+
+.wrapperForm input:last-child {
+    margin-top: 10px;
+}
+
+.errorMes {
+    color: #e04167;
+}
+
+.errorMesHid {
+    display: none;
+}

@@ -1,4 +1,6 @@
 import {
+    changeNameAC,
+    changePassAC,
     closeModalWindowAC,
     logOutAC,
     signUpSuccess
@@ -17,7 +19,9 @@ function mapDispatchToProps(dispatch) {
     return {
         onCloseWindow: () => dispatch(closeModalWindowAC()),
         onLogOut: () => dispatch(logOutAC()),
-        onSignUp: () => dispatch(signUpSuccess())
+        onSignUp: () => dispatch(signUpSuccess()),
+        onChangeName: data => dispatch(changeNameAC(data)),
+        onChangePass: data => dispatch(changePassAC(data))
     }
 }
 

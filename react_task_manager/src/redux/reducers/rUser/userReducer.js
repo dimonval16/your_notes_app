@@ -2,7 +2,8 @@ import {
     GET_USER_INFO,
     LOG_OUT,
     SET_PHOTO,
-    CONFIRM_EMAIL
+    CONFIRM_EMAIL,
+    CHANGE_NAME
 } from '../../actions'
 
 export default function reducer(state = {}, action) {
@@ -24,6 +25,18 @@ export default function reducer(state = {}, action) {
                 photo: action.photo
             }
 
+        case CHANGE_NAME:
+            return {
+                ...state,
+                name: action.userName
+            }
+
+        case CONFIRM_EMAIL:
+            return {
+                ...state,
+                enabled: true
+            }
+
         case LOG_OUT: {
             return {
                 ...state,
@@ -35,12 +48,6 @@ export default function reducer(state = {}, action) {
                 name: '',
             }
         }
-
-        case CONFIRM_EMAIL:
-            return {
-                ...state,
-                enabled: true
-            }
 
         default:
             return {...state}

@@ -28,6 +28,20 @@ export default function SettingMenuHandler(props) {
         props.onModalWindow(title, reason);
     }
 
+    function handleChangePass() {
+        const title = 'Change password';
+        const reason = 'Change password';
+
+        props.onModalWindow(title, reason);
+    }
+
+    function handleChangeName() {
+        const title = 'Change name';
+        const reason = 'Change name';
+
+        props.onModalWindow(title, reason);
+    }
+
     return (
         <SettingMenu
             className={props.className}
@@ -36,6 +50,8 @@ export default function SettingMenuHandler(props) {
             onHandleSelectFile={handleSelectFile}
             onSendPhoto={handleSendPhoto}
             onHandleLogOut={activateModalWindow}
+            onChangePass={handleChangePass}
+            onChangeName={handleChangeName}
         />
     );
 }

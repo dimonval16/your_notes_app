@@ -18,3 +18,6 @@ export const ADD_NOTES_SAMOHA = '/api/v1/notes';
 export const TOGGLE_NOTES_SAMOHA = '/api/v1/notes/status';
 export const DELETE_NOTE_SAMOHA = '/api/v1/notes';
 export const EDIT_NOTE_SAMOHA = '/api/v1/notes/title';
+
+export const CHANGE_NAME_SAMOHA = '/api/v1/users/name';
+export const CHANGE_PASS_SAMOHA = '/api/v1/users/password';
