@@ -3,6 +3,7 @@
 }
 
 .input {
+    font-family: 'Roboto', sans-serif;
     padding: 0 10px 0 10px;
     font-size: 16px;
     border: 2px solid #b5b5b5;
@@ -19,10 +20,10 @@
 }
 
 .buttons {
-    border: 2px solid #2D487F;
+    font-family: 'Roboto', sans-serif;
+    border: 1px solid #2D487F;
     background-color: white;
     font-size: 16px;
-    font-weight: bold;
     color: #2D487F;
     border-radius: 30px;
     outline: none;
@@ -30,7 +31,7 @@
 }
 
 .buttons:hover {
-    border: 2px solid #FF3767;
+    border: 1px solid #FF3767;
     background-color: #FF3767;
     color: white;
 }
