@@ -1,1 +1,1 @@
-Watch this project with link: [Your Notes](https://your-notes-app-ea2f0.web.app/)
+Follow the link to view this project: [Your Notes](https://your-notes-app-ea2f0.web.app/)
